@@ -1,0 +1,45 @@
+{
+  "name": "jomurgel-learn",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
+  },
+  "dependencies": {
+    "@mapbox/rehype-prism": "^0.9.0",
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.2.5",
+    "@rehype-pretty/transformers": "^0.13.2",
+    "@types/mdx": "^2.0.13",
+    "date-fns": "^3.6.0",
+    "gray-matter": "^4.0.3",
+    "next": "14.2.5",
+    "next-mdx-remote": "^5.0.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-markdown": "^9.0.1",
+    "rehype-code-titles": "^1.2.0",
+    "rehype-prism": "^2.3.2",
+    "rehype-prism-plus": "^2.0.0",
+    "rehype-stringify": "^10.0.0",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.0",
+    "remark-html": "^16.0.1",
+    "rss": "^1.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/rss": "^0.0.32",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "sass": "^1.77.8",
+    "typescript": "^5"
+  }
+}

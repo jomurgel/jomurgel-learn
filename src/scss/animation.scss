@@ -1,0 +1,25 @@
+@keyframes fade_in_down {
+  0% {
+     opacity: 0;
+     transform: translateY(-20px);
+     display: none;
+  }
+  100% {
+     opacity: 1;
+     transform: translateY(0);
+     display: flex;
+  }
+}
+
+@keyframes fade_out_up {
+  0% {
+     opacity: 1;
+     transform: translateY(0);
+     display: flex;
+  }
+  100% {
+     opacity: 0;
+     display: none;
+     transform: translateY(-20px);
+  }
+}

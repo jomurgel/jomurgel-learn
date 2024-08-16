@@ -1,0 +1,127 @@
+//--------------------------------------------------------------
+// Styles for jomurgel-learn
+//--------------------------------------------------------------
+
+.site-header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  position: relative;
+
+  .site-nav-toggle {
+    line-height: 1;
+    margin: 0;
+    padding: calc(var(--pad) / 2);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &[aria-expanded="false"] + .site-nav {
+      animation: fade_out_up 0.5s;
+      display: none;
+    }
+
+    &[aria-expanded="true"] + .site-nav {
+      animation: fade_in_down 0.5s;
+    }
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    a,
+    a:visited {
+      color: var(--black);
+      text-decoration: none;
+
+      &:active,
+      &:hover {
+        color: var(--primary);
+      }
+
+      &:focus {
+        color: var(--primary-light);
+      }
+
+      &.current {
+        color: var(--dark-gray);
+        font-style: italic;
+      }
+
+      &[data-effect="glow"] {
+        background-color: var(--primary);
+        border: 1px solid var(--primary);
+        border-radius: var(--border-radius);
+        box-shadow: 0 0 var(--pad) var(--primary);
+        color: var(--white);
+        display: inline-table;
+        font-size: calc(var(--font-size) * 0.75);
+        font-weight: 600;
+        font-weight: bold;
+        line-height: 1;
+        margin-right: var(--pad);
+        padding: calc(var(--pad) / 2);
+        text-transform: uppercase;
+        transition: box-shadow 0.3s ease-in-out;
+
+        &:hover,
+        &:focus {
+          box-shadow: 0 var(--pad) var(--pad-2) var(--primary);
+        }
+      }
+    }
+
+    [data-truncate] {
+      color: var(--gray);
+      display: inline-block;
+      font-size: var(--font-size);
+      line-height: calc(var(--font-size)* 1.75);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 12rem;
+
+      &::before {
+        content: ' | ';
+        display: inline-flex;
+        margin: 0 calc(var(--pad) / 2.5);
+      }
+    }
+  }
+
+  .site-nav {
+    background: var(--lightest-gray);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-flow: column wrap;
+    gap: var(--pad-2);
+    justify-content: flex-start;
+    margin: 0;
+    padding: calc( var(--pad) * 4);
+    position: absolute;
+    top: calc(var(--pad-3) / 2);
+    right: 0;
+    z-index: 100;
+
+    @media screen and (min-width: map.get($breakpoints, "media-md")) {
+      gap: var(--pad-3);
+      justify-content: flex-end;
+      flex-flow: row wrap;
+
+      div:last-child {
+        text-align: right;
+      }
+    }
+
+    div > span {
+      display: inline-block;
+      font-weight: bold;
+      margin-bottom: var(--pad);
+    }
+
+    ul {
+      flex-flow: column nowrap;
+      gap: calc(var(--pad) / 4);
+    }
+  }
+}

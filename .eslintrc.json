@@ -1,0 +1,11 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "semi": ["error", "never"],
+    "space-in-parens": ["error", "always"],
+    "react/no-unescaped-entities": "off",
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "comma-dangle": ["error", "always-multiline"],
+    "array-bracket-spacing": ["error", "always", { "singleValue": false }]
+  }
+}

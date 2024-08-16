@@ -1,0 +1,25 @@
+//--------------------------------------------------------------
+// Sass maps
+//--------------------------------------------------------------
+
+//-----------------------------------------
+// Breakpoint map
+//-----------------------------------------
+$breakpoints: (
+  media-sm: 567px,
+  media-md: 768px,
+  media-lg: 992px,
+  media-xl: 1200px,
+);
+
+//-----------------------------------------
+// Color map
+//-----------------------------------------
+$colors: (
+  primary: --primary,
+  secondary: --secondary,
+  accent: --accent,
+  tertiary: --tertiary,
+  quaternary: --quaternary,
+  quinary: --quinary,
+);

@@ -1,0 +1,256 @@
+:root {
+  --mono-1: hsl(230, 8%, 24%);
+  --mono-2: hsl(230, 6%, 44%);
+  --mono-3: hsl(230, 4%, 64%);
+  --alt-primary: #50a14f;
+  --hue-5: hsl(5, 74%, 59%);
+  --hue-5-2: hsl(344, 84%, 43%);
+  --secondary-light: hsl(35, 99%, 40%);
+  --syntax-fg: hsl(230, 8%, 24%);
+  --syntax-bg: hsl(230, 1%, 98%);
+  --syntax-gutter: hsl(230, 1%, 62%);
+  --syntax-guide: hsla(230, 8%, 24%, 0.2);
+  --syntax-accent: hsl(230, 100%, 66%);
+  --syntax-selection-color: hsl(230, 1%, 90%);
+  --syntax-gutter-background-color-selected: hsl(230, 1%, 90%);
+  --syntax-cursor-line: hsla(230, 8%, 24%, 0.05);
+  --diff-deleted-bg: hsla(353, 100%, 66%, 0.15);
+  --diff-deleted-bg-selection: hsla(353, 95%, 66%, 0.25);
+  --diff-inserted-bg: hsla(137, 100%, 55%, 0.15);
+  --diff-inserted-bg-selection: hsla(135, 73%, 55%, 0.25);
+  --preview-border: hsl(0, 0, 95%);
+  --preview-bg: hsl(0, 0%, 100%);
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  background: var(--syntax-bg);
+  color: var(--syntax-fg);
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Selection */
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] *::-moz-selection,
+pre[class*="language-"] *::-moz-selection {
+  background: var(--syntax-selection-color);
+  color: inherit;
+}
+
+code[class*="language-"]::selection,
+code[class*="language-"] *::selection,
+pre[class*="language-"] *::selection {
+  background: var(--syntax-selection-color);
+  color: inherit;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.2em 0.3em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: var(--mono-3);
+}
+
+.token.doctype,
+.token.punctuation,
+.token.entity {
+  color: var(--mono-1);
+}
+
+.token.attr-name,
+.token.class-name,
+.token.boolean,
+.token.constant,
+.token.number,
+.token.atrule {
+  color: var(--secondary);
+}
+
+.token.keyword {
+  color: var(--quaternary);
+
+  &.module {
+    color: var(--accent);
+  }
+}
+
+.token.property,
+.token.tag,
+.token.symbol,
+.token.deleted,
+.token.important {
+  color: var(--hue-5);
+}
+
+.token.selector,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted,
+.token.regex,
+.token.attr-value,
+.token.attr-value > .token.punctuation {
+  color: var(--alt-primary);
+}
+
+.token.variable,
+.token.operator,
+.token.function {
+  color: var(--primary-dark);
+}
+
+.token.url {
+  color: var(--primary);
+}
+
+/* HTML overrides */
+.token.attr-value > .token.punctuation.attr-equals,
+.token.special-attr > .token.attr-value > .token.value.css {
+  color: var(--mono-1);
+}
+
+/* CSS overrides */
+.language-css .token.selector {
+  color: var(--hue-5);
+}
+
+.language-css .token.property {
+  color: var(--mono-1);
+}
+
+.language-css .token.function,
+.language-css .token.url > .token.function {
+  color: var(--primary);
+}
+
+.language-css .token.url > .token.string.url {
+  color: var(--alt-primary);
+}
+
+.language-css .token.important,
+.language-css .token.atrule .token.rule {
+  color: var(--quaternary);
+}
+
+/* JS overrides */
+.language-javascript .token.operator {
+  color: var(--quaternary);
+}
+
+.language-javascript .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation {
+  color: var(--hue-5-2);
+}
+
+/* JSON overrides */
+.language-json .token.operator {
+  color: var(--mono-1);
+}
+
+.language-json .token.null.keyword {
+  color: var(--secondary);
+}
+
+/* MD overrides */
+.language-markdown .token.url,
+.language-markdown .token.url > .token.operator,
+.language-markdown .token.url-reference.url > .token.string {
+  color: var(--mono-1);
+}
+
+.language-markdown .token.url > .token.content {
+  color: var(--primary-dark);
+}
+
+.language-markdown .token.url > .token.url,
+.language-markdown .token.url-reference.url {
+  color: var(--primary);
+}
+
+.language-markdown .token.blockquote.punctuation,
+.language-markdown .token.hr.punctuation {
+  color: var(--mono-3);
+  font-style: italic;
+}
+
+.language-markdown .token.code-snippet {
+  color: var(--alt-primary);
+}
+
+.language-markdown .token.bold .token.content {
+  color: var(--secondary);
+}
+
+.language-markdown .token.italic .token.content {
+  color: var(--quaternary);
+}
+
+.language-markdown .token.strike .token.content,
+.language-markdown .token.strike .token.punctuation,
+.language-markdown .token.list.punctuation,
+.language-markdown .token.title.important > .token.punctuation {
+  color: var(--hue-5);
+}
+
+/* General */
+.token.bold {
+  font-weight: bold;
+}
+
+.token.comment,
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.namespace {
+  opacity: 0.8;
+}
+
+.highlight-line {
+  background-color: var(--code-bg);
+  display: block;
+}
+
+.line-number {
+  padding-left: var(--pad);
+
+  &::before {
+    border-right: 1px solid var(--primary-lighter);
+    padding-right: calc(var(--pad) / 2);
+    display: inline-block;
+    width: calc(var(--pad) * 2);
+    text-align: right;
+    margin-right: calc(var(--pad) * 2);
+    margin-left: calc(var(--pad) * -1);
+    color: var(--primary-light);
+    content: attr(line);
+  }
+}
