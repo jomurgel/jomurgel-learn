@@ -9,8 +9,6 @@ import { useMDXComponents } from '@/app/mdx-components'
 import Date from '@/components/Date'
 import Image from 'next/image'
 
-export const dynamicParams = false
-
 type Props = {
   params: {
     slug: string;
@@ -34,7 +32,7 @@ const SingleBlogPost = ( { params }: Props ) => {
           {post.coverImage ? (
             <Image
               src={post.coverImage}
-              alt="Cover Image"
+              alt={`${post.title} Cover Image`}
               width={400}
               height={300}
               priority={true}
