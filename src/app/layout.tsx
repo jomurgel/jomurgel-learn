@@ -9,11 +9,15 @@ import '../scss/style.scss'
  * Default/homepage meta.
  */
 export const metadata: Metadata = {
+  metadataBase: new URL( 'https://jomurgel.com' ),
   title: 'Jo Murgel',
   description: 'Mixed-stack JavaScript Developer',
   openGraph: {
     title: 'Jo Murgel',
     description: 'Mixed-stack JavaScript Developer',
+    images: [
+      '/cover-jomurgel.jpg',
+    ],
   },
 }
 

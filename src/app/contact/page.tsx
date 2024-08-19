@@ -63,6 +63,11 @@ const Contact = () => {
           </div>
 
           <div data-attr="row">
+            <div data-attr="column">Threads</div>
+            <div data-attr="column"><a href="https://www.threads.net/@jomurgel" target="_blank" rel="noopener noreferrer">@jomurgel</a></div>
+          </div>
+
+          <div data-attr="row">
             <div data-attr="column">Dribbble</div>
             <div data-attr="column"><a href="https://dribble.com/jomurgel/" target="_blank" rel="noopener noreferrer">jomurgel</a></div>
           </div>
