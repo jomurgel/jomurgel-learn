@@ -5,6 +5,7 @@ import { BlogPost } from '@/types/blog-post'
 
 export enum SlugOptions {
   BLOG = 'blog',
+  CAREER = 'career',
   WORK = 'work',
 }
 

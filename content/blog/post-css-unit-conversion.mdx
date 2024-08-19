@@ -1,0 +1,43 @@
+---
+title: "The PostCSS Unit Conversion Package"
+description: "A package for avoiding pixels at build time."
+date: "2019-12-07"
+tags: [
+  "work"
+]
+---
+
+There has been a lot of discussion about what units of measure should be used for which areas of a website. When do we use PX, when do we use EM or REM or other units?
+
+There are a lot of blogs out there including [this one](https://engageinteractive.co.uk/blog/em-vs-rem-vs-px) over at Engage Interactive which can shed some light on this, and whether they're right or wrong is not for me to decide.
+
+The issue that I wanted to solve is the actual development workflow. We default to literals. It's hard to understand how large a rem or em value is, especially if it's not a whole number. Assuming a base context of `16px`, `8px` makes more sense than writing `0.5rem`. On top of that, we have to remember what requires rem, em, unitless, etc. and that's just not how my brain works most of the time.
+
+Enter postcss-unit-conversion. A simple [PostCSS plugin](https://github.com/postcss/postcss) to provide the ability to automatically convert all of the various unit values to EM or REM and allow you to write everything in pixels.
+
+These defaults can be overwritten by simply set a few variables defining your base context, how many decimal places you'd like your value, and which units should be EM and which should be REM. Pixel values will remain pixels.
+
+```js showLineNumbers
+var options = {
+    base: 16,
+    precision: 3,
+    toEM: [
+        'letter-spacing',
+        'text-shadow'
+    ],
+    toREM: [
+        'box-shadow',
+        'font-size',
+        'margin',
+        'padding'
+    ]
+};
+```
+
+Easy as pie. I'd like to extend this, later on, ignore certain selectors or elements if necessary and keep it up to date with the latest WebPack and PostCSS versions.
+
+Happy coding!
+
+<hr />
+
+[Fork on Github]() | [Get on NPM]()

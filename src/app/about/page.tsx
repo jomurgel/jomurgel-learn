@@ -25,9 +25,15 @@ const About = () => {
             src="/about-photo.jpg"
             alt="A photo of tattooed legs draped over the edge of a cliff overlooking rocks and the Snake river."
             post-image="true"
-            width="400"
-            height="300"
+            width={400}
+            height={266.67}
             priority={true}
+            style={{
+              width: '100%',
+              maxWidth: 400,
+              maxHeight: 266.67,
+              height: 'auto',
+            }}
           />
         </header>
       </section>

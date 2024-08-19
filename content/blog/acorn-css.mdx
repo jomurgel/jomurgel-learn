@@ -1,0 +1,41 @@
+---
+title: "A new classless CSS framework"
+description: "Talking about the why for my classless framework, acorn.css."
+coverImage: "/acorn-css-cover.jpg"
+date: "2023-09-11"
+tags: [
+  "framework",
+  "work"
+]
+---
+
+While it should be stated up front that this is a work in progress, I'm delighted with the outcome and stand by the impetus behind the framework.
+
+The idea arose while working on a new production site (who shall remain nameless) for a company (who shall remain nameless). It was the last leg of the project, very close to launch day. The site looked fantastic, the performance was within good margins, and everyone was ready to take a break from the tight deadlines and long nights. When we started migrating older content onto the new site for testing, we quickly realized there would be an issue. The team had spent so much time on the custom design and features that the standard HTML elements fell through the cracks. Headings, paragraphs, video, form elements, etc., all unstyled (or assuming browser defaults), ruining a nice-looking website.
+
+I should not toot my own horn (toot, toot), but I should mention that I've always stressed the importance of understanding all the requirements of a project. I'm also a proponent of working smart, not hard. The basic structures and elements of the web are known. Before ever considering website customizations and after a styleguide has been built, you should have a framework available for rapid prototyping without needing presentational classes or frameworks like [Tailwind](https://tailwindcss.com/).
+
+Enter acorn.css. It is a minimal and opinionated classless CSS framework, designed with simplicity in mind. Its straightforward approach makes it easy to use, even for those new to web development.
+
+Let's work backward. What is a classless CSS framework? It's a set of styles attached directly to the default HTML tags that overwrite what browsers supply by default. Effectively, you should have a fully functional (albeit simple) website framework without ever adding any customizations. This website has minimal customization on top of the framework.
+
+Now, why opinionated? That goes a little deeper. Although class names and IDs help target certain things or work with anchors (where IDs are required), I believe only some websites need or should even use class names for most of their markup. Although this might be controversial, this is what a classless framework points out and why they're helpful. My opinions come into play in the use of data attributes.
+
+```html showLineNumbers
+<button class="button-large">Button Text</button>
+<!-- versus -->
+<button data-style="large">Button Text</button>
+```
+
+Data attributes are helpful in a few ways. First, they allow differentiation between use cases, such as how it should look, how it should behave, where it should be used, etc. Second, JavaScript provides a set of functions and tools out of the box to read and write to data attributes, making it easier to manipulate. HTML itself already has various roles, and ARIA attributes are used to denote use cases.
+
+In attempting to remove the need for classes and relying more on data attributes, I'm working to reduce the amount of clutter in the markup. This is also why frameworks like Tailwind or Bootstrap are problematic for me: clutter.
+
+While I still find that class names are helpful and, at times, organizationally better, a site should be nearly functional without ever needing to add one. It should be styled quickly before implementing any custom layouts or fancy features.
+
+<hr/>
+
+<a href="https://github.com/jomurgel/acorn.css" target="_blank">GitHub Repo</a> | <a href="https://jomurgel.github.io/acorn.css/" target="_blank">Demo</a>
+
+I always love feedback. If you have ideas about how to make this more compact, address cross-browser issues, or make it compatible with your project, open an [issue](https://github.com/jomurgel/acorn.css/issues), and let's get to work.
+

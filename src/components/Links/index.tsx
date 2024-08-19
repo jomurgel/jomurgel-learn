@@ -26,7 +26,7 @@ const Links: React.FC<LinksProps> = ( { handleClick } ) => {
 
   const tellLinks = [
     {
-      title: 'General Blog',
+      title: 'Blog',
       path: '/blog',
     },
     // @todo: phase2

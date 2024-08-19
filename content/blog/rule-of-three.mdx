@@ -1,0 +1,17 @@
+---
+title: "Design: The Rule of Three"
+description: "A concept for keeping website design consistent."
+date: "2019-05-01"
+---
+
+I strongly dislike the term "pixel-perfect." Web Designers, like engineers, often work with tight deadlines (especially in agency work), so they're bound to make mistakes in spacing and alignment.
+
+Getting a design file and being required to be "pixel perfect" defeats the purpose of having a fluid web-to-device experience. While things like logos and brand assets should be pixel-perfect, the spacing of text in buttons across a site shouldn't be subject to one-off adjustment when "close enough" will suffice.
+
+I use a system I call "The Rule of Three" when building a site. This rule might most specifically apply to site element spacing, but it can also broadly apply to type, color palettes, and variations. In the context of spacing, I define a base value of 8 pixels. This would be the least amount of space available between any two elements. Then we triple this, so 24 pixels. This would be a standard space between elements, usually reserved for margins between paragraphs or collections of features. Finally, we triple that value (or the base times six) and get our last value for spacing, 72px. This would be reserved for white space, section separations, and breaks between unrelated elements.
+
+Having these can ensure consistency in design and that engineers never need to guess what a margin or padding value should be. They should know. And we can take this further still. Having defined our three values, we can multiply or divide by these values if we need some value at a fraction of any of them, and if we were to change our base trio, the site would adapt.
+
+This concept is used on this site as a matter of principle.
+
+Regarding things other than spacing, the concept simply means that everything should have at least three options: three primary color variations, three used fonts on a site, or three thumbnail sizes. This gives us a related variation and supplies support for the three main devices a user might be expected to interact with: the computer, tablet, and mobile device.
