@@ -19,7 +19,11 @@ const Links: React.FC<LinksProps> = ( { handleClick } ) => {
     //   path: '/work',
     // },
     {
-      title: 'Contacts',
+      title: 'Codex',
+      path: '/codex',
+    },
+    {
+      title: 'Contact',
       path: '/contact',
     },
   ]

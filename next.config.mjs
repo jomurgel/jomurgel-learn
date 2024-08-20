@@ -1,4 +1,3 @@
-import createMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import rehypePrism from 'rehype-prism-plus'
 
@@ -23,7 +22,5 @@ const nextConfig = {
   },
 }
 
-const withMDX = createMDX({ options: mdxOptions })
-
 // Merge MDX config with Next.js config
-export default withMDX(nextConfig)
+export default nextConfig
