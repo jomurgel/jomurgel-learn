@@ -27,6 +27,10 @@ jobs:
       - name: Build Website
         run: npm run build
 
+      - name: Debug SSH
+        run: ssh -v ${{ secrets.USERNAME }}@${{ secrets.HOST }}
+
+
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
         with:
