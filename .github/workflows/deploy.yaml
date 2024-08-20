@@ -37,4 +37,4 @@ jobs:
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy with rsync
-        run: rsync -avz --delete ./out ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIRECTORY }}
+        run: scp -i ${{ secrets.SSH_KEY }} ./out ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIRECTORY }}
