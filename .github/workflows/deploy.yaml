@@ -13,20 +13,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Build Next.js site
         run: npm install && npm run build
 
       - name: Deploy to DigitalOcean
-        uses: appleboy/scp-action@v0.1.7
+        uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          source: './out/*'
-          target: ${{ secrets.TARGET_DIRECTORY }}
-
-      - name: Restart server (if needed)
-        run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'sudo systemctl restart nginx'
+          script: |
+            tar -xzf - -C ${{ secrets.TARGET_DIRECTORY }}
         env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
+          ARCHIVE_PATH: './out/*'
