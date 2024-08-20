@@ -27,9 +27,24 @@ jobs:
       - name: Build Website
         run: npm run build
 
-      - name: Debug SSH
-        run: ssh -v ${{ secrets.USERNAME }}@${{ secrets.HOST }}
+      - name: Start SSH Agent
+        run: eval $(ssh-agent -s)
 
+      - name: Add SSH Key
+        run: echo "${{ secrets.SSH_KEY }}" | tr -d '\r' | ssh-add -
+        shell: bash
+
+      - name: Ensure SSH Directory and Known Hosts
+        run: |
+          mkdir -p ~/.ssh
+          touch ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+
+      - name: Set Permissions
+        run: |
+          chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/known_hosts
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
