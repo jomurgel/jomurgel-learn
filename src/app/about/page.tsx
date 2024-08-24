@@ -95,10 +95,6 @@ const About = () => {
             </div>
           </div>
           <div data-attr="row">
-            <div data-attr="column"><a href="https://cplusplus.com/" target="_blank" rel="noopener noreferrer">C++</a></div>
-            <div data-attr="column"><a href="https://dotnet.microsoft.com/en-us/apps/aspnet" target="_blank" rel="noopener noreferrer">ASP.NET</a></div>
-            <div data-attr="column"><a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer">C#</a></div>
-            <div data-attr="column"><a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a></div>
             <div data-attr="column"><a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">Python</a></div>
             <div data-attr="column"><a href="https://www.ruby-lang.org/en/" target="_blank" rel="noopener noreferrer">Ruby</a></div>
             <div data-attr="column"><a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a></div>
