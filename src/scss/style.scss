@@ -642,6 +642,14 @@ hr {
   }
 }
 
+[data-text-style="large"] {
+  font-size: 250%;
+
+  strong {
+    color: var(--primary);
+  }
+}
+
 // Shared text content element margins.
 dl,
 [data-wrapper],
@@ -1247,6 +1255,20 @@ button {
 //-----------------------------------------
 [data-table]:is(div) {
   font-size: 100%;
+}
+
+[data-table][data-style="list"] {
+
+  [data-attr="column"]:nth-child(2n) {
+    text-align: left;
+  }
+}
+
+[data-table]:not([data-style="list"]) {
+
+  [data-attr="column"]:nth-child(2n) {
+    text-align: right;
+  }
 }
 
 [data-table] {

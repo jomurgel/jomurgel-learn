@@ -60,7 +60,7 @@ const About = () => {
 
         <p>Don't get me wrong, for those who become experts in one field or technology, my hats off to you, but that's not how I'm wired. I cannot be beholden to one endeavor any more than I can be beholden to one type of pizza (gluten-free pepperoni and pineapple, if you please). I'm fluent, conversational, and familiar with various languages and tech stacks (callback), allowing me to be more versatile than your average Jo. I have the drive to learn, an imagination unrestricted by convention, and the unique ability to look at a project from every relevant angle. Being a "Jo of all trades" means being prepared and informed for whatever gets thrown my way.</p>
 
-        <div data-table>
+        <div data-table data-style="list">
           <div data-attr="header">
             <div>
               <h3>Fluent</h3>
@@ -87,7 +87,7 @@ const About = () => {
           </div>
         </div>
 
-        <div data-table>
+        <div data-table data-style="list">
           <div data-attr="header">
             <div>
               <h3>Conversational</h3>
