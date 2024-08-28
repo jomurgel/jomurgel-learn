@@ -31,6 +31,12 @@ const Rates = () => {
       <hr />
 
       <section>
+        <p>I generally prefer to scope a body of work, understand the requirements, and then price out at a single fee: 20% paid up front, and 80% paid upon completion.</p>
+
+        <p>Below are my hourly rates for ad-hoc work.</p>
+
+        <hr />
+
         <h2>Design</h2>
         <div data-table>
           <div data-attr="row">
