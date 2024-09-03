@@ -1,0 +1,61 @@
+---
+title: "A Gutenberg-powered Settings Page"
+description: "An experimental approach to a more Block Editor focused settings page."
+date: "2024-08-29"
+tags: [
+  "wordpress",
+  "gutenberg",
+  "dev",
+  "tutorial",
+]
+---
+
+Here's something that bothers me a bit about WordPress right now. We have the beautiful and functional
+"Block Editor", but we've not yet gotten to the point where we start to see similar improvements to other
+aspects of the site. The Dashboard, Settings Pages, and other non-post-type admin pages still use the same
+style from the pre-Gutenberg days.
+
+For those that might not already be aware, in 2019, WordPress rolled the "new" Gutenberg editor into
+Core WordPress 5.0. This replaced the TinyMCE and standard HTML inputs with a more dynamic user interface
+and leaned more heavily on a client-side interaction with REST endpoints running adjacent to React.js.
+Since that initial release, there have been many accessibility, usability, and feature improvements, but
+we're still a ways off from a full app-driven interface...and I can't wait.
+
+In this tutorial we're going to build a standard WordPress Settings page that uses the REST API and Core
+Gutenberg/Block Editor features to provide a more modern feel.
+
+We're going to be working with some standard PHP features, standard Block Editor features, and then some
+custom React features to make this all come together. At the end of this we'll have a plugin that creates
+a new Settings Page running client side saving options values without refresh. A link to the final product
+is at the bottom of the page.
+
+## Step 1: Setting up the Plugin
+I'm going to run through this part pretty quickly, though we'll need a few JS features we'll come
+back to later.
+
+## Step 2: Registering the Settings Page
+We're going to use standard WordPress filters to register our new settings page. We'll call it "Site Options".
+
+## Step 3: Setup Our JavaScript Build Process
+We'll be writing some client-side JS, so we'll also need to setup our plugin to support a build process
+so we can turn our React into Vanilla JavaScript; a format the browser will understand.
+
+## Step 4: Creating our React App
+
+## Step 5: Adding our First Setting
+
+## Step 6: Saving the new Settings
+
+## Step 7: All the Rest, and Where Do We Go From Here?
+By this point we have registered a new WordPress settings page in a new plugin, added single new
+React-powered settings page with a single settings toggle which is saving to our database. Where do
+we go from here? Add section headings, new fields, and build out to your heart's content. Eventually
+WordPress will replace the Classic backend with a new Block Editor-styled interface, but for now this
+makes me feel a little better about adding new features to WordPress. Is it necessary? No. This really is
+more of an experiement in testing the boundaries of what WordPress is now capable of, and a lot of the
+refreshless saving of options can be done with Ajax, but with a simple and robust set of tools at our
+fingertips via the Block Editor, why not use them?
+
+<hr/>
+
+[Fork on Github]()

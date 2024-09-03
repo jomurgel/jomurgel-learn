@@ -1,0 +1,347 @@
+---
+title: "10up Code Samples"
+description: "A requested set of code samples for the 10up recruiting process."
+date: "2024-09-04"
+---
+
+Below you'll find five sections with links to public repos which call out specific aspects of the code,
+features, reason for an approach, or why I think it's noteworthy; what is it, what it does, or areas to be aware of.
+
+1. [My Personal Website](#my-personal-website)
+1. [Auto-documentation w/ Nextra](#autodocumentation-w-nextra)
+1. [T◩DY](#tdy)
+1. [WP Gutenberg Site Options](#wp-gutenberg-site-options)
+1. [Gutenberg Block Showcase Plugin](#gutenberg-block-showcase-plugin)
+
+<details open>
+  <summary>A Quick Note Before We Start:</summary>
+
+  With the exception of T◩DY, which I built over the last couple of days, and my website which
+  is a few weeks old, the rest has been compiled over the last five or so years of work which
+  inherently means that some functionality or dependencies which were likely proprietary have been
+  removed or lost and may prevent features from functioning. I've added notes throughout if
+  there's a caveat to the code for one reason or the other to add helpful context.
+</details>
+
+I have lots more Block Editor code or custom WordPress PHP features I can share upon request,
+but without further ado, in no particular order of importance.
+
+## 1. My Personal Website
+[Repo](https://github.com/jomurgel/jomurgel-learn) | [Live](https://jomurgel.com)
+
+This is my personal website that you're on now, if you're reading this. As of two weeks ago this website didn't exist.
+Prior to then I had a single page site; before that a WordPress site of a simplar design that I never used.
+
+Why the change? It was all in how I work. I write in markdown mostly using [IA Writer](https://ia.net/writer) which is natural to me. The
+markdown support if Google Docs or WordPress left alot to be desired, and parsing one to the other even more so. I
+wanted a site that I could easily create content and deploy without _needing_ to be on a desktop computer. I am also
+an educator so I wanted to eventually set myself up for success with future projects or apps. While not impossible to
+do with WordPress or other frameworks, I saw more flexibility in the way I work and my future goals with JavaScript,
+React, and a framework like Next.js.
+
+Things I think are important:
+- This is a static site build using Next.js 14 using the new(ish) App Router + Typescript.
+- All post content is md or mdx formatted located in the `content/blog` folder. The subfolder for now
+delineates between blog and what might be work or other content types in the future. This is the way
+that I write and makes the process of adding content, committing, and having the static export deployed
+using a Github Workflow. For example, you're reading "hidden" content in a subdirectory in content that don't see
+the light of day with robots disabled and no external linking.
+- This was built over a weekend so there are quite a few "phase 2" `@todo` notes throughout, but this
+gives you some insight into how I work. I plan on adding test coverage where applicable and a little more dynamic
+functionality or parts of the site to become a little more engaged here instead of on other social media platforms like
+Threads or Instagram.
+- The `mdx-components.tsx` file supports some custom handling of markdown output.
+- For bonus points you can check out the [acorn.css](https://github.com/jomurgel/acorn.css) framework that I also
+built and that this site uses. A classless CSS framework. With the exception of a couple of areas that required them,
+there are no classes in use on this website; this is by design.
+
+## 2. Auto-documentation w/ Nextra
+[Repo](https://github.com/jomurgel/auto-docs) | [Live (TBD)]()
+
+This is a proof of concept documentation app using Next.js and Nextra which is intended to
+pull in documentation from a `docs` directory or individual `md` or `mdx` files.
+
+The metric here was *speed to documentation*. Rather than requiring devs ahear to learning
+something like Storybook and enforce it at scale, or require that devs update documentation in a
+separate repo I opted to fallback to markdown which all devs should already be familiar with because of
+GitHub.
+
+> Document as you code, and let "auto-docs" do the rest.
+
+The `cli` directory is the big thing here which includes various commands, parsers,
+configs and util or services. The `runners` are what do the real work here by defining
+the input and output locations of an individual file (`generate-template-single.js`) or
+a directory of `md` files (`generate-template-directory.js`). More info about this
+in the README.
+
+Every bit of the `cli` suite was bespoke and written to follow a certain convention of
+writing docBlocks defined by the best standards of JS and PHP. This was effectively the
+first (successful) pass at an auto-documentation suite. There's a lot of places I'd
+make improvements, and would happy to discuss those if there's interest.
+
+The [T◩DY — TBD]() repo's docs utilizes this auto-docs workflow. That documentation is
+automatically available on the Github Pages site. Link above.
+
+## 3. T◩DY
+[Repo](https://github.com/jomurgel/t-dy)
+
+I built this app over the last couple of days. It serves to demonstrate my knowledge of:
+
+- Meaningful React Code: Uses [Supabase]() for data management and Redux for state management
+along with various complex components and hooks.
+- Automated Testing using Jest and [] add testing library.
+- React Native
+
+This app was already on my personal roadmap. I've just expedited it a little bit, slimmed back
+the feature-set a little bit to accomodate a quick turnover.
+
+SCREENSHOTS HERE
+
+## 4. WP Gutenberg Site Options
+
+[Repo](https://github.com/jomurgel/wp-gutenberg-site-options)
+
+This is a proof-of-concept WordPress plugin that provides Gutenberg/Block Editor features to a Site
+Options page via a bespoke React app with a custom WordPress hook and components.
+
+<img src="/hidden/gutenberg-options-demo.png" alt="Screenshot of the Gutenberg Site Options Demo" />
+
+<details open>
+  <summary>Note:</summary>
+
+  This is part of an in-progress blog series which hasn't posted yet.
+</details>
+
+
+Things I think are important:
+- The `use-site-options` hook. This provides output of the site settings object,
+loading and saving states, and a setter which makes a post request to the `/wp/v2/settings` endpoint
+which updates at a debounce and asynchronously.
+- The `site-options` component is the admin field outputs along with the `SnackbarList` output
+using the `Notices` components. Nothing super special here, but utilizes Gutenberg elements.
+- The `notices` component handles displaying the "Settings Updates" text inside the
+`SnackbarList` component providing the user feedback that the POST request has been made successfully.
+- In all component cases I make sure that there is at least _some_ README context.
+
+
+## 5. Gutenberg Block Showcase Plugin
+[Repo](https://github.com/jomurgel/gutenberg-block-showcase)
+
+<details open>
+  <summary>Note:</summary>
+
+  There is only a small selection of Gutenberg/Block Editor features here. I have built, literally, hundreds of
+  custom Block Editor blocks and features, but have little to show for it as most of it was proprietary. **However,
+  I'm happy to build a bespoke block with some subset of interaction, features, or functionality for the
+  Block Editor.**
+</details>
+
+This is intended to be mostly a catalog of work I've done in the WordPress Block Editor/Gutenberg
+space. I spent a day pulling out features I thought were interesting or I felt in some way proud of. I expect to
+contribute to this repo more going forward.
+
+Things I think are important:
+- The `hooks` directory contains a bunch of useful hooks that I've written over the years doing everything
+from monitoring the viewport width to engaging with post terms and inner blocks. Some may be more targeted
+approaches to some pre-existing core features, or extend them. `use-taxonomy` for example.
+- The `components` directory contains a few useful components. I'm particularly proud of the `post-search`
+component which is used in the "Demo Search" block.
+- All of the components and features utilize PropType validation. At this point in history, I haden't yet adopted
+TypeScript, but it was important to do as much as we could in terms of validation. The concept of PropTypes
+was something I brought to my last employer and actually implemented.
+- All of non-block work is accompanied by a README which is especially useful in terms of hooks or components
+and other shared elements. Documentation is of the utmost important to me.
+- While my ideal approach with the Block Editor is trying to make the editor as close to a 1:1 experience
+with the frontend, if that's not a possibility I aim to create as much of a WordPress-like experience
+as I can, even if that means a few extra editor styles to make that happen. All in an effort to
+keeping the barrier of engagement low.
+- The `blocks`, `filters`, `store`, and `slotfills` are the ones to look at in more depth. A breakdown
+of those are below.
+
+### Slotfills
+Custom Slotfill. I've created a custom GBSSidebarPanel slotfill which exists in a custom Sidebar, below. This repo
+contains ones slotfil of note.
+
+### Revision
+The revision slotfill provides a more robust revision panel for users that appreciated the more direct interaction of
+the revision panel offered to the Classic editor. It provides snapshot of the last, up to ten, revision, the user,
+timestamp, and user-readable time output. Each timestamp links to the revisions directly.
+
+<img alt="Screenshot of Slotfill" data-align="center" src="/hidden/revision-slot.png" />
+
+### Sidebar
+I've added a custom sidebar (with my little JM logo). Standard sidebar implementation. It contains within it a custom
+slot `GBSSidebarPanel` which exists in the `src/components` directory and is used by a custom slotfill adding revisions
+feature making this sidebar a little more expandable than standard slot areas.
+
+![Custom Slotfill + Sidebar Panel](/hidden/sidebar-slot.png)
+
+NOTE: This feature also exists right under the Post Publish panel, but I addded to the sidebar as filler, from a
+user-experince perspective, it wouldn't make sense to move it into another panel like the Sidebar here.
+
+### Store
+This is a very basic implementation of a WordPress Redux-style store working primarily as a way to check for post lock
+status or providing post revision lookup for the "Revision" slotfill above.
+
+It is also used by the "Post Save Modal" feature, mentioned below.
+
+### Filters
+A few odds and ends features I really like.
+
+#### Open Panels
+A filter which keeps the Post Publish panel open by default on a post load. A client request as they were getting lost
+not being able to find the sidebar icon in the top right. Uses the `preferences` and `editor` APIs to make that happen.
+
+#### Pin Notifications
+This one is particularly useful. It pins the notifications warnings, notices, or errors to the top of the editor iframe.
+Particularly useful when the post content is long and saving may result in an error that would otherwise be pinned to
+the top out of view of the user.
+
+<figure data-align="wide">
+  <img src="/hidden/pinned-notice.png" alt="Pinned warning notice" />
+  <figcaption>Demonstrating the mobile-sized window preview</figcaption>
+</figure>
+
+#### Preview Link
+This was build prior to the updates in WordPress adding the direct link for previewing a post in a new tab, when the
+user had a preview button which resulted in in-editor mobile, table, or external link options. Users didn't find the
+in-editor views particularly useful since a lot of the blocks weren't built (at the time) for mobile experiences the way
+core blocks. This feature, however, I still find this useful.
+
+It adds a `Preview` button which will direcly open a new tab with a post preview. Next to it a device icon which provies
+options for mobile or table preview which opens new windows at a general mobile and tablet size.
+
+This uses the `src/components/post-preview-button` component.
+
+<img alt="Preview Button" data-align="center" src="/hidden/preview-button.png" />
+
+<figure data-align="wide">
+  <img src="Preview Button" src="/hidden/preview-mobile.png" />
+  <figcaption>Demonstrating the mobile-sized window preview</figcaption>
+</figure>
+
+#### Reset Editor Panels
+This is a quick filter which will auto-close all open panels, save the publish panel, on post load. Just keeps the editor
+tidy. Uses the `useWindowWidth` hook to avoid firing if the viewport width is smaller than where the panel wouldn't
+be visible.
+
+#### Save Process Filter
+The Save Process was feature was added as part of an effort of improving the user understanding of when a post was
+fully saved. While they didn't need to understand the difference between the REST and sever-side POST save request,
+this provided a little extra feedback popping up a modal showing the REST and Post Save status and then dismissing
+itself after save so the user could be sure that everything was saved. Losing content was a real worry when a lot of
+staff would write and edit posts directly in the Block Editor.
+
+![Save Modal](/hidden/save-modal.png)
+
+### Blocks
+Custom Gutenberg/Block Editor Block features.
+
+<details open>
+  <summary>Note:</summary>
+
+  These blocks have had their PHP or `render_callback` stripped for time along with a few other things, though nothing
+  really important in these cases in terms of what could be done for a showcase demo.
+</details>
+
+#### Top and Bottom Blocks
+A request was made to provide an interface for interacting with a post type from top to bottom without using the sidebar
+or a lot of the core feature that are built into WordPress. Among those features was a "top" and "bottom" block which
+would always live at the top and bottom of a post, locked at those locations, and include several children defined by JSON
+configs (not included in this repo).
+
+Here, for the demo, the top block included the post title block, a post-date block, and the bottom block included a
+post-term-selector options for tags and categories and an SEO blocks.
+
+<div data-gallery data-align="full">
+  <figure>
+    <img src="/hidden/top-bottom-open.png" alt="WordPress screenshot of the top and bottom block in use" />
+  </figure>
+  <figure>
+    <img src="/hidden/top-bottom.png" alt="WordPress screenshot of the top and bottom block in use, bottom blocks open" />
+  </figure>
+</div>
+
+These blocks were locked by default and could not be moved and each block, if it makes sense, has a condensed "slim" version
+which is lighter weight and makes fewer API requests than if they're open to improve editor load times on some of these features.
+You can see this example in the Post Term Selector or SEO Block below.
+
+#### Post Term Selector
+This is one block with multiple variations for `category` and `post_tag` respectively—shown above.
+
+These blocks are inline versions of the standard post term selector baked into Core Gutenberg and in fact, utilize
+the core components to some extent.
+
+![Category and Tag post term selector](/hidden/post-term-selector.png)
+
+However, the `Post Tag` variation also provides an auto-tag generator from the post title or from a comman-separated
+string. Which users found emensely helpful in improving the speed of tag creation.
+
+![Bulk tag creator](/hidden/bulk-tag-creation.png)
+
+#### SEO Block
+This block provides a title and description field for SEO overrides. It also provides an auto-copy from post title button
+which will auto-fill the title field: a client-request. All meant to resemble the Google search results of old.
+
+<div data-gallery data-align="full">
+  <figure>
+    <img src="/hidden/seo.png" alt="SEO Block" />
+    <img src="/hidden/seo-open.png" alt="SEO Open" />
+  </figure>
+  <figure>
+  <img src="/hidden/seo-sidebar.png" alt="SEO Sidebar" />
+  </figure>
+</div>
+
+It also provides some additional canonical override and no-indexing options in the sidebar features.
+
+#### Post Title
+This block is intended to provide a default post title field, but at any point in the layout. Some people like to add
+images or other elements above the main content. This block functions nearly identical with some extra little santization
+support. It also removes the core title element visually if the `gbs/post-title` block exists.
+
+![Post Title Block](/hidden/post-title.png)
+
+Also visible in use in the [Top Block](#top-and-bottom-blocks) above.
+
+#### Tease
+A simple inline block, but it `Collapsable Wrapper` element, a custom component that effectively works to hide some content from
+view that may not necessarily be pertindent to the workflow all of the time. Also supports removing the block by clicking
+the "trash bin" icon vs needing to use the Block Editor UI. A rave addition.
+
+![Tease Block](/hidden/tease.png)
+
+#### Demo Search
+This is a block I built to show off the Post Search suite of tools. This is a search form and a search modal, from
+the `src/components/post-search`. The `SearchForm` component is the base feature, while the `SearchModal` takes advantage
+of the form and passes the response back to the parent.
+
+The demo does nothing but search, but is intended to show off the features of the serach form, modal, results, and card
+components.
+
+<div data-gallery data-align="wide">
+  <figure>
+    <img alt="Search Form Field" src="/hidden/search-field.png" />
+    <figcaption>Search form field</figcaption>
+  </figure>
+  <figure>
+    <img alt="Search Modal Field" src="/hidden/search-modal.png" />
+    <figcaption>Search Modal field</figcaption>
+  </figure>
+    <figure>
+    <img alt="Serach Form Field No Results" src="/hidden/search-no-results.png" />
+    <figcaption>Search No Results</figcaption>
+  </figure>
+  <figure>
+    <img alt="Serach Modal Field Results" src="/hidden/search-modal-results.png" />
+    <figcaption>Search No Results</figcaption>
+  </figure>
+  <figure>
+    <img alt="Search Results" src="/hidden/search-results.png" />
+    <figcaption>Search Results</figcaption>
+  </figure>
+  <figure>
+    <img alt="Search Modal Selector" src="/hidden/search-modal-selector.png" />
+    <figcaption>Search Results</figcaption>
+  </figure>
+</div>

@@ -7,6 +7,7 @@ export enum SlugOptions {
   BLOG = 'blog',
   CAREER = 'career',
   WORK = 'work',
+  HIDDEN = 'hidden',
 }
 
 const contentDirectory = join( process.cwd(), 'content' )
