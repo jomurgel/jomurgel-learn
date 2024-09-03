@@ -148,7 +148,11 @@ Custom Slotfill. I've created a custom GBSSidebarPanel slotfill, which exists in
 ### Revision
 The revision slotfill provides a more robust revision panel for users who appreciate the more direct interaction of the revision panel offered to the Classic editor. It provides a snapshot of the last, up to ten, revisions, the user, timestamp, and user-readable time output. Each timestamp links to the revisions directly.
 
-<img alt="Screenshot of Slotfill" data-align="center" src="/hidden/revision-slot.png" />
+<div data-align="center" style={{ maxWidth: 350 }}>
+  <figure>
+    ![Revision Slotfill](/hidden/revision-slot.png)
+  </figure>
+</div>
 
 ### Sidebar
 I've added a custom sidebar (with my little JM logo) and a standard sidebar implementation. It contains a custom slot, `GBSSidebarPanel,` in the `src/components` directory. A custom slotfill uses it, adding a revisions feature, making this sidebar a little more expandable than standard slot areas.
@@ -188,7 +192,11 @@ It adds a `Preview` button that will directly open a new tab with a post preview
 
 This uses the `src/components/post-preview-button` component.
 
-<img alt="Preview Button" data-align="center" src="/hidden/preview-button.png" />
+<div data-align="center" style={{ maxWidth: 350 }}>
+  <figure>
+    ![Preview Button](/hidden/preview-button.png)
+  </figure>
+</div>
 
 <figure data-align="wide">
   <img alt="Preview Button" src="/hidden/preview-mobile.png" />
@@ -201,7 +209,11 @@ This quick filter will auto-close all open panels and save the publish panel on 
 #### Save Process Filter
 The Save Process feature was added to improve the user's understanding of when a post was fully saved. While they didn't need to understand the difference between the REST and server-side POST save requests, this provided a little extra feedback. It pops up a modal showing the REST and Post Save status and then dismisses itself after saving so the user can be sure that everything was saved. Losing content was a real worry when many staff would write and edit posts directly in the Block Editor.
 
-![Save Modal](/hidden/save-modal.png)
+<div data-align="center" style={{ maxWidth: 450 }}>
+  <figure>
+    ![Save Modal](/hidden/save-modal.png)
+  </figure>
+</div>
 
 ### Blocks
 Custom Gutenberg/Block Editor Block features.
@@ -243,13 +255,18 @@ However, the `Post Tag` variation also provides an auto-tag generator from the p
 #### SEO Block
 This block provides a title and description field for SEO overrides. It also provides an auto-copy from the post title button, which will auto-fill the title field: a client-request. All are meant to resemble the old Google search results.
 
-<div data-gallery data-align="full">
+<div data-align="wide">
   <figure>
     <img src="/hidden/seo.png" alt="SEO Block" />
-    <img src="/hidden/seo-open.png" alt="SEO Open" />
   </figure>
   <figure>
-  <img src="/hidden/seo-sidebar.png" alt="SEO Sidebar" />
+    <img src="/hidden/seo-open.png" alt="SEO Open" />
+  </figure>
+</div>
+
+<div data-align="center" style={{ maxWidth: 350 }}>
+  <figure>
+    ![SEO Sidebar](/hidden/seo-sidebar.png)
   </figure>
 </div>
 
@@ -270,31 +287,21 @@ It's a simple inline block, but it has a `Collapsable Wrapper` element, a custom
 #### Demo Search
 This is a block I built to showcase the Post Search suite of tools. It consists of a search form and a search modal from the `src/components/post-search.` The `SearchForm` component is the base feature, while the `SearchModal` takes advantage of the form and passes the response back to the parent.
 
-The demo does nothing but search and is intended to show off the features of the search form, modal, results, and card components.
-
 <div data-gallery data-align="wide">
   <figure>
     <img alt="Search Form Field" src="/hidden/search-field.png" />
-    <figcaption>Search form field</figcaption>
-  </figure>
-  <figure>
-    <img alt="Search Modal Field" src="/hidden/search-modal.png" />
-    <figcaption>Search Modal field</figcaption>
-  </figure>
-    <figure>
     <img alt="Serach Form Field No Results" src="/hidden/search-no-results.png" />
-    <figcaption>Search No Results</figcaption>
+    <img alt="Search Modal Field" src="/hidden/search-modal.png" />
   </figure>
   <figure>
-    <img alt="Serach Modal Field Results" src="/hidden/search-modal-results.png" />
-    <figcaption>Search No Results</figcaption>
-  </figure>
-  <figure>
-    <img alt="Search Results" src="/hidden/search-results.png" />
-    <figcaption>Search Results</figcaption>
+  <img alt="Search Results" src="/hidden/search-results.png" />
   </figure>
   <figure>
     <img alt="Search Modal Selector" src="/hidden/search-modal-selector.png" />
-    <figcaption>Search Results</figcaption>
+  </figure>
+  <figure>
+    <img alt="Serach Modal Field Results" src="/hidden/search-modal-results.png" />
   </figure>
 </div>
+
+The demo does nothing but search and is intended to show off the features of the search form, modal, results, and card components.
