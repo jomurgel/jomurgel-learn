@@ -8,17 +8,16 @@ Below, you'll find five sections with links to public repos that call out specif
 features, reason for an approach, or why it's noteworthy; what is it, what it does, or areas to be aware of.
 
 1. [My Personal Website](#my-personal-website)
-1. [Auto-documentation w/ Nextra](#autodocumentation-w-nextra)
 1. [T◩DY](#tdy)
 1. [WP Gutenberg Site Options](#wp-gutenberg-site-options)
 1. [Gutenberg Block Showcase Plugin](#gutenberg-block-showcase-plugin)
+1. [Auto-documentation w/ Nextra](#autodocumentation-w-nextra)
 
 <details open>
   <summary>A Quick Note Before We Start:</summary>
 
   Except for T◩DY, which I built over the last couple of days, and my website, which
-  is a few weeks old; the rest has been compiled over the previous five or so years of work, which
-  inherently means that some functionality or dependencies which were likely proprietary have been
+  is a few weeks old; the rest has been compiled over the previous five or so years of work. Sime functionality or dependencies which were likely proprietary have been
   removed or lost and may prevent features from functioning. I've added notes throughout if
   there's a caveat to the code for one reason or another to add helpful context.
 </details>
@@ -39,9 +38,9 @@ an educator, so I want to set myself up for success with future projects or apps
 do with WordPress or other frameworks, I saw more flexibility in the way I work and my future goals with JavaScript,
 React, and a framework like Next.js.
 
-Things I think are important:
+**Things I think are important:**
 - This is a static site build using Next.js 14 using the new(ish) App Router + Typescript.
-- All post content is md or mdx formatted and in the `content/blog` folder. That subfolder, for now,
+- All post content is md or mdx formatted and in the [content/blog](https://github.com/jomurgel/jomurgel-learn/tree/main/content) folder. That subfolder, for now,
 delineates between the blog and what might be work or other content types in the future. This is how I write and add
 content, commit, and deploy the static export using a GitHub Workflow. For example, you're reading "hidden" content in
 a subdirectory in content that doesn't see the light of day with robots disabled and no external linking.
@@ -49,53 +48,67 @@ a subdirectory in content that doesn't see the light of day with robots disabled
 gives you some insight into how I work. I plan on adding test coverage where applicable and a little more dynamic
 functionality or parts of the site to become a little more engaged here instead of on other social media platforms like
 Threads or Instagram.
-- The `mdx-components.tsx` file supports some custom handling of markdown output.
+- The [mdx-components.tsx](https://github.com/jomurgel/jomurgel-learn/blob/main/src/app/mdx-components.tsx) file supports some custom handling of markdown output.
 - For bonus points, you can check out the [acorn.css](https://github.com/jomurgel/acorn.css) framework I also
 built, and this site uses. A classless CSS framework. Except for a couple of required areas,
 this website has no classes; this is by design.
 
-## 2. Auto-documentation w/ Nextra
-[Repo](https://github.com/jomurgel/auto-docs) | [Live (TBD)]()
+[Back to Top](#top)
 
-This is a proof-of-concept documentation app using Next.js and Nextra, which is intended to
-pull documentation from a `docs` directory or individual `md` or `mdx` files.
-
-The metric here was *speed to documentation*. Rather than requiring devs to adhere to learning
-something like Storybook and enforce it at scale, or require that devs update the documentation in a
-separate repo, I opted to fallback to markdown, which all devs should already be familiar with because of
-GitHub.
-
-> Document as you code, and let "auto-docs" do the rest.
-
-The `cli` directory is the big thing here, and it includes various commands, parsers,
-configs, and utilities or services. The `runners` work here by defining
-an individual file's input and output locations (`generate-template-single.js`) or
-a directory of `md` files (`generate-template-directory.js`). More info about this in the README.
-
-Every bit of the `cli` suite was bespoke and written to follow a specific convention of
-writing docBlocks defined by the best standards of JS and PHP. This was effectively the
-first (successful) pass at an auto-documentation suite. There are a lot of places I'd
-make improvements, and I would be happy to discuss those if there's interest.
-
-The [T◩DY — TBD]() repo's docs utilize this auto-docs workflow. That documentation is
-automatically available on the Github Pages site. Link above.
-
-## 3. T◩DY
+## 2. T◩DY
 [Repo](https://github.com/jomurgel/t.dy)
 
 I built this app over the last couple of days. It serves to demonstrate my knowledge of:
+- Meaningful React Code: React Native, TypeScript, and React.
+- Uses [Supabase](https://supabase.com/) for data management and Redux is for state management and has various complex components and hooks.
+- While there's some work for automated Testing using Jest and the [React Native Testing Library](https://github.com/callstack/react-native-testing-library)
+I wasn't able to work through the large marjority of those areas before I hit my self-imposed deadline. This is definitily
+something I plan on completing as this gets closer to a final product.
 
-- Meaningful React Code: Uses [Supabase](https://supabase.com/) for data management and
-Redux is for state management and has various complex components and hooks.
-- Automated Testing using Jest and the [React Native Testing Library](https://github.com/callstack/react-native-testing-library).
-- React Native
+<video controls autoplay loop style={{maxWidth: 300}} data-align="center">
+  <source src="/hidden/tdy-video.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
 
-This app was already on my roadmap, but I've expedited it a bit and slimmed back the
-feature set to accommodate a quick turnover.
+<details open>
+  <summary>Note:</summary>
 
-SCREENSHOTS HERE
+  This app was already on my roadmap, but I've expedited it a bit and slimmed back the
+  feature set to accommodate a quick turnover. As a result there's a lot of `@todo` items
+  and it's a little slap-dash, so don't hold that against me.
+</details>
 
-## 4. WP Gutenberg Site Options
+**Things I think are important:**
+- The [Redux](https://github.com/jomurgel/t.dy/tree/main/src/redux) elements. I've setup a store, created a slice for the
+todos and added a thunk middleware to handle the handshake between Supabase and the app.
+- I have a couple of [hooks](https://github.com/jomurgel/t.dy/tree/main/src/hooks) that tie together nicely with the
+[Context Providers](https://github.com/jomurgel/t.dy/tree/main/src/providers) that help to define the theme and the auth
+status of the user.
+  - The [AuthProvider](https://github.com/jomurgel/t.dy/blob/main/src/providers/AuthProvider.tsx) handles the login, signup,
+  and sign out tasks.
+  - The [ThemeProvider](https://github.com/jomurgel/t.dy/blob/main/src/providers/ThemeProvider.tsx) is a simple handling for the
+  site theme. The toggle lives in the [Settings Screen](https://github.com/jomurgel/t.dy/blob/main/src/screens/Settings.tsx#L28) which
+  can be seen in the video above.
+- I leverage the `@react-navigation/native` Navigation system for handling the different screen view for the app. Those live
+[here](https://github.com/jomurgel/t.dy/tree/main/src/screens).
+
+### Screens
+<div data-gallery>
+  ![Splash Page](/hidden/tdy-splash.png)
+  ![Login Page](/hidden/tdy-login.png)
+  ![SignUp Page](/hidden/tdy-registration.png)
+  ![Initial View](/hidden/tdy-initial.png)
+  ![Added List](/hidden/tdy-added-list.png)
+  ![List View](/hidden/tdy-new-list.png)
+  ![Added a Task](/hidden/tdy-added-task.png)
+  ![Settings](/hidden/tdy-settings.png)
+  ![Dark Mode](/hidden/tdy-dark-mode.png)
+  ![Task Status](/hidden/tdy-task-type.png)
+</div>
+
+[Back to Top](#top)
+
+## 3. WP Gutenberg Site Options
 
 [Repo](https://github.com/jomurgel/wp-gutenberg-site-options)
 
@@ -110,15 +123,26 @@ Site Options page via a bespoke React app with a custom WordPress hook and compo
   This is part of an in-progress blog series which hasn't posted yet.
 </details>
 
-Things I think are important:
-- The `use-site-options` hook. This provides an output of the site settings object, loading and saving states, and a setter that makes a post request to the `/wp/v2/settings` endpoint, which updates at a debounce and asynchronously.
-- The `site-options` component is the admin field output, and the `SnackbarList` output uses the `Notices` components. There is nothing super noteworthy here, but it utilizes Gutenberg elements.
+**Things I think are important:**
+- The [use-site-options](https://github.com/jomurgel/wp-gutenberg-site-options/tree/main/src/app/hooks/use-site-options) hook. This provides an output of the site settings object, loading and saving states, and a setter that makes a post request to the `/wp/v2/settings` endpoint, which updates at a debounce and asynchronously.
+- The [site-options](https://github.com/jomurgel/wp-gutenberg-site-options/tree/main/src/app/components/site-options) component is the admin field output, and the `SnackbarList` output uses the [Notices](https://github.com/jomurgel/wp-gutenberg-site-options/tree/main/src/app/components/notices) components. There is nothing super noteworthy here, but it utilizes Gutenberg elements.
 The `notices` component handles displaying the "Settings Updates" text inside the `SnackbarList` component, providing user feedback that the POST request has been made successfully.
 - In all component cases, I ensure there is at least _some_ README context.
 
+[Back to Top](#top)
 
-## 5. Gutenberg Block Showcase Plugin
+## 4. Gutenberg Block Showcase Plugin
 [Repo](https://github.com/jomurgel/gutenberg-block-showcase)
+
+<nav data-type="inline">
+  <ul>
+    <li>[Slotfills](#slotfills)</li>
+    <li>[Sidebar](#sidebar)</li>
+    <li>[Store](#store)</li>
+    <li>[FIlters](#filters)</li>
+    <li>[Blocks](#blocks)</li>
+  </ul>
+</nav>
 
 <details open>
   <summary>Note:</summary>
@@ -131,16 +155,16 @@ The `notices` component handles displaying the "Settings Updates" text inside th
 
 This is intended to be primarily a catalog of work I've done in the WordPress Block Editor/Gutenberg space. I spent a day pulling out features I thought were interesting or felt proud of. I expect to contribute more to this repo in the future.
 
-Things I think are important:
-- The `hooks` directory contains a bunch of valuable hooks that I've written over the years, from monitoring the viewport width to engaging with post terms and inner blocks. Some may be more targeted
+**Things I think are important:**
+- The [hooks](https://github.com/jomurgel/gutenberg-block-showcase/tree/main/src/hooks) directory contains a bunch of valuable hooks that I've written over the years, from monitoring the viewport width to engaging with post terms and inner blocks. Some may be more targeted
 approaches to pre-existing core features or extend them, such as `use-taxonomy.`
-- The `components` directory contains a few useful components. I'm particularly proud of the `post-search` component used in the "Demo Search" block.
+- The [components](https://github.com/jomurgel/gutenberg-block-showcase/tree/main/src/components) directory contains a few useful components. I'm particularly proud of the `post-search` component used in the "Demo Search" block.
 - All of the components and features utilize PropType validation. At this point in history, I had yet to adopt TypeScript, but it was essential to do as much as we could in terms of validation. The concept of PropTypes
 was something I brought to my last employer and implemented.
 - All non-block work is accompanied by a README, which is especially useful regarding hooks, components, and other shared elements. Documentation is of the utmost importance to me.
 - While my ideal approach with the Block Editor is trying to make the editor as close to a 1:1 experience with the frontend, if that's not a possibility, I aim to create as much of a WordPress-like experience
 as I can, even if that means a few extra editor styles to make that happen. All to keep the barrier of engagement low.
-The `blocks`, `filters`, `store`, and `slotfills` are the ones to examine in more depth. A breakdown of those is below.
+The [blocks](https://github.com/jomurgel/gutenberg-block-showcase/tree/main/src/blocks), [filters](https://github.com/jomurgel/gutenberg-block-showcase/tree/main/src/filters), [store](https://github.com/jomurgel/gutenberg-block-showcase/tree/main/src/store), and [slotfills](https://github.com/jomurgel/gutenberg-block-showcase/tree/main/src/slotfills) are the ones to examine in more depth. A breakdown of those is below.
 
 ### Slotfills
 Custom Slotfill. I've created a custom GBSSidebarPanel slotfill, which exists in a custom Sidebar, below. This repo contains one slotfill of note.
@@ -305,3 +329,30 @@ This is a block I built to showcase the Post Search suite of tools. It consists 
 </div>
 
 The demo does nothing but search and is intended to show off the features of the search form, modal, results, and card components.
+
+[Back to Top](#top)
+
+## 5. Auto-documentation w/ Nextra
+[Repo](https://github.com/jomurgel/auto-docs)
+
+This is a proof-of-concept documentation app using Next.js and Nextra, which is intended to
+pull documentation from a `docs` directory or individual `md` or `mdx` files.
+
+The metric here was *speed to documentation*. Rather than requiring devs to adhere to learning
+something like Storybook and enforce it at scale, or require that devs update the documentation in a
+separate repo, I opted to fallback to markdown, which all devs should already be familiar with because of
+GitHub.
+
+> Document as you code, and let "auto-docs" do the rest.
+
+The [cli](https://github.com/jomurgel/auto-docs/tree/main/cli) directory is the big thing here, and it includes various commands, parsers,
+configs, and utilities or services. The [runners](https://github.com/jomurgel/auto-docs/tree/main/cli/runners) work here by defining
+an individual file's input and output locations (`generate-template-single.js`) or
+a directory of `md` files (`generate-template-directory.js`). More info about this in the README.
+
+Every bit of the `cli` suite was bespoke and written to follow a specific convention of
+writing docBlocks defined by the best standards of JS and PHP. This was effectively the
+first (successful) pass at an auto-documentation suite. There are a lot of places I'd
+make improvements, and I would be happy to discuss those if there's interest.
+
+[Back to Top](#top)

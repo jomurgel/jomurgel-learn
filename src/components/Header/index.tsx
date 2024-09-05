@@ -3,7 +3,7 @@ import Nav from '@/components/Nav'
 
 const Header = () => {
   return (
-    <header className="site-header">
+    <header id="top" className="site-header">
       <div>
         <Link href="/">@jomurgel</Link>
       </div>

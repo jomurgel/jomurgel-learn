@@ -280,6 +280,7 @@ nav {
   margin-bottom: var(--pad-3);
 
   &[data-type="inline"] {
+    margin-bottom: var(--pad-2);
     -ms-overflow-style: none;
     overflow-x: auto;
     overflow-y: hidden;
@@ -324,7 +325,7 @@ nav {
 
   a,
   a:visited {
-    color: var(--black);
+    color: var(--accent);
 
     &:active,
     &:hover {
@@ -658,13 +659,14 @@ embed,
 figure,
 iframe,
 object,
-video h1,
+video,
 table,
 details,
 [data-table],
 [data-align="wide"],
 [data-align="center"],
 [data-align="full"],
+h1,
 h2,
 h3,
 h4,
@@ -778,6 +780,7 @@ figure {
   }
 }
 
+video,
 div,
 p,
 figure,
