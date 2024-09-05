@@ -165,8 +165,8 @@ main {
       display: inline-flex;
       flex-direction: column;
       justify-content: center;
-      max-height: var(—-container);
-      min-height: calc(100vh - (var(--pad-3) * 3.6));
+      max-height: 45rem;
+      height: calc(100vh - (var(--pad-3) * 3.6));
 
       > h1 {
         margin-bottom: var(--pad);
