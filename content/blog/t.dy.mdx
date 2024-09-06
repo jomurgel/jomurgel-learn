@@ -1,0 +1,45 @@
+---
+title: "Building My Todo App: T◩DY"
+description: "A look at the beginning of my todo app, a work in progress"
+date: "2024-09-06"
+tags: [
+  "react",
+  "react native",
+  "app"
+]
+---
+
+As I mentioned in [Accepting Change](/blog/accepting-change), I'm on the job market. I have a lot of experience
+using many different frameworks, languages, and tools. However, most of my work has been proprietary for
+the last six or seven years, so I don't have a lot to show for it. I'm making strides to change that
+and be more active in how I participate in the open-source web, but it'll take time. In an effort to
+provide some code samples, I spent two days working on a new React Native-based application [t.dy](https://github.com/jomurgel/t.dy)].
+On the surface it's a simple todo app, but behind the sceens it's using [Expo](https://expo.dev/), [React Native](https://reactnative.dev/),
+[Typescript](https://www.typescriptlang.org/), and [Redux](https://redux.js.org/) along with
+[Supabase](https://supabase.com) to handle data in realtime. I've started to integrated testing as well.
+
+Now, this app isn't just a quick MVP to show potential employers. This app, T◩DY, has been in the works for
+a few months. I work on paper keeping tasks for the day in one of three states, to do, partially done, and done.
+Each morning I create a new list that makes my partially done tasks priority and I add new tasks as they
+come. Rinse and repeat. There are no apps that follow this pattern, that I'm aware of. I decided that
+I needed to build one. Building this MVP in a couple of days was really a result of circumstance, but
+it's nowhere near complete.
+
+## Here's where I'm at.
+I have basic auth setup. This creates a relationship between you, your phone, and
+your lists. I have a signup flow in place as well. I have the ability to create new lists, new todos,
+and toggle the status of those tasks at a tap. I've also setup the sign-out workflow and a theme changer
+(which isn't a requirement, but just showing off some theme context provider stuff).
+
+Here's what the work so far nets.
+
+<video controls loop style={{maxWidth: 300}} data-align="center">
+  <source src="/hidden/tdy-video.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+## Here's what I've got left to do.
+The actual design needs work. I've got comps in progress. I need to integrate other login flows: likely Google, Facebook, Apple and the basic auth that already exists. The mechanism for carrying over tasks from one day to the next while cleaning them up needs to be cleaned up, code-wise. I also need to work on making sure that the app is secure. Supabase provides a lot of that by default, but I need to lock down the app as a whole.
+I'm also not fully sold on the general flow I have setup for creating lists and todos; while part of that is design I think we need to prevent the user from needing to click around as often. I envision swiping left and right to different lists instead of clicking to show a list. We'll see how that works out in practice.
+
+All in all, this is just the beginning. I fully expect to see this in the app stores this year.
