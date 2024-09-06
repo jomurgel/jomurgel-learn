@@ -221,9 +221,12 @@ section {
   }
 
   &[data-type="post"] {
-    align-items: center;
-    display: flex;
     margin-bottom: calc( var(--pad-2) * 2.5 );
+
+    @media screen and (min-width: map.get($breakpoints, "media-md")) {
+      align-items: center;
+      display: flex;
+    }
 
     header {
       margin: 0;
@@ -234,9 +237,13 @@ section {
     }
 
     [data-type="thumbnail"] {
-      margin-right: var(--pad-2);
-      max-width: 7.5rem;
-      max-height: 7.5rem;
+
+      @media screen and (min-width: map.get($breakpoints, "media-md")) {
+        margin-right: var(--pad-2);
+        max-width: 7.5rem;
+        max-height: 7.5rem;
+        flex: 0 0 7.5rem;
+      }
 
       img {
         height: 100%;
@@ -362,7 +369,7 @@ nav {
   ul {
     display: flex;
     flex-flow: row wrap;
-    gap: var(--pad) var(--pad-2);
+    gap: var(--pad) calc(var(--pad-2) / 2);
     list-style: none;
     margin: 0;
     padding: 0;
