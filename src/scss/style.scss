@@ -305,13 +305,46 @@ section {
       margin: 0;
     }
 
+    > div {
+      width: 100%;
+    }
+
+    nav {
+      font-size: 80%;
+      margin: var(--pad) 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      ul li span {
+        display: inline-block;
+        padding-left: calc(var(--pad) * 1.5);
+        color: var(--gray);
+        font-style: italic;
+        vertical-align: top;
+        position: relative;
+
+        &::before {
+          border-radius: 100%;
+          content: '';
+          height: 0.75rem;
+          width: 0.75rem;
+          background-color: var(--lightest-gray);
+          position: absolute;
+          transform: translateY(-50%);
+          top: calc(50% + 1px);
+          left: 0;
+        }
+      }
+    }
+
     p {
       margin-bottom: 0;
     }
 
     [data-type="related"] {
       font-size: 90%;
-      margin-top: var(--pad);
       display: inline-block;
     }
 
