@@ -1,4 +1,4 @@
-export type Tags = Array<String>
+export type Tags = Array<string>
 
 export interface PostDate {
   dateString: string;
@@ -11,6 +11,6 @@ export interface BlogPost {
   description?: string;
   id: string;
   slug: string;
-  tags?: Tags
+  tags: Tags
   title: string;
 }

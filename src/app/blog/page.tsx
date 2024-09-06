@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getAllPosts } from '@/lib/api'
+import { getAllPosts, getPostTags } from '@/lib/api'
 import Date from '@/components/Date'
 import { SlugOptions } from '@/lib/api'
 import { Metadata } from 'next'
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 const Blog = async () => {
   const allPosts = await getAllPosts( SlugOptions.BLOG )
+  const allTags = await getPostTags( SlugOptions.BLOG )
 
   return (
     <main>
@@ -22,6 +23,11 @@ const Blog = async () => {
         <header>
           <h1 aria-label="Blog for Jo Murgel">Dear universe,</h1>
           <p><Link href="/feed.xml" target="_blank" rel="noopener noreferrer">RSS</Link></p>
+          <nav>
+            <ul>
+              {allTags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${tag}/`}>#{tag}</Link></li> )}
+            </ul>
+          </nav>
         </header>
       </section>
 
@@ -42,11 +48,11 @@ const Blog = async () => {
             <footer>
               <nav data-type="inline">
                 <ul>
-                  {post.tags.map( ( tag ) => <li data-tag={tag} key={`${post.slug}-${tag}`}>#{tag}</li> )}
+                  {post.tags.map( ( tag ) => <li data-tag={tag} key={`${post.slug}-${tag}`}><Link href={`/tag/${tag}/`}>#{tag}</Link></li> )}
                 </ul>
               </nav>
             </footer>
-          : null}
+            : null}
         </section>
       ) ) :
         <p>
