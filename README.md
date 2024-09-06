@@ -33,5 +33,5 @@ stylesheets. I'll also add test coverage where it makes sense and any readmes th
 (not accounted for in blogs).
 
 A short list of other things to accomplish in phase 2:
-- Dynamically pull cover images based on post slug.
-- Add tag lists for organizing content (tags already in post meta).
+- [ ] Dynamically pull cover images based on post slug.
+- [x] ~~Add tag lists for organizing content (tags already in post meta).~~
