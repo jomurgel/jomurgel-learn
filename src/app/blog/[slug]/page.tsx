@@ -8,6 +8,8 @@ import { notFound } from 'next/navigation'
 import { useMDXComponents } from '@/app/mdx-components'
 import Date from '@/components/Date'
 import Image from 'next/image'
+import slugify from 'slugify'
+import Link from 'next/link'
 
 type Props = {
   params: {
@@ -29,6 +31,12 @@ const SingleBlogPost = ( { params }: Props ) => {
         <header>
           <h1>{post.title}</h1>
           <Date dateString={post.date} />
+          {post.tags ? (
+            <nav>
+              <ul>
+                {post.tags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}><em>#{tag}</em></Link></li> )}
+              </ul>
+            </nav> ) : null}
           {post.coverImage ? (
             <Image
               src={post.coverImage}

@@ -34,29 +34,21 @@ const Work = async () => {
         }
 
         return(
-        <section data-type="work" key={post.slug}>
-          <div>
-            <header>
-              <h2>
-                <Link href={post.url} target="_blank" rel="noopener noreferrer">
-                  {title[0]}/<strong>{title[1]}</strong>
-                </Link>
-              </h2>
-            </header>
+          <section data-type="work" key={post.slug}>
+            <div>
+              <header>
+                <h2>
+                  <Link href={post.url} target="_blank" rel="noopener noreferrer">
+                    {title[0]}/<strong>{title[1]}</strong>
+                  </Link>
+                </h2>
+              </header>
 
-            {post.description ? <p>{post.description}</p> : null}
+              {post.description ? <p>{post.description}</p> : null}
 
-            {post.tags?.length ?
-              <footer>
-                <nav data-type="inline">
-                  <ul>
-                    {post.tags.map( ( tag ) => <li data-tag={tag} key={`${post.slug}-${tag}`}><Link href={`/tag/${tag}/`}>#{tag}</Link></li> )}
-                  </ul>
-                </nav>
-              </footer>
-              : null}
-            </div>
-        </section>
+              {post.related ? <Link data-type="related" href={post.related} >Related Post &rarr;</Link> : null}
+              </div>
+          </section>
       ) } ) :
         <p>
           &#9785; Currently working to migrate content. Check back soon.

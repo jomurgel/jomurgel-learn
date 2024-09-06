@@ -4,6 +4,7 @@ import Date from '@/components/Date'
 import { SlugOptions } from '@/lib/api'
 import { Metadata } from 'next'
 import Image from 'next/image'
+import slugify from 'slugify'
 
 export const metadata: Metadata = {
   title: 'Blog for Jo Murgel',
@@ -26,7 +27,7 @@ const Blog = async () => {
           <p><Link href="/feed.xml" target="_blank" rel="noopener noreferrer">RSS</Link></p>
           <nav>
             <ul>
-              {allTags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${tag}/`}>#{tag}</Link></li> )}
+              {allTags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}>#{tag}</Link></li> )}
             </ul>
           </nav>
         </header>

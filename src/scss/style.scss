@@ -186,6 +186,10 @@ main {
         }
       }
 
+      > nav {
+        margin-top: var(--pad-2);
+      }
+
       [post-image] {
         position: relative;
         bottom: calc(-1 * var(--pad-2) * 4.5);
@@ -303,6 +307,12 @@ section {
 
     p {
       margin-bottom: 0;
+    }
+
+    [data-type="related"] {
+      font-size: 90%;
+      margin-top: var(--pad);
+      display: inline-block;
     }
 
     h2 {

@@ -3,6 +3,7 @@ import { SlugOptions, getPostTags, getPostsByTag } from '@/lib/api'
 import { notFound } from 'next/navigation'
 import Date from '@/components/Date'
 import Link from 'next/link'
+import slugify from 'slugify'
 
 type Props = {
   params: {
@@ -75,7 +76,7 @@ export function generateMetadata( { params }: Props ): Metadata {
 export function generateStaticParams() {
   const uniqueTags = getPostTags( SlugOptions.BLOG )
 
-  return uniqueTags.map( ( tag ) => ( { slug: tag } ) )
+  return uniqueTags.map( ( tag ) => ( { slug: slugify( tag ) } ) )
 }
 
 export default TagArchive
