@@ -46,14 +46,6 @@ const Work = async () => {
 
               {post.description ? <p>{post.description}</p> : null}
 
-              {post.languages ? (
-                <nav>
-                  <ul>
-                    {post.languages.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><span>{tag}</span></li> )}
-                  </ul>
-                </nav>
-              ) : null}
-
               {post.related ? <Link data-type="related" href={post.related} >Related Post &rarr;</Link> : null}
               </div>
           </section>
