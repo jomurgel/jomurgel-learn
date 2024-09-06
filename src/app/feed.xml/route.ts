@@ -1,5 +1,5 @@
 import RSS from 'rss'
-import { BlogPost } from '@/types/blog-post'
+import { BlogPost } from '@/types/post'
 import { getAllPosts, SlugOptions } from '@/lib/api'
 
 export async function GET(): Promise<Response> {
