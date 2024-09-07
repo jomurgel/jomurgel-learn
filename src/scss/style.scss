@@ -317,6 +317,15 @@ section {
         margin-bottom: 0;
       }
 
+      $i: 0;
+
+      @each $color, $value in $colors {
+        $i: $i + 1;
+        ul li:nth-child(#{$i}) span::before {
+          background-color: var(#{$value});
+        }
+      }
+
       ul li span {
         display: inline-block;
         padding-left: calc(var(--pad) * 1.5);

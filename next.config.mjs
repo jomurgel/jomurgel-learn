@@ -10,7 +10,7 @@ export const mdxOptions = {
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  pageExtensions: [ 'js', 'jsx', 'md', 'mdx', 'ts', 'tsx' ],
   images: {
     unoptimized: true,
     remotePatterns: [
