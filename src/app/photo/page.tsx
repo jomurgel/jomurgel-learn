@@ -48,16 +48,6 @@ const Photo = async () => {
             </header>
 
             {post.description ? <p>{post.description}</p> : null}
-
-            {post.tags?.length ?
-              <footer>
-                <nav data-type="inline">
-                  <ul>
-                    {post.tags.map( ( tag ) => <li data-tag={tag} key={`${post.slug}-${tag}`}><Link href={`/tag/${tag}/`}>#{tag}</Link></li> )}
-                  </ul>
-                </nav>
-              </footer>
-              : null}
             </div>
         </section>
       ) ) :
