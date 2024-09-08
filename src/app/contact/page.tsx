@@ -84,7 +84,7 @@ const Contact = () => {
 
           <div data-attr="row">
             <div data-attr="column">Discord Server</div>
-            <div data-attr="column"><a href="https://discord.gg/E9dr3S9r" target="_blank" rel="noopener noreferrer">Dev Support</a></div>
+            <div data-attr="column"><a href="https://discord.gg/wQWUnKntpn" target="_blank" rel="noopener noreferrer">Dev Support</a></div>
           </div>
         </div>
       </section>
