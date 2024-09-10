@@ -14,12 +14,16 @@ const Links: React.FC<LinksProps> = ( { handleClick } ) => {
       path: '/about',
     },
     {
-      title: 'Selected Works',
+      title: 'Work',
       path: '/work',
     },
     {
       title: 'Photo',
       path: '/photo',
+    },
+    {
+      title: 'Codex',
+      path: '/codex',
     },
     {
       title: 'Contact',
@@ -31,10 +35,6 @@ const Links: React.FC<LinksProps> = ( { handleClick } ) => {
     {
       title: 'Blog',
       path: '/blog',
-    },
-    {
-      title: 'Codex',
-      path: '/codex',
     },
     // @todo: phase2
     // {

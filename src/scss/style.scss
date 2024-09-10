@@ -33,7 +33,7 @@
   --container: 45rem; // 720px
   --wide-width: 68.75rem; // 1100px
   --max-width: 87.5rem; // 1400px
-  --text-width: 37.5rem; // 600px
+  --text-width: 40rem; // 640px
   --tab-size: 4;
   // Monotone.
   --black: #151513;
@@ -212,6 +212,27 @@ footer {
   justify-content: space-between;
 }
 
+[data-layout="has-sidebar"] {
+
+  @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    display: flex;
+
+    aside {
+      flex: 0 0 25%;
+      order: 99;
+
+      li {
+        flex: 0 0 100%;
+        text-align: right;
+      }
+    }
+
+    [data-layout="main-content"] {
+      flex: 0 0 75%;
+    }
+  }
+}
+
 section {
   margin-bottom: var(--pad-2);
 
@@ -242,6 +263,7 @@ section {
     }
 
     [data-type="thumbnail"] {
+      max-width: 25rem;
 
       @media screen and (min-width: map.get($breakpoints, "media-md")) {
         margin-right: var(--pad-2);

@@ -48,7 +48,11 @@ const About = () => {
         <p>Here are the highlights. I'm a mixed-stack JavaScript engineer. What does that mean? It means that I don't specialize, and while I prefer JavaScript over any other language, I'm familiar with a wide range of languages and tech stacks (more on that below). My mission is to leave the world better than I found it. That's sometimes hard to imagine in tech, but it's not about the work but the people. </p>
 
         <p>A little more info below and in the <Link href="/codex">codex</Link>.</p>
+      </section>
 
+      <hr />
+
+      <section>
         <h2>...and now you know the rest of the story</h2>
 
         <p>I'm a Venn diagram, where my professional and personal lives overlap, which I think makes me a fairly balanced individual, but I don't specialize. I take the long and well-informed route which always pays off in the end (always). Once upon a time, I called myself a "Jo of all trades," but it's often misinterpreted or seen as a negative attribute.</p>
