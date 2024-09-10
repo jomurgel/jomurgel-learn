@@ -45,6 +45,7 @@
   --light-gray: #dfdede;
   --lightest-gray: #ededed;
   // Colors.
+  --primary-alt: #ff0090;
   --primary: #ee2d6d;
   --primary-dark: #8e0130;
   --primary-light: #fc94b6;
@@ -57,6 +58,7 @@
   --accent-lighter: #b1e0fd;
   --tertiary: #db8400;
   --quaternary: #024f6e;
+  --quinary-dark: #300058;
   --quinary: #5203a1;
   --quinary-light: #984de3;
   --alt-primary: #03a138;
@@ -254,6 +256,7 @@ footer {
         }
 
         a {
+          background-color: var(--lightest-gray);
           border-radius: 1.5625rem;
           color: var(--gray);
           line-height: 1;
