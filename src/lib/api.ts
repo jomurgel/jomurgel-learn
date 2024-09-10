@@ -2,6 +2,7 @@ import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 import { BlogPost } from '@/types/post'
+import slugify from 'slugify'
 
 export enum SlugOptions {
   BLOG = 'blog',
@@ -43,7 +44,7 @@ export function getAllPosts( type: SlugOptions ): BlogPost[] {
 export function getPostsByTag( type: SlugOptions, tag: string ): BlogPost[] {
   const allPosts = getAllPosts( type )
 
-  return allPosts.filter( ( post ) => post.tags.includes( tag ) )
+  return allPosts.filter( ( post ) => post.tags.map( ( tag ) => slugify( tag ) ).includes( tag ) )
 }
 
 /**
@@ -62,9 +63,11 @@ export function getPostTags( type: SlugOptions ): Array<string> {
   const uniqueTags: Array<string> = []
 
   // @todo: could make this a new set?
-  posts.flatMap( post => post.tags ).forEach( tag => {
-    if ( !uniqueTags.includes( tag ) ) {
-      uniqueTags.push( tag )
+  posts.flatMap( post => post.tags ).forEach( ( tag ) => {
+
+  const nextTag = slugify( tag )
+    if ( !uniqueTags.includes( nextTag ) ) {
+      uniqueTags.push( nextTag )
     }
   } )
 

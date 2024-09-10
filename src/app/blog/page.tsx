@@ -31,13 +31,15 @@ const Blog = async () => {
       <hr />
 
       <div data-layout="has-sidebar">
-        <aside>
-          <nav>
-            <ul>
-              {allTags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}>#{tag}</Link></li> )}
-            </ul>
-          </nav>
-        </aside>
+        {allPosts.length ? (
+          <aside>
+            <nav>
+              <ul>
+                {allTags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}>#{tag}</Link></li> )}
+              </ul>
+            </nav>
+          </aside>
+        ) : null}
 
         <div data-layout="main-content">
           {allPosts.length > 0 ? allPosts.map( ( post ) => (
@@ -69,7 +71,7 @@ const Blog = async () => {
                         {post.tags.sort().map( ( tag ) => {
                           const nextTag = slugify( tag )
                           return (
-                          <li data-tag={nextTag} key={`${post.slug}-${nextTag}`}><Link href={`/tag/${nextTag}/`}>#{nextTag}</Link></li> )
+                            <li data-tag={nextTag} key={`${post.slug}-${nextTag}`}><Link href={`/tag/${nextTag}/`}>#{nextTag}</Link></li> )
                         } )}
                       </ul>
                     </nav>
