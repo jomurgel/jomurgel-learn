@@ -22,7 +22,7 @@ const About = () => {
           </h1>
           <p>I'm a mixed-stack javascript engineer, artist, and educator living in Boise, ID.</p>
           <Image
-            src="/about-photo.jpg"
+            src="/about.jpg"
             alt="A photo of tattooed legs draped over the edge of a cliff overlooking rocks and the Snake river."
             post-image="true"
             width={400}

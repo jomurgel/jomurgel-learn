@@ -2,7 +2,7 @@
 title: "Headless WordPress with React and NextJS (Part 1)"
 description: "A brief introduction to building a headless WordPress site with Next.js. Part 1."
 date: "2019-01-03"
-coverImage: "/next-js-cover.jpg"
+coverImage: "/headless/cover.jpg"
 tags: [
   "tutorial",
   "next.js",
@@ -83,7 +83,7 @@ At this point, we basically have everything we need to get started. In the next 
 
 Anything inside a `pages` directory will be treated as a page. Anything inside components will be treated as a `component` (a non-rendered element). So, let's add both.
 
-<img src="/headless-folder.jpg" alt="A screenshot of a list of folders: components, node_modules, and pages. Files including the package-lock.json, package.json as well as the index.js file inside the pages folder." data-align="center" />
+<img src="/headless/folder.jpg" alt="A screenshot of a list of folders: components, node_modules, and pages. Files including the package-lock.json, package.json as well as the index.js file inside the pages folder." data-align="center" />
 
 Similarly, although we won't set this up today, the `styles` folder could be used to add and compile any new CSS, SCSS, Sass, or LESS files on the fly.
 
@@ -95,7 +95,7 @@ export default () => {
 
 From there, let's run the command `npm run dev` that we added above and visit `http://localhost:8080/`. If all went well, we should see:
 
-<img src="/headless-localhost.jpg" alt="browser screenshot showing localhost andd text aying 'Your new server-side rendered React.js app!'" data-align="center" />
+<img src="/headless/localhost.jpg" alt="browser screenshot showing localhost andd text aying 'Your new server-side rendered React.js app!'" data-align="center" />
 
 Excellen! Now, let's move on.
 
@@ -158,11 +158,11 @@ I like to use a `Fragment` whenever I can to avoid unnecessary extra markup. The
 
 We end up with something like this:
 
-<img src="/headless-nav.jpg" alt="browser screenshot showing localhost andd text aying 'Your new server-side rendered React.js app!' and the home and posts link." data-align="center" />
+<img src="/headless/nav.jpg" alt="browser screenshot showing localhost andd text aying 'Your new server-side rendered React.js app!' and the home and posts link." data-align="center" />
 
 Not pretty, feel free to add some style objects to make that a bit nicer, but for now, it works, so we'll go with it. If you're still running your project via `npm run dev` you'll find that if you click “Posts” you'll see your posts page you created earlier:
 
-<img src="/headless-posts-page.jpg" alt="browser screenshot showing localhost and the 'Our Posts Page!' text" data-align="center" />
+<img src="/headless/posts-page.jpg" alt="browser screenshot showing localhost and the 'Our Posts Page!' text" data-align="center" />
 
 Our URL is updated and our content is dynamically updated. This is a fairly simple use of routing and all we need to get things working. I'd suggest, however, to avoid having to call your Navigation component on every new page you make, look into the React Router Docs to see how you might be able to extend its functionality.
 
@@ -258,7 +258,7 @@ render() {
 
 For now, we'll just output a simple list of rendered titles and end up with something like this:
 
-<img src="/headless-post-list.jpg" alt="browser screenshot showing a list of posts." data-align="center" />
+<img src="/headless/post-list.jpg" alt="browser screenshot showing a list of posts." data-align="center" />
 
 Fantastic! So let's take a look at our final `posts.js` file:
 
@@ -305,7 +305,7 @@ export default class extends Component {
 
 From here, we've done what we aimed to. Headless application? Check. Server-side rendered? Check. Routing? Check. That said, what we've built really doesn't provide a final product, something like what you would expect to see. You might, for example, expect to be able to click one of those posts and read the content or expect the title in the tab to change based on your route, or for the head description to change, or for any content that exists behind the scenes update as we navigate through our app.
 
-We'll take a look at that in <a href="/blog/headless-wordpress-with-next-part-2">Part 2</a>.
+We'll take a look at that in <a href="/blog/headless/wordpress-with-next-part-2">Part 2</a>.
 
 <hr />
 

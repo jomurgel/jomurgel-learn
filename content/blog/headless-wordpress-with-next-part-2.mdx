@@ -2,7 +2,7 @@
 title: "Headless WordPress with React and NextJS (Part 2)"
 description: "A brief introduction to building a headless WordPress site with Next.js. Part 2."
 date: "2019-01-10"
-coverImage: "/next-js-cover.jpg"
+coverImage: "/headless/cover.jpg"
 tags: [
   "tutorial",
   "next.js",
@@ -10,9 +10,9 @@ tags: [
 ]
 ---
 
-The following is Part 2 in a two-part series. You can read the second part <a href="/blog/headless-wordpress-with-next-part-1">here</a>.
+The following is Part 2 in a two-part series. You can read the second part <a href="/blog/headless/wordpress-with-next-part-1">here</a>.
 
-In <a href="/blog/headless-wordpress-with-next-part-1">Part 1</a> of this series, we set up a simple app to display our posts using React and Next.js alongside our WordPress install. We left it lacking some extra functionality that would take us from a simple test to a real browser-accepted website. So, let's get to work on that and really round this thing out.
+In <a href="/blog/headless/wordpress-with-next-part-1">Part 1</a> of this series, we set up a simple app to display our posts using React and Next.js alongside our WordPress install. We left it lacking some extra functionality that would take us from a simple test to a real browser-accepted website. So, let's get to work on that and really round this thing out.
 
 First up are single posts. We're going to continue to work in our posts.js and get some links and such working first.
 
@@ -36,11 +36,11 @@ and then
 
 From here we have links, but they won't go anywhere.
 
-<img src="/headless-post-list.jpg" alt="browser screenshot showing a list of posts." data-align="center" />
+<img src="/headless/post-list.jpg" alt="browser screenshot showing a list of posts." data-align="center" />
 
 In fact, if you tried, you'd get the default 404 error from express.
 
-<img src="/headless-express-404.jpg" alt="" data-align="center" />
+<img src="/headless/express-404.jpg" alt="" data-align="center" />
 
 ## Dynamic Routing
 
@@ -165,7 +165,7 @@ export default () => (
 
 And they are!
 
-<img src="/headless-single-post.jpg" alt="browser screenshot showing single post view." data-align="center" />
+<img src="/headless/single-post.jpg" alt="browser screenshot showing single post view." data-align="center" />
 
 Obviously, we're not done here. We need to get our current route slug and display the data from a new API request. I'm going to make an additional API request here, just like we did with the `/posts` page, but get only the post data we need. Typically on a full-blown, React-based website, I'd probably do more to store and check for already-existing data, but in the interest of simplicity, here we go!
 
@@ -232,11 +232,11 @@ render() {
 
 I've outputted my title into the H1, and using the `dangerouslySetInnerHTML` prop, output the rendered content from our data. You'll find if you just output `{ this.props.post.content.rendered }` directly the content will not be rendered as HTML, so you would see this:
 
-<img src="/headless-single-post-content.jpg" alt="browser screenshot of a single post view showing post content." data-align="center" />
+<img src="/headless/single-post-content.jpg" alt="browser screenshot of a single post view showing post content." data-align="center" />
 
 As long as we know where our content is coming from we should be good to go here. So with those updates we can refresh the page and should get this:
 
-<img src="/headless-single-post-content-2.jpg" alt="browser screenshot of a single post view showing post content with markup escaped." data-align="center" />
+<img src="/headless/single-post-content-2.jpg" alt="browser screenshot of a single post view showing post content with markup escaped." data-align="center" />
 
 Perfect! What's next!
 
@@ -269,11 +269,11 @@ Nothing may look like it would have changed, but you'll notice a couple of subtl
 
 We now have a page title in our tab:
 
-<img src="/headless-page-title.jpg" alt="browser screenshot of a single tab with the title meta showing 'This is our page title!'." data-align="center" />
+<img src="/headless/page-title.jpg" alt="browser screenshot of a single tab with the title meta showing 'This is our page title!'." data-align="center" />
 
 And our meta description and information show up in the code:
 
-<img src="/headless-source-code.jpg" alt="source code of the browser meta tags" data-align="center" />
+<img src="/headless/source-code.jpg" alt="source code of the browser meta tags" data-align="center" />
 
 Using `next/head` this will now render both client- and server-side so our status as a fully functioning SSR is intact. We could go one step further and add support for Twitter or Facebook/Open Graph meta also, but that will be on your plate for now.
 
@@ -281,7 +281,7 @@ Using `next/head` this will now render both client- and server-side so our statu
 
 If all you need is a homepage and some posts, you're done. Granted, we could refactor and clean things up. Perhaps introduce caching or a data store to make things a little faster, but all in all, this is pretty lightweight as it stands with a pretty nice lighthouse score.
 
-<img src="/headless-lighthouse.jpg" alt="screenshot of the Google lighthouse scores for this app." data-align="center" />
+<img src="/headless/lighthouse.jpg" alt="screenshot of the Google lighthouse scores for this app." data-align="center" />
 
 And tackling those deficiencies in performance, accessibility, and best practices wouldn't require that much more work—just a matter of configurations and a few other files to include.
 

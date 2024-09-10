@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Jo Murgel',
     description: 'Full-stack Developer',
     images: [
-      '/cover-jomurgel.jpg',
+      '/cover.jpg',
     ],
   },
 }

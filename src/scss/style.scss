@@ -497,7 +497,7 @@ section {
     margin-bottom: calc( var(--pad-2) * 2.5 );
     gap: var(--pad);
 
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    @media screen and (min-width: map.get($breakpoints, "media-sm")) {
       display: flex;
     }
 
@@ -507,7 +507,7 @@ section {
 
     > div[data-type="thumbnail"] {
 
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
+      @media screen and (min-width: map.get($breakpoints, "media-sm")) {
         height: auto;
 
         img {
@@ -521,7 +521,7 @@ section {
     > div:not([data-type="thumbnail"]) {
       padding: var(--pad);
 
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
+      @media screen and (min-width: map.get($breakpoints, "media-sm")) {
         flex: 0 0 50%;
       }
     }
