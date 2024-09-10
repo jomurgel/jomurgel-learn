@@ -1,4 +1,4 @@
-import { getAllPosts } from '@/lib/api'
+import { getAllPostsByType } from '@/lib/api'
 import { SlugOptions } from '@/lib/api'
 import { Metadata } from 'next'
 import PostCard from '@/components/PostCard'
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 const Photo = async () => {
-  const allPosts = await getAllPosts( SlugOptions.PHOTO )
+  const allPosts = await getAllPostsByType( SlugOptions.PHOTO )
 
   return (
     <main>

@@ -2,7 +2,7 @@ import { MDXComponents } from 'mdx/types'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { Metadata } from 'next'
 import { SlugOptions } from '@/lib/api'
-import { getAllPosts, getPostBySlug } from '@/lib/api'
+import { getAllPostsByType, getPostBySlug } from '@/lib/api'
 import { mdxOptions as options } from '../../../../next.config.mjs'
 import { notFound } from 'next/navigation'
 import { useMDXComponents } from '@/app/mdx-components'
@@ -89,7 +89,7 @@ export function generateMetadata( { params }: Props ): Metadata {
 }
 
 export function generateStaticParams() {
-  const posts = getAllPosts( SlugOptions.HIDDEN )
+  const posts = getAllPostsByType( SlugOptions.HIDDEN )
 
   return posts.map( ( post ) => ( {
     slug: post.slug,
