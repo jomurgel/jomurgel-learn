@@ -104,7 +104,9 @@
 // Layout/Content Elements.
 //-----------------------------------------
 html {
-  background-image: var(--white-gradient);
+  // @todo: re-add gradient with granim.js.
+  // background-image: var(--white-gradient);
+  background-size: cover;
   font-size: var(--font-size); // 18px;
   line-height: calc(var(--font-size) * 1.75);
   margin: auto;
@@ -304,8 +306,38 @@ section {
     }
 
     nav {
-      font-style: italic;
       margin: 0;
+
+      ul li {
+
+        $i: 0;
+
+        @each $color, $value in $colors {
+          $i: $i + 1;
+
+          &:nth-child(#{$i}) a:active,
+          &:nth-child(#{$i}) a:hover {
+            color: var(--white);
+            border: 1px solid var(--light-gray);
+            background-color: var(#{$value});
+          }
+
+          &:nth-child(#{$i}) a:focus {
+            color: var(--gray);
+            background-color: var(--light-gray);
+            border: 1px solid var(#{$value});
+          }
+        }
+
+        a {
+          padding: calc(var(--pad) / 2) var(--pad);
+          background-color: var(--light-gray);
+          border-radius: 1.5625rem;
+          text-decoration: none;
+          color: var(--gray);
+          line-height: 1;
+        }
+      }
     }
 
     time {
@@ -912,64 +944,63 @@ figure {
   }
 }
 
-video,
-div,
-p,
-figure,
-img,
-[data-gallery] {
+img {
+  max-width: 100%;
+  height: auto;
+}
 
-  &[data-align="wide"] {
-    max-width: var(--wide-width);
-    position: relative;
+[data-align="wide"] {
+  max-width: var(--wide-width);
+  position: relative;
+  width: 100%;
 
-    @media screen and (min-width: map.get($breakpoints, "media-sm")) {
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
+  @media screen and (min-width: map.get($breakpoints, "media-sm")) {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
 
-    }
   }
+}
 
-  &[data-align="center"] {
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
+[data-align="center"] {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[data-align="full"] {
+  max-width: var(--max-width);
+  position: relative;
+  width: 100%;
+
+  @media screen and (min-width: map.get($breakpoints, "media-sm")) {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
   }
+}
 
-  &[data-align="full"] {
-    max-width: var(--max-width);
-    position: relative;
-
-    @media screen and (min-width: map.get($breakpoints, "media-sm")) {
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
-    }
+[data-align="left"] {
+  @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    float: left;
+    margin-right: var(--pad-2);
   }
+}
 
-  &[data-align="left"] {
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      float: left;
-      margin-right: var(--pad-2);
-    }
+[data-align="right"] {
+  @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    float: right;
+    margin-left: var(--pad-2);
   }
+}
 
-  &[data-align="right"] {
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      float: right;
-      margin-left: var(--pad-2);
-    }
-  }
+[data-align="left"],
+[data-align="right"] {
+  margin-bottom: var(--pad-2);
+  margin-top: calc(var(--pad) / 2);
 
-  &[data-align="left"],
-  &[data-align="right"] {
-    margin-bottom: var(--pad-2);
-    margin-top: calc(var(--pad) / 2);
-
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      max-width: calc(40% - var(--pad-2));
-    }
+  @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    max-width: calc(40% - var(--pad-2));
   }
 }
 
