@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getAllPosts } from '@/lib/api'
 import { SlugOptions } from '@/lib/api'
 import { Metadata } from 'next'
+import slugify from 'slugify'
 
 export const metadata: Metadata = {
   title: 'Work for Jo Murgel',
@@ -49,7 +50,7 @@ const Work = async () => {
               {post.languages ? (
                 <nav>
                   <ul>
-                    {post.languages.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><span>{tag}</span></li> )}
+                    {post.languages.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><span>{slugify( tag )}</span></li> )}
                   </ul>
                 </nav>
               ) : null}

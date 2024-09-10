@@ -16,11 +16,17 @@ $breakpoints: (
 // Color map
 //-----------------------------------------
 $colors: (
-  primary: --primary,
-  secondary: --secondary,
+  accent-dark: --accent-dark,
   accent: --accent,
-  tertiary: --tertiary,
-  quaternary: --quaternary,
-  quinary: --quinary,
+  alt-primary-light: --alt-primary-light,
   alt-primary: --alt-primary,
+  primary: --primary,
+  quaternary: --quaternary,
+  quinary-light: --quinary-light,
+  quinary: --quinary,
+  secondary-light: --secondary-light,
+  secondary: --secondary,
+  senary-dark: --senary,
+  senary: --senary,
+  tertiary: --tertiary,
 );

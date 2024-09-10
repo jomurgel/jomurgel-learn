@@ -66,7 +66,11 @@ const Blog = async () => {
                   <footer>
                     <nav>
                       <ul>
-                        {post.tags.sort().map( ( tag ) => <li data-tag={tag} key={`${post.slug}-${tag}`}><Link href={`/tag/${tag}/`}>#{tag}</Link></li> )}
+                        {post.tags.sort().map( ( tag ) => {
+                          const nextTag = slugify( tag )
+                          return (
+                          <li data-tag={nextTag} key={`${post.slug}-${nextTag}`}><Link href={`/tag/${nextTag}/`}>#{nextTag}</Link></li> )
+                        } )}
                       </ul>
                     </nav>
                   </footer>

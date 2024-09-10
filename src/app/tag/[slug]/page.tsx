@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import Date from '@/components/Date'
 import Link from 'next/link'
 import slugify from 'slugify'
+import Image from 'next/image'
 
 type Props = {
   params: {
@@ -32,24 +33,42 @@ const TagArchive = async ( { params }: Props ) => {
 
       {allPosts.length > 0 ? allPosts.map( ( post ) => (
         <section data-type="post" key={post.slug}>
-          <header>
-            <Date dateString={post.date} />
-            <h2>
-              <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-            </h2>
-          </header>
+          {post.coverImage ? (
+            <div data-image data-type="thumbnail">
+              <Image src={post.coverImage} alt={post.coverAlt ? post.coverAlt : ''} data-type="thumbnail" width={400}
+                height={266.67}
+                priority={true}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }} /></div>
+          ) : null}
 
-          {post.description ? <p>{post.description}</p> : null}
+          <div>
+            <header>
+              <Date dateString={post.date} />
+              <h2>
+                <Link href={`/photo/${post.slug}`}>{post.title}</Link>
+              </h2>
+            </header>
 
-          {post.tags?.length ?
-            <footer>
-              <nav data-type="inline">
-                <ul>
-                  {post.tags.map( ( tag ) => <li data-tag={tag} key={`${post.slug}-${tag}`}><Link href={`/tag/${tag}/`}>#{tag}</Link></li> )}
-                </ul>
-              </nav>
-            </footer>
-            : null}
+            {post.description ? <p>{post.description}</p> : null}
+
+
+            {post.tags?.length ?
+              <footer>
+                <nav data-type="inline">
+                  <ul>
+                    {post.tags.sort().map( ( tag ) => {
+                      const nextTag = slugify( tag )
+                      return (
+                        <li data-tag={nextTag} key={`${post.slug}-${nextTag}`}><Link href={`/tag/${nextTag}/`}>#{nextTag}</Link></li> )
+                    } )}
+                  </ul>
+                </nav>
+              </footer>
+              : null}
+          </div>
         </section>
       ) ) :
         <p>

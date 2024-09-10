@@ -46,7 +46,7 @@
   --lightest-gray: #ededed;
   // Colors.
   --primary: #ee2d6d;
-  --primary-dark: #5c0421;
+  --primary-dark: #8e0130;
   --primary-light: #fc94b6;
   --primary-lighter: #fbb4cc;
   --secondary: #e0a81e;
@@ -58,7 +58,11 @@
   --tertiary: #db8400;
   --quaternary: #024f6e;
   --quinary: #5203a1;
+  --quinary-light: #984de3;
   --alt-primary: #03a138;
+  --alt-primary-light: #5ea407;
+  --senary: #ea5a1c;
+  --senary-dark: #d44401;
   // Utility Colors.
   --error: #ff003e;
   --success: #00c807;
@@ -226,6 +230,35 @@ footer {
       li {
         flex: 0 0 100%;
         text-align: right;
+        padding-bottom: var(--pad);
+
+        $i: 0;
+
+        @each $color, $value in $colors {
+          $i: $i + 1;
+
+          &:nth-child(#{$i}) a:active,
+          &:nth-child(#{$i}) a:hover {
+            color: var(--white);
+            background-color: var(#{$value});
+          }
+
+          &:nth-child(#{$i}) a:focus {
+            color: var(--gray);
+            background-color: var(--light-gray);
+            border: 1px solid var(#{$value});
+          }
+        }
+
+        a {
+          background-color: var(--light-gray);
+          border-radius: 1.5625rem;
+          border: 1px solid var(--light-gray);
+          color: var(--gray);
+          line-height: 1;
+          padding: calc(var(--pad) / 3) var(--pad);
+          text-decoration: none;
+        }
       }
     }
 
@@ -318,7 +351,6 @@ section {
           &:nth-child(#{$i}) a:active,
           &:nth-child(#{$i}) a:hover {
             color: var(--white);
-            border: 1px solid var(--light-gray);
             background-color: var(#{$value});
           }
 
@@ -330,12 +362,13 @@ section {
         }
 
         a {
-          padding: calc(var(--pad) / 2) var(--pad);
           background-color: var(--light-gray);
           border-radius: 1.5625rem;
-          text-decoration: none;
+          border: 1px solid var(--light-gray);
           color: var(--gray);
           line-height: 1;
+          padding: calc(var(--pad) / 3) var(--pad);
+          text-decoration: none;
         }
       }
     }
