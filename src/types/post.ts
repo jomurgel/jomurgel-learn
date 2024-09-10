@@ -19,4 +19,5 @@ export interface BlogPost {
   slug: string;
   tags: Tags
   title: string;
+  subfolder: string;
 }

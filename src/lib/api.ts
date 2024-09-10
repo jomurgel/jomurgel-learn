@@ -15,6 +15,71 @@ export enum SlugOptions {
 const contentDirectory = join( process.cwd(), 'content' )
 
 /**
+ * Get all content from the specified subfolder.
+ */
+export const getContentBySubfolder = ( subfolder: SlugOptions ): BlogPost[] => {
+  const directoryPath = join( contentDirectory, subfolder )
+  const filenames = fs.readdirSync( directoryPath )
+
+  const allContent = filenames.map( ( filename ) => {
+    // Read the content of the file
+    const filePath = join( directoryPath, filename )
+    const fileContent = fs.readFileSync( filePath, 'utf8' )
+
+    // Parse the file using gray-matter to extract metadata
+    const { data, content } = matter( fileContent )
+
+    // Generate slug from the filename
+    const slug = filename.replace( /\.mdx?$/, '' )
+
+    return {
+      ...data,
+      content,
+      slug,
+      subfolder,
+    }
+  } )
+
+  return allContent as BlogPost[]
+}
+
+/**
+ * Get all directories in content.
+ */
+export function getDirectories() {
+  return fs
+    .readdirSync( contentDirectory, { withFileTypes: true } )
+    .filter( ( dirent ) => dirent.isDirectory() )
+    .map( ( dirent ) => dirent.name )
+    .filter( ( name ) => name !== SlugOptions.HIDDEN )
+}
+
+/**
+ * Get all content from all subfolders.
+ */
+export const getAllContent = () => {
+  const subfolders = getDirectories()
+  let allContent = [] as BlogPost[]
+
+  subfolders.forEach( ( subfolder ) => {
+    const content = getContentBySubfolder( subfolder as SlugOptions )
+    allContent = allContent.concat( content )
+  } )
+
+  allContent.sort( ( a, b ) => new Date( b.date ).getTime() - new Date( a.date ).getTime() )
+
+  return allContent
+}
+
+/**
+ * Get a single content by its slug.
+ */
+export const getContentBySlug = ( subfolder: SlugOptions, slug: string ) => {
+  const allContent = getContentBySubfolder( subfolder )
+  return allContent.find( ( item ) => item.slug === slug ) || null
+}
+
+/**
  * Get a post by a slug.
  */
 export function getPostBySlug( type: SlugOptions, slug: string ): BlogPost {
@@ -23,7 +88,7 @@ export function getPostBySlug( type: SlugOptions, slug: string ): BlogPost {
   const fileContents = fs.readFileSync( fullPath, 'utf8' )
   const { data, content } = matter( fileContents )
 
-  return { ...data, slug: realSlug, content } as BlogPost
+  return { ...data, slug: realSlug, content, subfolder: type } as BlogPost
 }
 
 /**
@@ -42,9 +107,9 @@ export function getAllPosts( type: SlugOptions ): BlogPost[] {
  * Get posts by tag.
  */
 export function getPostsByTag( type: SlugOptions, tag: string ): BlogPost[] {
-  const allPosts = getAllPosts( type )
+  const allPosts = getAllContent()
 
-  return allPosts.filter( ( post ) => post.tags.map( ( tag ) => slugify( tag ) ).includes( tag ) )
+  return allPosts.filter( ( post ) => post.tags?.map( ( tag ) => slugify( tag ) ).includes( tag ) )
 }
 
 /**
@@ -58,12 +123,13 @@ export function getPostSlugs( type: SlugOptions ): Array<string> {
  * Get all unique tags.
  */
 export function getPostTags( type: SlugOptions ): Array<string> {
-  const posts = getAllPosts( SlugOptions.BLOG )
+  const posts = getAllContent()
 
   const uniqueTags: Array<string> = []
 
   // @todo: could make this a new set?
-  posts.flatMap( post => post.tags ).forEach( ( tag ) => {
+  posts.flatMap( post => post.tags || [] )
+    .filter( tags => tags.length ).forEach( ( tag ) => {
 
   const nextTag = slugify( tag )
     if ( !uniqueTags.includes( nextTag ) ) {

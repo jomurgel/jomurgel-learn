@@ -1,8 +1,7 @@
-import Link from 'next/link'
 import { getAllPosts } from '@/lib/api'
 import { SlugOptions } from '@/lib/api'
 import { Metadata } from 'next'
-import slugify from 'slugify'
+import PostCard from '@/components/PostCard'
 
 export const metadata: Metadata = {
   title: 'Work for Jo Murgel',
@@ -26,39 +25,13 @@ const Work = async () => {
 
       <hr />
 
-      {allPosts.length > 0 ? allPosts.map( ( post ) => {
-
-        const title = post.title.split( '/' )
-
-        if ( !post.url ) {
-          return
-        }
-
-        return(
-          <section data-type="work" key={post.slug}>
-            <div>
-              <header>
-                <h2>
-                  <Link href={post.url} target="_blank" rel="noopener noreferrer">
-                    {title[0]}/<strong>{title[1]}</strong>
-                  </Link>
-                </h2>
-              </header>
-
-              {post.description ? <p>{post.description}</p> : null}
-
-              {post.languages ? (
-                <nav>
-                  <ul>
-                    {post.languages.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><span>{slugify( tag )}</span></li> )}
-                  </ul>
-                </nav>
-              ) : null}
-
-              {post.related ? <Link data-type="related" href={post.related} >Related Post &rarr;</Link> : null}
-              </div>
-          </section>
-      ) } ) :
+      {allPosts.length > 0 ? allPosts.map( ( post ) => (
+        <PostCard
+          key={post.slug}
+          type={SlugOptions.WORK}
+          post={post}
+        />
+      ) ) :
         <p>
           &#9785; Currently working to migrate content. Check back soon.
         </p>

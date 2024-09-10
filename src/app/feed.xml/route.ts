@@ -1,9 +1,9 @@
 import RSS from 'rss'
 import { BlogPost } from '@/types/post'
-import { getAllPosts, SlugOptions } from '@/lib/api'
+import { getAllContent } from '@/lib/api'
 
 export async function GET(): Promise<Response> {
-  const blogPosts: BlogPost[] = await getAllPosts( SlugOptions.BLOG )
+  const blogPosts: BlogPost[] = await getAllContent()
 
   const siteUrl: string =
     process.env.NODE_ENV === 'production'
@@ -12,7 +12,7 @@ export async function GET(): Promise<Response> {
 
   // Define feed options
   const feedOptions = {
-    title: 'Jo Murgel Learn',
+    title: 'Jo Murgel RSS',
     description: 'The personal website for Jo Murgel!',
     site_url: siteUrl,
     feed_url: `${siteUrl}/feed.xml`,

@@ -30,7 +30,7 @@
   --pad-2: 1.875rem; // 20px, 3*10
   --pad-3: 5.625rem; // 90px, (3*3)*10
   // Sizing.
-  --container: 45rem; // 720px
+  --container: 50rem; // 800px
   --wide-width: 68.75rem; // 1100px
   --max-width: 87.5rem; // 1400px
   --text-width: 40rem; // 640px
@@ -234,15 +234,18 @@ footer {
 
         $i: 0;
 
+        // @todo: let's tie these more directly to tag names.
         @each $color, $value in $colors {
           $i: $i + 1;
 
-          &:nth-child(#{$i}) a:active,
-          &:nth-child(#{$i}) a:hover {
-            color: var(--white);
+          &:nth-child(#{$i}) a {
             background-color: var(#{$value});
+            border: 1px solid var(#{$value});
+            color: var(--white);
           }
 
+          &:nth-child(#{$i}) a:active,
+          &:nth-child(#{$i}) a:hover,
           &:nth-child(#{$i}) a:focus {
             color: var(--gray);
             background-color: var(--light-gray);
@@ -251,13 +254,12 @@ footer {
         }
 
         a {
-          background-color: var(--light-gray);
           border-radius: 1.5625rem;
-          border: 1px solid var(--light-gray);
           color: var(--gray);
           line-height: 1;
           padding: calc(var(--pad) / 3) var(--pad);
           text-decoration: none;
+          transition: background-color, color, border, 0.3s ease-in-out;
         }
       }
     }
@@ -281,7 +283,7 @@ section {
     margin-bottom: var(--pad-2);
   }
 
-  &[data-type="post"] {
+  &[data-type="blog"] {
     margin-bottom: calc( var(--pad-2) * 2.5 );
 
     @media screen and (min-width: map.get($breakpoints, "media-md")) {
@@ -369,6 +371,7 @@ section {
           line-height: 1;
           padding: calc(var(--pad) / 3) var(--pad);
           text-decoration: none;
+          transition: background-color, color, border, 0.3s ease-in-out;
         }
       }
     }
@@ -382,7 +385,7 @@ section {
   }
 
   &[data-type="work"] {
-    border: 1px solid var(--light-gray);
+    border: 1px solid var(--lightest-gray);
     border-radius: var(--border-radius);
     padding: var(--pad);
     align-items: center;
@@ -395,6 +398,129 @@ section {
 
     > div {
       width: 100%;
+    }
+
+    nav {
+      font-size: 80%;
+      margin: var(--pad) 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      $i: 0;
+
+      @each $color, $value in $colors {
+        $i: $i + 1;
+        ul li:nth-child(#{$i}) span::before {
+          background-color: var(#{$value});
+        }
+      }
+
+      ul li span {
+        display: inline-block;
+        padding-left: calc(var(--pad) * 1.5);
+        color: var(--gray);
+        vertical-align: top;
+        position: relative;
+
+        &::before {
+          border-radius: 100%;
+          content: '';
+          height: 0.75rem;
+          width: 0.75rem;
+          background-color: var(--lightest-gray);
+          position: absolute;
+          transform: translateY(-50%);
+          top: calc(50% + 1px);
+          left: 0;
+        }
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    [data-type="related"] {
+      background-color: var(--light-gray);
+      border-radius: 1.5625rem;
+      border: 1px solid var(--light-gray);
+      color: var(--gray);
+      line-height: 1;
+      padding: calc(var(--pad) / 3) var(--pad);
+      text-decoration: none;
+      font-size: 90%;
+      display: inline-block;
+      transition: background-color, color, border, 0.3s ease-in-out;
+
+      &:active,
+      &:hover {
+        color: var(--white);
+        background-color: var(--primary);
+      }
+
+      &:focus {
+        color: var(--gray);
+        background-color: var(--light-gray);
+        border: 1px solid var(--primary);
+      }
+    }
+
+    h2 {
+      margin-bottom: var(--pad);
+      font-weight: normal;
+
+      a,
+      a:visited {
+        color: currentColor;
+        text-decoration: none;
+
+        &:active,
+        &:hover {
+          color: var(--primary);
+        }
+
+        &:focus {
+          color: var(--primary-light);
+        }
+      }
+    }
+  }
+
+  &[data-type="photo"] {
+    border-radius: var(--border-radius);
+    align-items: center;
+    margin-bottom: calc( var(--pad-2) * 2.5 );
+    gap: var(--pad);
+
+    @media screen and (min-width: map.get($breakpoints, "media-md")) {
+      display: flex;
+    }
+
+    header {
+      margin: 0;
+    }
+
+    > div[data-type="thumbnail"] {
+
+      @media screen and (min-width: map.get($breakpoints, "media-md")) {
+        height: auto;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    > div:not([data-type="thumbnail"]) {
+      padding: var(--pad);
+
+      @media screen and (min-width: map.get($breakpoints, "media-md")) {
+        flex: 0 0 50%;
+      }
     }
 
     nav {
@@ -441,6 +567,7 @@ section {
     }
 
     [data-type="related"] {
+
       font-size: 90%;
       display: inline-block;
     }
@@ -888,6 +1015,7 @@ p + img {
 img {
   border: 1px solid var(--light-gray);
   border-radius: var(--border-radius);
+  vertical-align: bottom;
 }
 
 audio,
