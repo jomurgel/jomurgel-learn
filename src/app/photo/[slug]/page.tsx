@@ -34,12 +34,12 @@ const SinglePhotoPost = ( { params }: Props ) => {
               src={post.coverImage}
               alt={`${post.title} Cover Image`}
               width={400}
-              height={266.67}
+              height={300}
               priority={true}
               style={{
                 width: '100%',
                 maxWidth: 400,
-                maxHeight: 266.67,
+                maxHeight: 300,
                 height: 'auto',
               }}
               post-image="true"
