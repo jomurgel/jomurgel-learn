@@ -15,14 +15,18 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
     <main>
       <div data-type="top">
         <header>
-          <h1>{post.title}</h1>
           <Date dateString={post.date} />
+          <h1>{post.title}</h1>
+          <p><Link href="/blog">Back to Blog</Link></p>
+
           {post.tags ? (
             <nav>
               <ul>
                 {post.tags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}><em>#{tag}</em></Link></li> )}
               </ul>
-            </nav> ) : null}
+            </nav>
+          ) : null}
+
           {post.coverImage ? (
             <Image
               src={post.coverImage}

@@ -23,7 +23,7 @@ const TagArchive = async ( { params }: Props ) => {
     <main>
       <section data-type="top">
         <header>
-          <h1 aria-label={`Tag archive for ${slug}`}><em>{`#${slug}`}</em></h1>
+          <h1 aria-label={`Tag archive for ${slug}`}><span>Posts tagged: </span><em>{`#${slug}`}</em></h1>
           <p><Link href="/blog">Back to the All Content</Link></p>
         </header>
       </section>

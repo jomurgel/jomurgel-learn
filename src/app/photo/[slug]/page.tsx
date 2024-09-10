@@ -7,7 +7,7 @@ import { mdxOptions as options } from '../../../../next.config.mjs'
 import { notFound } from 'next/navigation'
 import { useMDXComponents } from '@/app/mdx-components'
 import Date from '@/components/Date'
-import Image from 'next/image'
+import Link from 'next/link'
 
 type Props = {
   params: {
@@ -27,24 +27,9 @@ const SinglePhotoPost = ( { params }: Props ) => {
     <main>
       <div data-type="top">
         <header>
-          <h1>{post.title}</h1>
           <Date dateString={post.date} />
-          {post.coverImage ? (
-            <Image
-              src={post.coverImage}
-              alt={`${post.title} Cover Image`}
-              width={400}
-              height={300}
-              priority={true}
-              style={{
-                width: '100%',
-                maxWidth: 400,
-                maxHeight: 300,
-                height: 'auto',
-              }}
-              post-image="true"
-            />
-          ) : null}
+          <h1>{post.title}</h1>
+          <p><Link href="/photo">Back to the Photography</Link></p>
         </header>
       </div>
 

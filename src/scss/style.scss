@@ -185,6 +185,10 @@ main {
           font-size: 70%;
           font-weight: normal;
         }
+
+        > span {
+          font-weight: normal;
+        }
       }
 
       > p {
@@ -197,6 +201,38 @@ main {
 
       > nav {
         margin-top: var(--pad-2);
+
+        ul li {
+
+          $i: 0;
+
+          @each $color, $value in $colors {
+            $i: $i + 1;
+
+            &:nth-child(#{$i}) a:active,
+            &:nth-child(#{$i}) a:hover {
+              color: var(--white);
+              background-color: var(#{$value});
+            }
+
+            &:nth-child(#{$i}) a:focus {
+              color: var(--gray);
+              background-color: var(--light-gray);
+              border: 1px solid var(#{$value});
+            }
+          }
+
+          a {
+            background-color: var(--light-gray);
+            border-radius: 1.5625rem;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+            line-height: 1;
+            padding: calc(var(--pad) / 3) var(--pad);
+            text-decoration: none;
+            transition: background-color, color, border, 0.3s ease-in-out;
+          }
+        }
       }
 
       [post-image] {
