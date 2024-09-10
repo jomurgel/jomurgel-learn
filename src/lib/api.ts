@@ -94,7 +94,7 @@ export function getPostBySlug( type: SlugOptions, slug: string ): BlogPost {
 /**
  * Get all posts.
  */
-export function getAllPosts( type: SlugOptions ): BlogPost[] {
+export function getAllPostsByType( type: SlugOptions ): BlogPost[] {
   const slugs = getPostSlugs( type )
   const posts = slugs
     .map( ( slug ) => getPostBySlug( type, slug ) )
