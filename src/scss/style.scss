@@ -260,10 +260,14 @@ footer {
 
   @media screen and (min-width: map.get($breakpoints, "media-md")) {
     display: flex;
+  }
 
     aside {
-      flex: 0 0 25%;
-      order: 99;
+
+      @media screen and (min-width: map.get($breakpoints, "media-md")) {
+        flex: 0 0 25%;
+        order: 99;
+      }
 
       li {
         flex: 0 0 100%;
