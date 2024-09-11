@@ -270,9 +270,12 @@ footer {
       }
 
       li {
-        flex: 0 0 100%;
         text-align: right;
         padding-bottom: var(--pad);
+
+        @media screen and (min-width: map.get($breakpoints, "media-md")) {
+          flex: 0 0 100%;
+        }
 
         $i: 0;
 
