@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'The Jo Murgel Codex',
   description: 'A list of follows, faves, and other information.',
   openGraph: {
-    title: 'About Jo Murgel',
+    title: 'The Jo Murgel Codex',
     description: 'A list of follows, faves, and other information.',
   },
 }
