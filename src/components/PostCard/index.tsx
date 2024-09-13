@@ -71,7 +71,7 @@ export const CardRender = ( { type, post }: { type: SlugOptions, post: BlogPost 
             {post.languages ? (
               <nav>
                 <ul>
-                  {post.languages.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><span>{slugify( tag )}</span></li> )}
+                  {post.languages.sort().map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><span>{slugify( tag )}</span></li> )}
                 </ul>
               </nav>
             ) : null}
