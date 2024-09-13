@@ -8,8 +8,8 @@ import Link from 'next/link'
 import { BlogPost } from '@/types/post'
 import { useMDXComponents } from '@/app/mdx-components'
 
-const SinglePost = ( { post }: { post: BlogPost } ) => {
-  const components = useMDXComponents( {} as MDXComponents )
+const SinglePost = ({ post }: { post: BlogPost }) => {
+  const components = useMDXComponents({} as MDXComponents)
 
   return (
     <main>
@@ -22,7 +22,7 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
           {post.tags ? (
             <nav>
               <ul>
-                {post.tags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}><em>#{tag}</em></Link></li> )}
+                {post.tags.map((tag) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify(tag)}/`}><em>#{tag}</em></Link></li>)}
               </ul>
             </nav>
           ) : null}

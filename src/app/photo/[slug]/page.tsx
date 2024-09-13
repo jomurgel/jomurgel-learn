@@ -1,5 +1,5 @@
 import { MDXComponents } from 'mdx/types'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { MDXRemote } from 'next-mdx-remote-client/rsc'
 import { Metadata } from 'next'
 import { SlugOptions } from '@/lib/api'
 import { getAllPostsByType, getPostBySlug } from '@/lib/api'
