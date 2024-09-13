@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://jomurgel.com
+
+# Sitemaps
+Sitemap: https://jomurgel.com/sitemap.xml
