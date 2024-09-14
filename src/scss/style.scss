@@ -1206,14 +1206,14 @@ figure {
   figure {
     margin: 0;
 
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    @media screen and (min-width: map.get($breakpoints, "media-sm")) {
       width: calc(50% - var(--pad));
     }
   }
 
   img {
 
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    @media screen and (min-width: map.get($breakpoints, "media-sm")) {
       width: calc(50% - var(--pad));
     }
   }
@@ -1229,7 +1229,7 @@ img {
   position: relative;
   width: 100%;
 
-  @media screen and (min-width: map.get($breakpoints, "media-sm")) {
+  @media screen and (min-width: map.get($breakpoints, "media-lg")) {
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
