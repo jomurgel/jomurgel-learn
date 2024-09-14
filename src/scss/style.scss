@@ -438,21 +438,24 @@ section {
       margin-bottom: var(--pad);
     }
 
-    [data-type="thumbnail"] {
-      max-width: 25rem;
+    > a [data-type="thumbnail"] {
+      height: calc(var(--pad-2) * 3);
+      width: calc(var(--pad-2) * 4);
+      margin-right: var(--pad);
 
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        margin-right: var(--pad-2);
-        max-width: 7.5rem;
-        max-height: 7.5rem;
-        flex: 0 0 7.5rem;
-      }
+      @media screen and (min-width: map.get($breakpoints, "media-sm")) {
 
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
       }
+    }
+
+    > div:not([data-type="thumbnail"]) {
+      padding-left: var(--pad);
     }
 
     h2 {

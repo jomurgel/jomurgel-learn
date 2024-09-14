@@ -33,9 +33,11 @@ export const CardRender = ( { type, post }: { type: SlugOptions, post: BlogPost 
     case SlugOptions.PHOTO:
       return (
         <>
-          <Link href={`/photo/${post.slug}`}>
-            <CoverImage image={post.coverImage || ''} alt={post.coverAlt || ''} />
-          </Link>
+          {post.coverImage ? (
+            <Link href={`/photo/${post.slug}`}>
+              <CoverImage image={post.coverImage || ''} alt={post.coverAlt || ''} />
+            </Link>
+          ) : null}
 
           <div>
             <header>
@@ -84,14 +86,8 @@ export const CardRender = ( { type, post }: { type: SlugOptions, post: BlogPost 
       return (
         <>
           {post.coverImage ? (
-            <Link href={`/blog/${post.slug}`} data-image data-type="thumbnail">
-              <Image src={post.coverImage} alt={post.coverAlt ? post.coverAlt : ''} data-type="thumbnail" width={400}
-              height={266.67}
-              priority={true}
-              style={{
-                width: '100%',
-                height: '100%',
-              }} />
+            <Link href={`/blog/${post.slug}`}>
+              <CoverImage image={post.coverImage || ''} alt={post.coverAlt || ''} />
             </Link>
           ) : null}
 
