@@ -13,36 +13,33 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
 
   return (
     <main>
-      <div data-type="top">
+      <div data-type="top" data-align={post.coverImage ? 'wide' : ''} data-layout={post.coverImage ? 'featured' : ''}>
+
         <header>
           <Date dateString={post.date} />
           <h1>{post.title}</h1>
-          <p><Link href="/blog">Back to Blog</Link></p>
 
-          {post.tags ? (
-            <nav>
-              <ul>
-                {post.tags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}><em>#{tag}</em></Link></li> )}
-              </ul>
-            </nav>
+          {post.description ? (
+            <p>{post.description}</p>
           ) : null}
 
           {post.coverImage ? (
+            <div data-type="image-container">
             <Image
               src={post.coverImage}
               alt={`${post.title} Cover Image`}
-              width={400}
-              height={300}
+              width={600}
+              height={450}
               priority={true}
               style={{
                 width: '100%',
-                maxWidth: 400,
-                maxHeight: 300,
-                height: 'auto',
+                height: '100%',
               }}
               post-image="true"
             />
+            </div>
           ) : null}
+          {post.coverAlt ? <cite>{post.coverAlt}</cite> : null}
         </header>
       </div>
 
@@ -51,6 +48,17 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
       <section data-type="single">
         <MDXRemote source={post.content} components={components} options={{ mdxOptions: options }} />
       </section>
+
+      <footer>
+        {post.tags ? (
+          <nav data-type="tags">
+            <ul>
+              {post.tags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}><em>#{tag}</em></Link></li> )}
+            </ul>
+          </nav>
+        ) : null}
+        <p><Link href="/blog">Back to Blog</Link></p>
+      </footer>
     </main>
   )
 }
