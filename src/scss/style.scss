@@ -1194,8 +1194,8 @@ figure {
   align-items: center;
   display: flex;
   flex-flow: row wrap;
-  gap: var(--pad-2);
-  justify-content: center;
+  row-gap: var(--pad-2);
+  justify-content: space-between;
 
   img,
   figure > img {
@@ -1207,14 +1207,14 @@ figure {
     margin: 0;
 
     @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      width: calc(50% - var(--pad-2));
+      width: calc(50% - var(--pad));
     }
   }
 
   img {
 
     @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      width: calc(50% - var(--pad-2));
+      width: calc(50% - var(--pad));
     }
   }
 }

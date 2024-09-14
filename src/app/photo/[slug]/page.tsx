@@ -1,13 +1,8 @@
-import { MDXComponents } from 'mdx/types'
-import { MDXRemote } from 'next-mdx-remote-client/rsc'
 import { Metadata } from 'next'
 import { SlugOptions } from '@/lib/api'
 import { getAllPostsByType, getPostBySlug } from '@/lib/api'
-import { mdxOptions as options } from '../../../../next.config.mjs'
 import { notFound } from 'next/navigation'
-import { useMDXComponents } from '@/app/mdx-components'
-import Date from '@/components/Date'
-import Link from 'next/link'
+import SinglePost from '@/components/SinglePost'
 
 type Props = {
   params: {
@@ -17,28 +12,15 @@ type Props = {
 
 const SinglePhotoPost = ( { params }: Props ) => {
   const post = getPostBySlug( SlugOptions.PHOTO, params.slug )
-  const components = useMDXComponents( {} as MDXComponents )
 
   if ( !post ) {
     return notFound()
   }
 
   return (
-    <main>
-      <div data-type="top">
-        <header>
-          <Date dateString={post.date} />
-          <h1>{post.title}</h1>
-          <p><Link href="/photo">Back to the Photography</Link></p>
-        </header>
-      </div>
-
-      <hr />
-
-      <section data-type="single">
-        <MDXRemote source={post.content} components={components} options={{ mdxOptions: options }} />
-      </section>
-    </main>
+    <SinglePost
+      post={post}
+    />
   )
 }
 

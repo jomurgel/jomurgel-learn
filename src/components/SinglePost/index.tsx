@@ -10,10 +10,10 @@ import { useMDXComponents } from '@/app/mdx-components'
 
 const SinglePost = ( { post }: { post: BlogPost } ) => {
   const components = useMDXComponents( {} as MDXComponents )
-
+  const isFeatured = post.coverImage && 'blog' === post.subfolder
   return (
     <main>
-      <div data-type="top" data-align={post.coverImage ? 'wide' : ''} data-layout={post.coverImage ? 'featured' : ''}>
+      <div data-type="top" data-align={isFeatured ? 'wide' : ''} data-layout={isFeatured ? 'featured' : ''}>
 
         <header>
           <Date dateString={post.date} />
@@ -23,7 +23,7 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
             <p>{post.description}</p>
           ) : null}
 
-          {post.coverImage ? (
+          {post.coverImage && isFeatured ? (
             <div data-type="image-container">
             <Image
               src={post.coverImage}
