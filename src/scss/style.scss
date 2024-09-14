@@ -135,6 +135,7 @@ body {
   font-weight: 400;
   padding: 0;
   word-wrap: break-word;
+  transition: background 0.3s ease-in-out;
 
   > header,
   > main {
