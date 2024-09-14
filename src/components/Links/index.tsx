@@ -5,47 +5,47 @@ import React from 'react'
 import { usePathname } from 'next/navigation'
 import { LinksProps } from '@/types/links'
 
+export const showLinks = [
+  {
+    title: 'About Me',
+    path: '/about',
+  },
+  {
+    title: 'Codex',
+    path: '/codex',
+  },
+  {
+    title: 'Contact',
+    path: '/contact',
+  },
+]
+
+export const tellLinks = [
+  {
+    title: 'All Content',
+    path: '/blog',
+  },
+  {
+    title: 'Writing',
+    path: '/writing',
+  },
+  {
+    title: 'Selected Work',
+    path: '/work',
+  },
+  {
+    title: 'Photography',
+    path: '/photo',
+  },
+  // @todo: phase2
+  // {
+  //   title: 'Notes & Bookmarks',
+  //   path: '/notes',
+  // },
+]
+
 const Links: React.FC<LinksProps> = ( { handleClick } ) => {
   const pathName = usePathname()
-
-  const showLinks = [
-    {
-      title: 'About Me',
-      path: '/about',
-    },
-    {
-      title: 'Codex',
-      path: '/codex',
-    },
-    {
-      title: 'Contact',
-      path: '/contact',
-    },
-  ]
-
-  const tellLinks = [
-    {
-      title: 'All Content',
-      path: '/blog',
-    },
-    {
-      title: 'Writing',
-      path: '/writing',
-    },
-    {
-      title: 'Selected Work',
-      path: '/work',
-    },
-    {
-      title: 'Photography',
-      path: '/photo',
-    },
-    // @todo: phase2
-    // {
-    //   title: 'Notes & Bookmarks',
-    //   path: '/notes',
-    // },
-  ]
 
   /**
    * Close menu when link is clicked.
