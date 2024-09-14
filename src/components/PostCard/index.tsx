@@ -15,14 +15,13 @@ export const CoverImage = ( { image, alt }: { image: string, alt: string } ) => 
       <Image
         alt={alt ? alt : ''}
         data-type="thumbnail"
-        height={266.67}
+        width={600}
+        height={400}
         priority={true}
         src={image}
         style={{
           width: '100%',
-          height: '100%',
         }}
-        width={400}
       />
     </div>
   )
