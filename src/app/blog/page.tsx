@@ -34,7 +34,7 @@ const Blog = async () => {
           <aside>
             <nav>
               <ul>
-                {allTags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}>#{tag}</Link></li> )}
+                {allTags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}>{tag}</Link></li> )}
               </ul>
             </nav>
           </aside>

@@ -33,7 +33,7 @@
   --container: 50rem; // 800px
   --wide-width: 68.75rem; // 1100px
   --max-width: 87.5rem; // 1400px
-  --text-width: 40rem; // 640px
+  --text-width: 37.5rem; // 600px
   --tab-size: 4;
   // Monotone.
   --black: #151513;
@@ -400,6 +400,7 @@ footer {
   }
 
     aside {
+      text-align: right;
 
       @media screen and (min-width: map.get($breakpoints, "media-md")) {
         flex: 0 0 25%;
@@ -1065,6 +1066,14 @@ a {
   &:hover {
     color: var(--primary-light);
     outline: 0;
+  }
+}
+
+// @todo: refactor this to be a little cleaner.
+*:not(blockquote) > p {
+
+  > cite {
+    display: inline-block;
   }
 }
 

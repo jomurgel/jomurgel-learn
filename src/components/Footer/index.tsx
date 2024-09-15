@@ -1,13 +1,11 @@
-import Image from 'next/image'
-import NoAi from '@/components/NoAI'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
     <footer>
       <div>&copy; 2007-2024 &mdash; Jo Murgel</div>
-      <div><NoAi /></div>
       <div>
-        Made with <a href="" target="_blank" rel="noreferrer noopener">next.js</a>, <a href="" target="_blank" rel="noreferrer noopener">acorn.css</a>, and hosted on <a href="" target="_blank" rel="noreferrer noopener">digitalocean</a>.
+        Made <Link href="/blog/no-ai-taking-a-stance">without AI</Link>. Built with <Link href="" target="_blank" rel="noreferrer noopener">next.js</Link>, <Link href="" target="_blank" rel="noreferrer noopener">acorn.css</Link>, and hosted on <a href="" target="_blank" rel="noreferrer noopener">digitalocean</a>.
       </div>
     </footer>
   )

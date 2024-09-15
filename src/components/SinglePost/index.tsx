@@ -10,7 +10,8 @@ import { useMDXComponents } from '@/app/mdx-components'
 
 const SinglePost = ( { post }: { post: BlogPost } ) => {
   const components = useMDXComponents( {} as MDXComponents )
-  const isFeatured = post.coverImage && 'blog' === post.subfolder
+  const isBlog = 'blog' === post.subfolder
+  const isFeatured = post.coverImage && isBlog
   return (
     <main>
       <div data-type="top" data-align={isFeatured ? 'wide' : ''} data-layout={isFeatured ? 'featured' : ''}>
@@ -25,18 +26,18 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
 
           {post.coverImage && isFeatured ? (
             <div data-type="image-container">
-            <Image
-              src={post.coverImage}
-              alt={`${post.title} Cover Image`}
-              width={600}
-              height={450}
-              priority={true}
-              style={{
-                width: '100%',
-                height: '100%',
-              }}
-              post-image="true"
-            />
+              <Image
+                src={post.coverImage}
+                alt={`${post.title} Cover Image`}
+                width={600}
+                height={450}
+                priority={true}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }}
+                post-image="true"
+              />
             </div>
           ) : null}
           {post.coverAlt ? <cite>{post.coverAlt}</cite> : null}
@@ -45,15 +46,24 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
 
       <hr />
 
-      <section data-type="single">
-        <MDXRemote source={post.content} components={components} options={{ mdxOptions: options }} />
-      </section>
+      {/* <div data-layout={isBlog ? 'has-sidebar' : ''}> */}
+      <div>
+        {isBlog ? (
+          <aside>
+            {/* @todo: add share buttons here. */}
+          </aside>
+        ) : null}
+
+        <section data-type="single" data-layout={isBlog ? 'main-content' : ''}>
+          <MDXRemote source={post.content} components={components} options={{ mdxOptions: options }} />
+        </section>
+      </div>
 
       <footer>
         {post.tags ? (
           <nav data-type="tags">
             <ul>
-              {post.tags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}><em>#{tag}</em></Link></li> )}
+              {post.tags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}><em>{tag}</em></Link></li> )}
             </ul>
           </nav>
         ) : null}
