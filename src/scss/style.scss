@@ -214,6 +214,7 @@ main {
         width: 100%;
         position: relative;
         height: 100%;
+        aspect-ratio: 4/2.5;
         max-height: calc(100vh - var(--pad-2));
         padding-left: var(--pad-2);
         padding-right: var(--pad-2);
