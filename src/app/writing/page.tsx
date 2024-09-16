@@ -22,8 +22,8 @@ const Writing = async () => {
     <main>
       <section data-type="top">
         <header>
-          <h1 aria-label="Blog for Jo Murgel">Dear universe,</h1>
-          <p><Link href="/feed.xml" target="_blank" rel="noopener noreferrer">RSS</Link></p>
+          <h1 aria-label="Blog for Jo Murgel">Just the Writing</h1>
+          <p>Just some odds and ends; a little tech, a little thought, a little me.</p>
         </header>
       </section>
 
@@ -34,7 +34,7 @@ const Writing = async () => {
           <aside>
             <nav>
               <ul>
-                {allTags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}>{tag}</Link></li> )}
+                {allTags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}>#{tag}</Link></li> )}
               </ul>
             </nav>
           </aside>
