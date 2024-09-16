@@ -107,7 +107,7 @@ export const CardRender = ( { type, post }: { type: SlugOptions, post: BlogPost 
                     {post.tags.sort().map( ( tag ) => {
                       const nextTag = slugify( tag )
                       return (
-                        <li data-tag={nextTag} key={`${post.slug}-${nextTag}`}><Link href={`/tag/${nextTag}/`}>{nextTag}</Link></li> )
+                        <li data-tag={nextTag} key={`${post.slug}-${nextTag}`}><Link href={`/tag/${nextTag}/`}>#{nextTag}</Link></li> )
                     } )}
                   </ul>
                 </nav>
