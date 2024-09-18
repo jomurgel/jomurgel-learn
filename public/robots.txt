@@ -1,6 +1,7 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /hidden/
 
 # Host
 Host: https://jomurgel.com
