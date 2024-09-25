@@ -50,12 +50,12 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
 
       <div data-layout={isBlog ? 'has-sidebar' : ''}>
         {isBlog ? (
-          <aside data-type="social-share">
             <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} />
-          </aside>
         ) : null}
 
         <section data-type="single" data-layout={isBlog ? 'main-content' : ''}>
+          {!isBlog ? <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} /> : null}
+
           <MDXRemote source={post.content} components={components} options={{ mdxOptions: options }} />
         </section>
       </div>
