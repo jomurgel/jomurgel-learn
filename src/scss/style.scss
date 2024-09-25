@@ -38,6 +38,8 @@
   // Monotone.
   --black: #151513;
   --white: #fdfbfb;
+  --dark: #151513;
+  --light: #fdfbfb;
   --white-gradient: linear-gradient(120deg, var(--white) 0%, var(--off-white) 100%);
   --off-white: #ebedee;
   --dark-gray: #313131;
@@ -79,6 +81,14 @@
   --tumblr: #34526f;
 }
 
+[data-theme="dark"] {
+  // Monotone.
+  --light: #151513;
+  --dark: #fdfbfb;
+  --light-gray: #282828;
+  --primary: #ffb700;
+}
+
 //-----------------------------------------
 // All elements.
 //-----------------------------------------
@@ -117,7 +127,8 @@
 html {
   // @todo: re-add gradient with granim.js.
   // background-image: var(--white-gradient);
-  background-size: cover;
+  // background-size: cover;
+  background-color: var(--light);
   font-size: var(--font-size); // 18px;
   line-height: calc(var(--font-size) * 1.75);
   margin: auto;
@@ -135,7 +146,7 @@ html {
 
 body {
   caret-color: var(--black);
-  color: var(--black);
+  color: var(--dark);
   cursor: default;
   font-family: var(--font-sans-serif);
   font-weight: 400;
@@ -587,7 +598,7 @@ section {
   }
 
   &[data-type="work"] {
-    border: 1px solid var(--lightest-gray);
+    border: 1px solid var(--light-gray);
     border-radius: var(--border-radius);
     padding: var(--pad);
     align-items: center;

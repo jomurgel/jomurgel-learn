@@ -29,6 +29,10 @@
     display: flex;
     align-items: center;
 
+    span {
+      color: var(--black);
+    }
+
     a,
     a:visited {
       color: var(--black);
@@ -152,12 +156,12 @@ aside[data-type="social-share"],
         &.#{$color} button {
           background-color: var(#{$value});
           border: 1px solid var(#{$value});
-          color: var(--white);
+          color: var(--off-white);
         }
 
         &.#{$color} button:active,
         &.#{$color} button:hover {
-          color: var(--white);
+          color: var(--off-white);
           background-color: var(#{$value});
         }
 
