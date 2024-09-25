@@ -29,10 +29,6 @@
     display: flex;
     align-items: center;
 
-    span {
-      color: var(--black);
-    }
-
     a.home,
     a.home:visited {
       color: var(--dark);
@@ -40,7 +36,7 @@
 
     a,
     a:visited {
-      color: var(--black);
+      color: var(--dark);
       text-decoration: none;
 
       &:active,

@@ -86,6 +86,7 @@
   --light: #151513;
   --dark: #fdfbfb;
   --light-gray: #1c1c1c;
+  --lightest-gray: #232323;
   --primary: #ffb700;
 }
 
@@ -1146,7 +1147,7 @@ hr {
     content: 'se-ra-tor';
     font-size: 1.5rem;
     position: relative;
-    text-decoration-color: var(--light-gray);
+    text-decoration-color: var(--lightest-gray);
     text-decoration-line: underline;
     text-decoration-style: wavy;
     top: calc(-1 * var(--pad));
