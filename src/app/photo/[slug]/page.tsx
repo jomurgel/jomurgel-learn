@@ -1,8 +1,8 @@
+import SinglePost from '@/components/SinglePost'
 import { Metadata } from 'next'
 import { SlugOptions } from '@/lib/api'
 import { getAllPostsByType, getPostBySlug } from '@/lib/api'
 import { notFound } from 'next/navigation'
-import SinglePost from '@/components/SinglePost'
 
 type Props = {
   params: {

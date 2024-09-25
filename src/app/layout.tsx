@@ -2,6 +2,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import '../scss/style.scss'
 
 /**
@@ -30,7 +31,7 @@ export default function RootLayout( {
       <body>
         <Header />
         <GoogleAnalytics gaId="G-JZ9V7XMT1E" />
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <Footer />
       </body>
     </html>

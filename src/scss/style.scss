@@ -85,7 +85,7 @@
   // Monotone.
   --light: #151513;
   --dark: #fdfbfb;
-  --light-gray: #282828;
+  --light-gray: #1c1c1c;
   --primary: #ffb700;
 }
 
@@ -1730,7 +1730,7 @@ button {
   background-color: var(--primary);
   border-radius: var(--border-radius);
   border: 1px solid var(--primary);
-  color: var(--white);
+  color: var(--light);
   cursor: pointer;
   display: inline-table;
   font-size: calc(var(--font-size) * 0.75);
@@ -1749,9 +1749,9 @@ button {
   }
 
   &[data-variant="dark"] {
-    background-color: var(--black);
+    background-color: var(--dark);
     border: 1px solid transparent;
-    color: var(--white);
+    color: var(--light);
     transition: all 0.25s ease-in-out;
 
     &:hover,

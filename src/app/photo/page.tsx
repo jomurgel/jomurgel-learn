@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Photos for Jo Murgel',
   description: '',
   openGraph: {
-    title: 'Photos sfor Jo Murgel',
+    title: 'Photos for Jo Murgel',
     description: '',
   },
 }
