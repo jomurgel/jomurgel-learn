@@ -1,12 +1,14 @@
+import Date from '@/components/Date'
+import Image from 'next/image'
+import Link from 'next/link'
+import slugify from 'slugify'
+import { BlogPost } from '@/types/post'
 import { MDXComponents } from 'mdx/types'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { mdxOptions as options } from '../../../next.config.mjs'
-import Date from '@/components/Date'
-import Image from 'next/image'
-import slugify from 'slugify'
-import Link from 'next/link'
-import { BlogPost } from '@/types/post'
 import { useMDXComponents } from '@/app/mdx-components'
+import ShareButton from '../SocialShare'
+
 
 const SinglePost = ( { post }: { post: BlogPost } ) => {
   const components = useMDXComponents( {} as MDXComponents )
@@ -46,11 +48,10 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
 
       <hr />
 
-      {/* <div data-layout={isBlog ? 'has-sidebar' : ''}> */}
-      <div>
+      <div data-layout={isBlog ? 'has-sidebar' : ''}>
         {isBlog ? (
-          <aside>
-            {/* @todo: add share buttons here. */}
+          <aside data-type="social-share">
+            <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} />
           </aside>
         ) : null}
 

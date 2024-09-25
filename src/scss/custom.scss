@@ -125,3 +125,60 @@
     }
   }
 }
+
+//-----------------------------------------
+// Social Share icons
+//-----------------------------------------
+[data-layout=has-sidebar] aside[data-type="social-share"] {
+
+  h3 {
+    margin: var(--pad);
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: var(--pad);
+
+    li {
+
+      $i: 0;
+
+      @each $color, $value in $social {
+        $i: $i + 1;
+
+        &.#{$color} button {
+          background-color: var(#{$value});
+          border: 1px solid var(#{$value});
+          color: var(--white);
+        }
+
+        &.#{$color} button:active,
+        &.#{$color} button:hover {
+          color: var(--white);
+          background-color: var(#{$value});
+        }
+
+        &.#{$color} button:focus {
+          background-color: var(--white);
+          border: 1px solid var(#{$value});
+          color: var(#{$value});
+          box-shadow: none;
+        }
+      }
+
+      button {
+        border-radius: 1.5625rem;
+        border: 1px solid var(--light-gray);
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: 1;
+        margin: 0;
+        padding: calc(var(--pad) / 3) var(--pad);
+        text-decoration: none;
+        transition: background-color, color, border, 0.3s ease-in-out;
+      }
+    }
+  }
+}

@@ -71,6 +71,12 @@
   --warning: #ffcc00;
   // Code highlight.
   --code-bg: #e6e6e6;
+  --facebook: #1877F2;
+  --x: #0C2340;
+  --reddit: #FF4500;
+  --email: #f2a60c;
+  --linkedin: #0077B5;
+  --tumblr: #34526f;
 }
 
 //-----------------------------------------
@@ -401,10 +407,12 @@ footer {
   }
 
     aside {
+      align-items: flex-end;
       text-align: right;
 
       @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        flex: 0 0 25%;
+        flex: 0 0 calc(22% - var(--pad));
+        margin-left: auto;
         order: 99;
       }
 
@@ -1434,6 +1442,10 @@ textarea {
   font-size: calc(var(--font-size) * 0.75);
   display: block;
   padding: var(--pad);
+}
+
+button:hover {
+  opacity: 0.75;
 }
 
 button:focus,
