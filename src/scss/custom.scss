@@ -35,7 +35,7 @@
 
     a,
     a:visited {
-      color: var(--dark);
+      color: var(--black);
       text-decoration: none;
 
       &:active,
@@ -48,7 +48,7 @@
       }
 
       &.current {
-        color: var(--dark-gray);
+        color: var(--primary);
         font-style: italic;
       }
 
@@ -57,7 +57,7 @@
         border: 1px solid var(--primary);
         border-radius: var(--border-radius);
         box-shadow: 0 0 var(--pad) var(--primary);
-        color: var(--white);
+        color: var(--light);
         display: inline-table;
         font-size: calc(var(--font-size) * 0.75);
         font-weight: 600;
