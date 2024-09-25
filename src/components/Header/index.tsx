@@ -36,7 +36,7 @@ const Header = () => {
       {/* <GradientBackground gradients={currentGradients} /> */}
       <header id="top" className="site-header">
         <div>
-          <Link href="/">@jomurgel</Link>
+          <Link className="home" href="/">@jomurgel</Link>
         </div>
         <div>
           <Link href="/contact" data-effect="glow">For Hire</Link>

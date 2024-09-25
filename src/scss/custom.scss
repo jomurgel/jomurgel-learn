@@ -33,6 +33,11 @@
       color: var(--black);
     }
 
+    a.home,
+    a.home:visited {
+      color: var(--dark);
+    }
+
     a,
     a:visited {
       color: var(--black);
