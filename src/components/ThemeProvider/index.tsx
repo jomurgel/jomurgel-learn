@@ -7,6 +7,11 @@ const ThemeContext = createContext( {
   setTheme: ( theme: string ) => {},
 } )
 
+/**
+ * @todo: setup a better theme handler at the root, or implemented a switcher
+ * globally. This currently has a little bit of a flicker still.
+ */
+
 export const ThemeProvider = ( { children }: { children: React.ReactNode } ) => {
   const [ theme, setTheme ] = useState( '' )
 

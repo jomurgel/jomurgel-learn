@@ -55,20 +55,21 @@ const Links: React.FC<LinksProps> = ( { handleClick } ) => {
     window.location.href = href
   }
 
-  console.log( pathName, pathName.includes( tellLinks[3].path ) )
-
+  /**
+   * @todo: build a nav-item component.
+   */
   return (
     <>
       <div>
         <span id="show-tell">Show/Tell</span>
         <ul aria-labelledby="show-tell">
-          {showLinks.map( ( link ) => <li key={link.title}><Link onClick={() => handleLink( link.path )} href={link.path} className={`${pathName.includes( link.path ) ? 'current' : ''}`}>{link.title}</Link></li> )}
+          {showLinks.map( ( link ) => <li key={link.title}><Link onClick={() => handleLink( link.path )} href={link.path} className={`${pathName === `${link.path}/` ? 'current' : ''}`}>{link.title}</Link></li> )}
         </ul>
       </div>
       <div>
         <span id="read-write">Read/Write</span>
         <ul aria-labelledby="read-write">
-          {tellLinks.map( ( link ) => <li key={link.title}><Link onClick={() => handleLink( link.path )} href={link.path} className={`${pathName.includes( link.path ) ? 'current' : ''}`}>{link.title}</Link></li> )}
+          {tellLinks.map( ( link ) => <li key={link.title}><Link onClick={() => handleLink( link.path )} href={link.path} className={`${pathName === `${link.path}/` ? 'current' : ''}`}>{link.title}</Link></li> )}
         </ul>
       </div>
     </>
