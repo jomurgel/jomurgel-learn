@@ -41,9 +41,9 @@ const Writing = async () => {
         ) : null}
 
         <div data-layout="main-content">
-          {allPosts.length > 0 ? allPosts.map( ( post ) => (
+          {allPosts.length > 0 ? allPosts.map( ( post, index ) => (
             <PostCard
-              key={post.slug}
+            key={`${post.slug}-${index}-${post.subfolder}`}
               type={post.subfolder as SlugOptions}
               post={post}
             />

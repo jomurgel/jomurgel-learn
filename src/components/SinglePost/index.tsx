@@ -64,7 +64,7 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
         {post.tags ? (
           <nav data-type="tags">
             <ul>
-              {post.tags.map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><Link href={`/tag/${slugify( tag )}/`}>#{tag}</Link></li> )}
+              {post.tags.map( ( tag ) => <li data-tag={tag} key={`tag-${tag}`}><Link href={`/tag/${slugify( tag )}/`}>#{tag}</Link></li> )}
             </ul>
           </nav>
         ) : null}

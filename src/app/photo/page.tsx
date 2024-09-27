@@ -26,9 +26,9 @@ const Photo = async () => {
 
       <hr />
 
-      {allPosts.length > 0 ? allPosts.map( ( post ) => (
+      {allPosts.length > 0 ? allPosts.map( ( post, index ) => (
         <PostCard
-          key={post.slug}
+          key={`${post.slug}-${index}-${post.subfolder}`}
           type={SlugOptions.PHOTO}
           post={post}
         />

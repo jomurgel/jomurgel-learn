@@ -72,7 +72,7 @@ export const CardRender = ( { type, post }: { type: SlugOptions, post: BlogPost 
             {post.languages ? (
               <nav>
                 <ul>
-                  {post.languages.sort().map( ( tag ) => <li data-tag={tag} key={`blog-${tag}`}><span>{slugify( tag )}</span></li> )}
+                  {post.languages.sort().map( ( tag ) => <li data-tag={tag} key={`lang-${tag}`}><span>{slugify( tag )}</span></li> )}
                 </ul>
               </nav>
             ) : null}
@@ -124,7 +124,7 @@ export const CardRender = ( { type, post }: { type: SlugOptions, post: BlogPost 
  */
 const PostCard = ( { type, post }: { type: SlugOptions, post: BlogPost } ) => {
   return (
-    <section data-type={type} key={post.slug}>
+    <section data-type={type} key={`${post.subfolder}-${post.slug}`}>
       <CardRender type={type} post={post} />
     </section>
   )
