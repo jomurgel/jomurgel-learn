@@ -8,6 +8,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { mdxOptions as options } from '../../../next.config.mjs'
 import { useMDXComponents } from '@/app/mdx-components'
 import ShareButton from '../SocialShare'
+import Tags from '../Tags'
 
 
 const SinglePost = ( { post }: { post: BlogPost } ) => {
@@ -61,13 +62,7 @@ const SinglePost = ( { post }: { post: BlogPost } ) => {
       </div>
 
       <footer>
-        {post.tags ? (
-          <nav data-type="tags">
-            <ul>
-              {post.tags.map( ( tag ) => <li data-tag={tag} key={`tag-${tag}`}><Link href={`/tag/${slugify( tag )}/`}>#{tag}</Link></li> )}
-            </ul>
-          </nav>
-        ) : null}
+        <Tags items={post.tags} linked />
         <p><Link href="/blog">Back to Blog</Link></p>
       </footer>
     </main>

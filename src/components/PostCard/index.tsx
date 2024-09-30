@@ -4,6 +4,7 @@ import Link from 'next/link'
 import slugify from 'slugify'
 import { BlogPost } from '@/types/post'
 import { SlugOptions } from '@/lib/api'
+import Tags from '../Tags'
 
 export const CoverImage = ( { image, alt }: { image: string, alt: string } ) => {
   if ( !image ) {
@@ -69,13 +70,7 @@ export const CardRender = ( { type, post }: { type: SlugOptions, post: BlogPost 
 
             {post.description ? <p>{post.description}</p> : null}
 
-            {post.languages ? (
-              <nav>
-                <ul>
-                  {post.languages.sort().map( ( tag ) => <li data-tag={tag} key={`lang-${tag}`}><span>{slugify( tag )}</span></li> )}
-                </ul>
-              </nav>
-            ) : null}
+            <Tags items={post.languages} />
 
             {post.related ? <Link data-type="related" href={post.related} >Related Post &rarr;</Link> : null}
           </div>
@@ -100,19 +95,9 @@ export const CardRender = ( { type, post }: { type: SlugOptions, post: BlogPost 
 
             {post.description ? <p>{post.description}</p> : null}
 
-            {post.tags?.length ?
               <footer>
-                <nav>
-                  <ul>
-                    {post.tags.sort().map( ( tag ) => {
-                      const nextTag = slugify( tag )
-                      return (
-                        <li data-tag={nextTag} key={`${post.slug}-${nextTag}`}><Link href={`/tag/${nextTag}/`}>#{nextTag}</Link></li> )
-                    } )}
-                  </ul>
-                </nav>
+                <Tags items={post.tags} linked />
               </footer>
-              : null}
           </div>
         </>
       )
