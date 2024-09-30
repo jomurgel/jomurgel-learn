@@ -1,10 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import Content from './content.mdx'
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <main>
       <section data-type="top">
@@ -15,15 +14,14 @@ const About = () => {
           <p>I'm a full-stack engineer and artist living in Boise, ID.</p>
           <Image
             src="/about.jpg"
-            alt="A photo of tattooed legs draped over the edge of a cliff overlooking rocks and the Snake river."
-            post-image="true"
+            alt="A photo of tattooed legs draped over the edge of a cliff overlooking rocks and the Snake River."
             width={400}
             height={300}
-            priority={true}
+            priority
             style={{
               width: '100%',
-              maxWidth: 400,
-              maxHeight: 300,
+              maxWidth: '400px',
+              maxHeight: '300px',
               height: 'auto',
             }}
           />

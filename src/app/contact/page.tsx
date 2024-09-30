@@ -1,4 +1,6 @@
+import React from 'react'
 import { Metadata } from 'next'
+import contacts from './contacts'
 
 export const metadata: Metadata = {
   title: 'Contact Jo Murgel',
@@ -9,7 +11,8 @@ export const metadata: Metadata = {
   },
 }
 
-const Contact = () => {
+const Contact: React.FC = () => {
+
   return (
     <main>
       <section data-type="top">
@@ -21,72 +24,23 @@ const Contact = () => {
       <hr />
 
       <section>
-
-        <div data-table>
-          <div data-attr="header">
-            <div data-attr="column">
-              <h2>Personal</h2>
+        {contacts.map( ( { category, items } ) => (
+          <div key={category} data-table>
+            <div data-attr="header">
+              <div data-attr="column">
+                <h2>{category}</h2>
+              </div>
             </div>
+            {items.map( ( { label, href, display } ) => (
+              <div key={label} data-attr="row">
+                <div data-attr="column">{label}</div>
+                <div data-attr="column">
+                  <a href={href} target="_blank" rel="noopener noreferrer" dangerouslySetInnerHTML={{ __html: display }} />
+                </div>
+              </div>
+            ) )}
           </div>
-          <div data-attr="row">
-            <div data-attr="column">Email</div>
-            <div data-attr="column"><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#101;&#108;&#108;&#111;&#64;&#106;&#111;&#109;&#117;&#114;&#103;&#101;&#108;&#46;&#99;&#111;&#109;">&#104;&#101;&#108;&#108;&#111;&#64;&#106;&#111;&#109;&#117;&#114;&#103;&#101;&#108;&#46;&#99;&#111;&#109;</a></div>
-          </div>
-        </div>
-
-        <div data-table>
-          <div data-attr="header">
-            <div data-attr="column">
-              <h2>Professional</h2>
-            </div>
-          </div>
-          <div data-attr="row">
-            <div data-attr="column">Github</div>
-            <div data-attr="column"><a href="https://github.com/jomurgel" target="_blank" rel="noopener noreferrer">@jomurgel</a></div>
-          </div>
-
-          <div data-attr="row">
-            <div data-attr="column">Gists</div>
-            <div data-attr="column"><a href="https://gists.github.com/jomurgel" target="_blank" rel="noopener noreferrer">@jomurgel</a></div>
-          </div>
-
-          <div data-attr="row">
-            <div data-attr="column">LinkedIn</div>
-            <div data-attr="column"><a href="https://linkedin.com/in/jomurgel/" target="_blank" rel="noopener noreferrer">jomurgel</a></div>
-          </div>
-        </div>
-
-        <div data-table>
-          <div data-attr="header">
-            <div data-attr="column">
-              <h2>Miscellaneous</h2>
-            </div>
-          </div>
-          <div data-attr="row">
-            <div data-attr="column">Instagram</div>
-            <div data-attr="column"><a href="https://instagram.com/jomurgel" target="_blank" rel="noopener noreferrer">@jomurgel</a></div>
-          </div>
-
-          <div data-attr="row">
-            <div data-attr="column">Threads</div>
-            <div data-attr="column"><a href="https://www.threads.net/@jomurgel" target="_blank" rel="noopener noreferrer">@jomurgel</a></div>
-          </div>
-
-          <div data-attr="row">
-            <div data-attr="column">Dribbble</div>
-            <div data-attr="column"><a href="https://dribble.com/jomurgel/" target="_blank" rel="noopener noreferrer">jomurgel</a></div>
-          </div>
-
-          <div data-attr="row">
-            <div data-attr="column">Reddit</div>
-            <div data-attr="column"><a href="https://www.reddit.com/user/jomurgable/" target="_blank" rel="noopener noreferrer">@jomurgable</a></div>
-          </div>
-
-          <div data-attr="row">
-            <div data-attr="column">Discord Server</div>
-            <div data-attr="column"><a href="https://discord.gg/wQWUnKntpn" target="_blank" rel="noopener noreferrer">Dev Support</a></div>
-          </div>
-        </div>
+        ) )}
       </section>
     </main>
   )

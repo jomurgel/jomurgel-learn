@@ -1,8 +1,9 @@
 'use client'
 
+import React from 'react'
 import Content from './content.mdx'
 
-const Codex = () => {
+const Codex: React.FC  = () => {
   return (
     <main>
       <section data-type="top">
