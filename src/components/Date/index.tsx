@@ -1,9 +1,13 @@
 import { parseISO, format } from 'date-fns'
 import { PostDate } from '@/types/post'
 
-export default function Date( { dateString }: PostDate ) {
-  const date = parseISO( dateString )
+const DateComponent: React.FC<PostDate> = ( { dateString } ) => {
+  const date: Date = parseISO( dateString )
   return (
-    <time dateTime={dateString}>{format( date, 'LLLL d, yyyy' )}</time>
+    <time dateTime={dateString}>
+      {format( date, 'LLLL d, yyyy' )}
+    </time>
   )
 }
+
+export default DateComponent
