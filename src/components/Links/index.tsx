@@ -14,6 +14,9 @@ export const links: { show: LinkItem[]; tell: LinkItem[] } = {
   show: [
     { title: 'About Me', path: '/about' },
     { title: 'Codex', path: '/codex' },
+    // @todo: add setup, tbd.
+    // Contribute back to https://github.com/wesbos/awesome-uses/?tab=readme-ov-file
+    // { title: 'My Setup', path: '/uses' },
     { title: 'Contact', path: '/contact' },
   ],
   tell: [

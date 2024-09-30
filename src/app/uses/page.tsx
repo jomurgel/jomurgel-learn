@@ -3,15 +3,15 @@
 import React from 'react'
 import Content from './content.mdx'
 
-const Codex: React.FC  = () => {
+const Setup: React.FC  = () => {
   return (
     <main>
       <section data-type="top">
         <header>
-          <h1 aria-label="The Jo Murgel Codex">
-            I &hearts; this stuff...
+          <h1 aria-label="My Setup">
+            All the deets.
           </h1>
-          <p>A compiled list of things I like in no particular order of importance.</p>
+          <p>Specific hardware, software, and other profesional tools I use.</p>
         </header>
       </section>
 
@@ -24,4 +24,4 @@ const Codex: React.FC  = () => {
   )
 }
 
-export default Codex
+export default Setup
