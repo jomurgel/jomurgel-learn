@@ -1,24 +1,23 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react'
 
-const ThemeContext = createContext( {
-  theme: '',
-  setTheme: ( theme: string ) => {},
-} )
+interface ThemeContextType {
+  theme: string;
+  setTheme: ( theme: string ) => void;
+}
+
+const ThemeContext = createContext<ThemeContextType | undefined>( undefined )
 
 /**
- * @todo: setup a better theme handler at the root, or implemented a switcher
- * globally. This currently has a little bit of a flicker still.
+ * ThemeProvider component that manages the application's theme state.
  */
-
-export const ThemeProvider = ( { children }: { children: React.ReactNode } ) => {
-  const [ theme, setTheme ] = useState( '' )
+export const ThemeProvider: React.FC<{ children: ReactNode }> = ( { children } ) => {
+  const [ theme, setTheme ] = useState<string>( '' )
 
   useEffect( () => {
     document.documentElement.setAttribute( 'data-theme', theme || '' )
 
-    // Cleanup function to remove the attribute when the component unmounts
     return () => {
       document.documentElement.removeAttribute( 'data-theme' )
     }
@@ -31,4 +30,13 @@ export const ThemeProvider = ( { children }: { children: React.ReactNode } ) => 
   )
 }
 
-export const useTheme = () => useContext( ThemeContext )
+/**
+ * Custom hook to use the ThemeContext.
+ */
+export const useTheme = (): ThemeContextType => {
+  const context = useContext( ThemeContext )
+  if ( context === undefined ) {
+    throw new Error( 'useTheme must be used within a ThemeProvider' )
+  }
+  return context
+}

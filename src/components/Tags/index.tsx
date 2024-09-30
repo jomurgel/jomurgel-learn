@@ -2,43 +2,41 @@ import { FC, ReactElement } from 'react'
 import Link from 'next/link'
 import slugify from 'slugify'
 
-/**
- * Maybe output a list item with a link.
- *
- * @param {string}  item   item name.
- * @param {boolean} linked whether or not to output a link.
- */
-const maybeHasLink = ( item: string, linked: boolean ): ReactElement => {
-  const itemSlug = slugify( item )
-  if ( ! linked ) {
-    return ( <li data-tag={item} key={`tag-${item}`}>
-      <span>{itemSlug}</span>
-    </li>
-    )
-  } else {
-    return (
-      <li data-tag={item} key={`tag-${item}`}>
-        <Link href={`/tag/${itemSlug}/`}>#{itemSlug}</Link>
-      </li>
-    )
-  }
+interface TagProps {
+  item: string;
+  linked: boolean;
 }
 
-/**
- * @todo: use the component pattern to build outsomething more sustainable.
- */
-const Tags = ( { items, linked = false }: { items: String[] | undefined, linked?: boolean } ): ReactElement | undefined => {
+const Tag: FC<TagProps> = ( { item, linked } ) => {
+  const itemSlug = slugify( item )
 
-  if ( !items ) {
-    return
+  return (
+    <li data-tag={item} key={`tag-${item}`}>
+      {linked ? (
+        <Link href={`/tag/${itemSlug}/`}>#{itemSlug}</Link>
+      ) : (
+        <span>{itemSlug}</span>
+      )}
+    </li>
+  )
+}
+
+interface TagsProps {
+  items?: string[];
+  linked?: boolean;
+}
+
+const Tags: FC<TagsProps> = ( { items, linked = false } ): ReactElement | null => {
+  if ( !items || items.length === 0 ) {
+    return null
   }
 
   return (
     <nav data-type="tags">
       <ul>
-        {items.sort().map( ( item ) => {
-          return maybeHasLink( item as string, linked )
-        } )}
+        {items.sort().map( ( item ) => (
+          <Tag key={`tag-${item}`} item={item} linked={linked} />
+        ) )}
       </ul>
     </nav>
   )

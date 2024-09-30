@@ -10,7 +10,12 @@ import {
   TwitterShareButton,
 } from 'react-share'
 
-const ShareButton = ( { url, title }: { url: string, title: string } ): ReactElement => (
+interface ShareButtonProps {
+  url: string;
+  title: string;
+}
+
+const ShareButton: React.FC<ShareButtonProps> = ( { url, title } ): ReactElement => (
   <aside data-type="social-share">
     <nav>
       <ul>

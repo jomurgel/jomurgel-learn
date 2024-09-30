@@ -6,6 +6,7 @@
 // import { useEffect, useState } from 'react'
 // import GradientBackground from '@/components/GradientBackground'
 
+import React from 'react'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 
@@ -22,7 +23,7 @@ import Nav from '@/components/Nav'
 //   ],
 // }
 
-const Header = () => {
+const Header: React.FC = () => {
   // const pathname = usePathname()
   // const [ currentGradients, setCurrentGradients ] = useState<string[][]>( gradientsMap[pathname] || gradientsMap['/'] )
 

@@ -1,113 +1,122 @@
 import Date from '@/components/Date'
 import Image from 'next/image'
 import Link from 'next/link'
-import slugify from 'slugify'
 import { BlogPost } from '@/types/post'
 import { SlugOptions } from '@/lib/api'
 import Tags from '../Tags'
 
-export const CoverImage = ( { image, alt }: { image: string, alt: string } ) => {
-  if ( !image ) {
-    return
-  }
+interface CoverImageProps {
+  image: string;
+  alt: string;
+}
+
+const CoverImage: React.FC<CoverImageProps> = ( { image, alt } ) => {
+  if ( !image ) return null
 
   return (
     <div data-image data-type="thumbnail">
       <Image
-        alt={alt ? alt : ''}
+        alt={alt || ''}
         data-type="thumbnail"
         width={600}
         height={400}
-        priority={true}
+        priority
         src={image}
-        style={{
-          width: '100%',
-        }}
+        style={{ width: '100%' }}
       />
     </div>
   )
 }
 
-export const CardRender = ( { type, post }: { type: SlugOptions, post: BlogPost } ) => {
+interface CardRenderProps {
+  type: SlugOptions;
+  post: BlogPost;
+}
+
+const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
+  const renderPhotoCard = () => (
+    <>
+      {post.coverImage && (
+        <Link href={`/photo/${post.slug}`}>
+          <CoverImage image={post.coverImage} alt={post.coverAlt || ''} />
+        </Link>
+      )}
+      <div>
+        <header>
+          <Date dateString={post.date} />
+          <h2>
+            <Link href={`/photo/${post.slug}`}>{post.title}</Link>
+          </h2>
+        </header>
+        {post.description && <p>{post.description}</p>}
+      </div>
+    </>
+  )
+
+  const renderWorkCard = () => {
+    const title = post.title.split( '/' )
+    if ( !post.url ) return null
+
+    return (
+      <>
+        <div>
+          <header>
+            <h2>
+              <Link href={post.url} target="_blank" rel="noopener noreferrer">
+                {title[0]}/<strong>{title[1]}</strong>
+              </Link>
+            </h2>
+          </header>
+          {post.description && <p>{post.description}</p>}
+          <Tags items={post.languages} />
+          {post.related && (
+            <Link data-type="related" href={post.related}>
+              Related Post &rarr;
+            </Link>
+          )}
+        </div>
+      </>
+    )
+  }
+
+  const renderDefaultCard = () => (
+    <>
+      {post.coverImage && (
+        <Link href={`/blog/${post.slug}`}>
+          <CoverImage image={post.coverImage} alt={post.coverAlt || ''} />
+        </Link>
+      )}
+      <div>
+        <header>
+          <Date dateString={post.date} />
+          <h2>
+            <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+          </h2>
+        </header>
+        {post.description && <p>{post.description}</p>}
+        <footer>
+          <Tags items={post.tags} linked />
+        </footer>
+      </div>
+    </>
+  )
+
   switch ( type ) {
     case SlugOptions.PHOTO:
-      return (
-        <>
-          {post.coverImage ? (
-            <Link href={`/photo/${post.slug}`}>
-              <CoverImage image={post.coverImage || ''} alt={post.coverAlt || ''} />
-            </Link>
-          ) : null}
-
-          <div>
-            <header>
-              <Date dateString={post.date} />
-              <h2>
-                <Link href={`/photo/${post.slug}`}>{post.title}</Link>
-              </h2>
-            </header>
-
-            {post.description ? <p>{post.description}</p> : null}
-          </div></>
-      )
+      return renderPhotoCard()
     case SlugOptions.WORK:
-      const title = post.title.split( '/' )
-
-      if ( !post.url ) {
-        return
-      }
-
-      return (
-        <>
-          <div>
-            <header>
-              <h2>
-                <Link href={post.url} target="_blank" rel="noopener noreferrer">
-                  {title[0]}/<strong>{title[1]}</strong>
-                </Link>
-              </h2>
-            </header>
-
-            {post.description ? <p>{post.description}</p> : null}
-
-            <Tags items={post.languages} />
-
-            {post.related ? <Link data-type="related" href={post.related} >Related Post &rarr;</Link> : null}
-          </div>
-        </>
-      )
+      return renderWorkCard()
     default:
-      return (
-        <>
-          {post.coverImage ? (
-            <Link href={`/blog/${post.slug}`}>
-              <CoverImage image={post.coverImage || ''} alt={post.coverAlt || ''} />
-            </Link>
-          ) : null}
-
-          <div>
-            <header>
-              <Date dateString={post.date} />
-              <h2>
-                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-              </h2>
-            </header>
-
-            {post.description ? <p>{post.description}</p> : null}
-
-              <footer>
-                <Tags items={post.tags} linked />
-              </footer>
-          </div>
-        </>
-      )
+      return renderDefaultCard()
   }
 }
 
-/**
- * Render a post card for shared content types.
- */
-const PostCard = ( { type, post }: { type: SlugOptions, post: BlogPost } ) => {
+interface PostCardProps {
+  type: SlugOptions;
+  post: BlogPost;
+}
+
+const PostCard: React.FC<PostCardProps> = ( { type, post } ) => {
   return (
     <section data-type={type} key={`${post.subfolder}-${post.slug}`}>
       <CardRender type={type} post={post} />

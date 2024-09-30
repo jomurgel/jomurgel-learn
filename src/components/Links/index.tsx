@@ -5,44 +5,26 @@ import React from 'react'
 import { usePathname } from 'next/navigation'
 import { LinksProps } from '@/types/links'
 
-export const showLinks = [
-  {
-    title: 'About Me',
-    path: '/about',
-  },
-  {
-    title: 'Codex',
-    path: '/codex',
-  },
-  {
-    title: 'Contact',
-    path: '/contact',
-  },
-]
+interface LinkItem {
+  title: string;
+  path: string;
+}
 
-export const tellLinks = [
-  {
-    title: 'All Content',
-    path: '/blog',
-  },
-  {
-    title: 'Writing',
-    path: '/writing',
-  },
-  {
-    title: 'Selected Work',
-    path: '/work',
-  },
-  {
-    title: 'Photography',
-    path: '/photo',
-  },
-  // @todo: phase2
-  // {
-  //   title: 'Notes & Bookmarks',
-  //   path: '/notes',
-  // },
-]
+export const links: { show: LinkItem[]; tell: LinkItem[] } = {
+  show: [
+    { title: 'About Me', path: '/about' },
+    { title: 'Codex', path: '/codex' },
+    { title: 'Contact', path: '/contact' },
+  ],
+  tell: [
+    { title: 'All Content', path: '/blog' },
+    { title: 'Writing', path: '/writing' },
+    { title: 'Selected Work', path: '/work' },
+    { title: 'Photography', path: '/photo' },
+    // @todo: phase2
+    // { title: 'Notes & Bookmarks', path: '/notes' },
+  ],
+}
 
 const Links: React.FC<LinksProps> = ( { handleClick } ) => {
   const pathName = usePathname()
@@ -55,23 +37,26 @@ const Links: React.FC<LinksProps> = ( { handleClick } ) => {
     window.location.href = href
   }
 
-  /**
-   * @todo: build a nav-item component.
-   */
   return (
     <>
-      <div>
-        <span id="show-tell">Show/Tell</span>
-        <ul aria-labelledby="show-tell">
-          {showLinks.map( ( link ) => <li key={link.title}><Link onClick={() => handleLink( link.path )} href={link.path} className={`${pathName === `${link.path}/` ? 'current' : ''}`}>{link.title}</Link></li> )}
-        </ul>
-      </div>
-      <div>
-        <span id="read-write">Read/Write</span>
-        <ul aria-labelledby="read-write">
-          {tellLinks.map( ( link ) => <li key={link.title}><Link onClick={() => handleLink( link.path )} href={link.path} className={`${pathName === `${link.path}/` ? 'current' : ''}`}>{link.title}</Link></li> )}
-        </ul>
-      </div>
+      {Object.entries( links ).map( ( [ key, linkGroup ] ) => (
+        <div key={key}>
+          <span id={key}>{key.charAt( 0 ).toUpperCase() + key.slice( 1 )}</span>
+          <ul aria-labelledby={`${key}-title`}>
+            {linkGroup.map( ( link ) => (
+              <li key={link.title}>
+                <Link
+                  onClick={() => handleLink( link.path )}
+                  href={link.path}
+                  className={pathName === `${link.path}/` ? 'current' : ''}
+                >
+                  {link.title}
+                </Link>
+              </li>
+            ) )}
+          </ul>
+        </div>
+      ) )}
     </>
   )
 }

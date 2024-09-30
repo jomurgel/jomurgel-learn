@@ -1,6 +1,7 @@
 import Link from 'next/link'
+import React from 'react'
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <footer>
       <div>&copy; 2007-2024 &mdash; Jo Murgel</div>
