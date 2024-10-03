@@ -724,10 +724,9 @@ section {
       height: auto;
       width: 100%;
       margin-bottom: var(--pad);
-      aspect-ratio: 3/2;
+      aspect-ratio: 1/1;
 
       @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        aspect-ratio: 1/1;
         height: calc(var(--pad-3) * 3);
         width: calc(var(--pad-3) * 3);
       }

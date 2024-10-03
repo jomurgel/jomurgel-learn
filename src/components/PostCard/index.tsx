@@ -43,7 +43,6 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
       )}
       <div>
         <header>
-          <Date dateString={post.date} />
           <h2>
             <Link href={`/photo/${post.slug}`}>{post.title}</Link>
           </h2>
