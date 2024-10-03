@@ -17,6 +17,7 @@ const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
   const components = useMDXComponents( {} as MDXComponents )
   const isBlog = post.subfolder === 'blog'
   const isFeatured = post.coverImage && isBlog
+  const isPhoto = post.subfolder === 'photo'
 
   return (
     <main>
@@ -26,7 +27,7 @@ const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
         data-layout={isFeatured ? 'featured' : undefined}
       >
         <header>
-          <Date dateString={post.date} />
+          {!isPhoto ? <Date dateString={post.date} /> : null}
           <h1>{post.title}</h1>
           {post.description && <p>{post.description}</p>}
           {isFeatured && post.coverImage && (
