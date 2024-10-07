@@ -487,6 +487,16 @@ section {
     margin-bottom: var(--pad-2);
   }
 
+  &[data-type="codex"] {
+
+    @media screen and (min-width: map.get($breakpoints, "media-md")) {
+
+      ul {
+        column-count: 2;
+      }
+    }
+  }
+
   &[data-type="blog"] {
     border-radius: var(--border-radius);
     align-items: center;

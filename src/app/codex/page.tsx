@@ -17,7 +17,7 @@ const Codex: React.FC  = () => {
 
       <hr />
 
-      <section>
+      <section data-type="codex">
         <Content />
       </section>
     </main>
