@@ -64,7 +64,7 @@ const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
 
       <footer>
         <Tags items={post.tags} linked />
-        <p><Link href="/blog">Back to Blog</Link></p>
+        <p><Link href={`/${post.subfolder}`}>Back to {post.subfolder.charAt( 0 ).toUpperCase() + post.subfolder.slice( 1 )}</Link></p>
       </footer>
     </main>
   )
