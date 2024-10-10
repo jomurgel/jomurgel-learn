@@ -5,8 +5,9 @@ import Link from 'next/link'
 
 const Home: React.FC = () => {
   const quickLinks = [
-    ...links.show,
+    { title: 'Photography', path: '/photo' },
     { title: 'Blog', path: '/blog' },
+    ...links.show,
   ]
 
   return (
@@ -18,7 +19,7 @@ const Home: React.FC = () => {
             a Full-stack Engineer.
           </h1>
           <p>
-            I'm currently <Link href="/contact">available for hire</Link>, but prior to this, I was a Principal Software Engineer at <a href="https://pmc.com" target="_blank" rel="noopener noreferrer">PMC</a>.
+            I'm currently <Link href="/contact">available for hire</Link>, as a Front-end Engineer, UI Consultant, or General Maintenance contractor. Previously, I was a Principal Software Engineer at <a href="https://pmc.com" target="_blank" rel="noopener noreferrer">PMC</a>.
           </p>
 
           <nav data-type="top-links">
