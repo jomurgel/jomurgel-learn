@@ -752,7 +752,7 @@ section {
 
       @media screen and (min-width: map.get($breakpoints, "media-md")) {
         padding: var(--pad);
-        flex: 0 0 50%;
+        flex: 1 0 50%;
       }
     }
 

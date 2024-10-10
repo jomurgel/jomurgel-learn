@@ -6,42 +6,13 @@ import slugify from 'slugify'
 
 export enum SlugOptions {
   BLOG = 'blog',
-  CAREER = 'career',
   WORK = 'work',
   HIDDEN = 'hidden',
+  WRITING = 'writing',
   PHOTO = 'photo',
 }
 
 const contentDirectory = join( process.cwd(), 'content' )
-
-/**
- * Get all content from the specified subfolder.
- */
-export const getContentBySubfolder = ( subfolder: SlugOptions ): BlogPost[] => {
-  const directoryPath = join( contentDirectory, subfolder )
-  const filenames = fs.readdirSync( directoryPath )
-
-  const allContent = filenames.map( ( filename ) => {
-    // Read the content of the file
-    const filePath = join( directoryPath, filename )
-    const fileContent = fs.readFileSync( filePath, 'utf8' )
-
-    // Parse the file using gray-matter to extract metadata
-    const { data, content } = matter( fileContent )
-
-    // Generate slug from the filename
-    const slug = filename.replace( /\.mdx?$/, '' )
-
-    return {
-      ...data,
-      content,
-      slug,
-      subfolder,
-    }
-  } )
-
-  return allContent as BlogPost[]
-}
 
 /**
  * Get all directories in content.
@@ -62,7 +33,7 @@ export const getAllContent = () => {
   let allContent = [] as BlogPost[]
 
   subfolders.forEach( ( subfolder ) => {
-    const content = getContentBySubfolder( subfolder as SlugOptions )
+    const content = getContentByType( subfolder as SlugOptions )
     allContent = allContent.concat( content )
   } )
 
@@ -75,7 +46,7 @@ export const getAllContent = () => {
  * Get a single content by its slug.
  */
 export const getContentBySlug = ( subfolder: SlugOptions, slug: string ) => {
-  const allContent = getContentBySubfolder( subfolder )
+  const allContent = getContentByType( subfolder )
   return allContent.find( ( item ) => item.slug === slug ) || null
 }
 
@@ -94,7 +65,7 @@ export function getPostBySlug( type: SlugOptions, slug: string ): BlogPost {
 /**
  * Get all posts.
  */
-export function getAllPostsByType( type: SlugOptions ): BlogPost[] {
+export function getContentByType( type: SlugOptions ): BlogPost[] {
   const slugs = getPostSlugs( type )
   const posts = slugs
     .map( ( slug ) => getPostBySlug( type, slug ) )
