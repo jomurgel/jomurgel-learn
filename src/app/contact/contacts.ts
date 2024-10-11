@@ -55,7 +55,7 @@ const contacts = [
       {
         label: 'Discord Server',
         href: 'https://discord.gg/wQWUnKntpn',
-        display: 'Dev Support',
+        display: 'Creative Support',
       },
     ],
   },

@@ -188,3 +188,33 @@ aside[data-type="social-share"],
     }
   }
 }
+
+//-----------------------------------------
+// Learn Sections
+//-----------------------------------------
+[data-type="start"] {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--border-radius);
+  color: var(--light);
+  display: inline-table;
+  font-size: calc(var(--font-size) * 0.75);
+  font-weight: 600;
+  font-weight: bold;
+  line-height: 1;
+  margin-right: var(--pad);
+  padding: calc(var(--pad) / 2);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:visited {
+    color: var(--light);
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--light);
+    box-shadow: 0 0 var(--pad-3) var(--primary);
+  }
+}

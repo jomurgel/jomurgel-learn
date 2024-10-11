@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { getAllContent, getContentByType, getPostTags, SlugOptions } from '@/lib/api'
+import { getContentByTypeReversed, getAllContent, getContentByType, getPostTags, SlugOptions } from '@/lib/api'
 import PostCard from '@/components/PostCard'
 import Link from 'next/link'
 import slugify from 'slugify'
@@ -20,6 +20,9 @@ const SectionPage = async ( { params }: SectionPageParams ) => {
 
   if ( section === 'blog' ) {
     allPosts = await getAllContent()
+  } else if ( section === 'learn' ) {
+    const targetSection = section !== 'learn' ? section : 'learn'
+    allPosts = await getContentByTypeReversed( targetSection as SlugOptions )
   } else {
     const targetSection = section !== 'writing' ? section : 'blog'
     allPosts = await getContentByType( targetSection as SlugOptions )
@@ -53,15 +56,20 @@ const SectionPage = async ( { params }: SectionPageParams ) => {
           </aside>
         )}
 
-        <div data-layout="main-content">
+        <div data-layout={section}>
           {allPosts.length > 0 ? (
-            allPosts.map( ( post, index ) => (
-              <PostCard
-                key={`${post.slug}-${index}-${post.subfolder}`}
-                type={post.subfolder as SlugOptions}
-                post={post}
-              />
-            ) )
+            allPosts.map( ( post, index ) => {
+              if ( post.slug === 'start-here' ) {
+                return null
+              }
+              return (
+                <PostCard
+                  key={`${post.slug}-${index}-${post.subfolder}`}
+                  type={post.subfolder as SlugOptions}
+                  post={post}
+                />
+              )
+            } )
           ) : (
             <p>&#9785; Currently working to migrate content. Check back soon.</p>
           )}

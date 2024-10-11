@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
 
-export type SectionName = 'blog' | 'work' | 'photo' | 'writing' | 'hidden';
+export type SectionName = 'blog' | 'work' | 'learn' | 'photo' | 'writing' | 'hidden';
 
 interface SectionHeaderProps {
   section: SectionName;
@@ -15,7 +16,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ( { section } ) => {
           <header>
             <h1 aria-label="All Content for Jo Murgel">Dear universe,</h1>
             <p>
-              Writing, Work, and Photography.<br/>
+              Writing, Work, and Photography.<br />
               <Link href="/feed.xml" target="_blank" rel="noopener noreferrer">
                 RSS
               </Link>
@@ -31,6 +32,20 @@ const SectionHeader: React.FC<SectionHeaderProps> = ( { section } ) => {
           <header>
             <h1 aria-label="Photos for Jo Murgel">Photography</h1>
             <p>Did you know that I'm also a photographer? You do now.</p>
+          </header>
+        </section>
+      )
+    case 'learn':
+      const title = 'Learn Something New!'
+      const description = 'A compilation of small tutorials to help learn a new thing'
+      return (
+        <section data-type="top">
+          <header>
+            <h1>{title}</h1>
+            <p>
+              {description}<br/><br/>
+              <Link href="/learn/start-here" data-type="start">Start Here</Link>
+            </p>
           </header>
         </section>
       )

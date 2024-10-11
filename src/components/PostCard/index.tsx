@@ -78,6 +78,22 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
     )
   }
 
+  const renderLearnCard = () => (
+    <div>
+      {post.coverImage ? <div className="image-background" style={{ backgroundImage: `url(${ post.coverImage })`}} /> : null}
+      <header>
+        <h2>
+          <Link href={`/learn/${post.slug}`}>{post.title}</Link>
+        </h2>
+      </header>
+      {post.description && <p>{post.description}</p>}
+      <footer>
+        <Link href={`/learn/${post.slug}`} data-type="start">Learn More</Link>
+        <Tags items={post.languages} linked />
+      </footer>
+    </div>
+  )
+
   const renderDefaultCard = () => (
     <>
       {post.coverImage && (
@@ -103,6 +119,8 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
   switch ( type ) {
     case SlugOptions.PHOTO:
       return renderPhotoCard()
+    case SlugOptions.LEARN:
+      return renderLearnCard()
     case SlugOptions.WORK:
       return renderWorkCard()
     default:

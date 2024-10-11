@@ -6,10 +6,11 @@ import slugify from 'slugify'
 
 export enum SlugOptions {
   BLOG = 'blog',
-  WORK = 'work',
   HIDDEN = 'hidden',
-  WRITING = 'writing',
+  LEARN = 'learn',
   PHOTO = 'photo',
+  WORK = 'work',
+  WRITING = 'writing',
 }
 
 const contentDirectory = join( process.cwd(), 'content' )
@@ -21,6 +22,8 @@ export function getDirectories() {
   return fs
     .readdirSync( contentDirectory, { withFileTypes: true } )
     .filter( ( dirent ) => dirent.isDirectory() )
+    // Exclude learn from the main feed.
+    .filter( ( dir ) => dir.name !== 'learn' )
     .map( ( dirent ) => dirent.name )
     .filter( ( name ) => name !== SlugOptions.HIDDEN )
 }
@@ -63,7 +66,8 @@ export function getPostBySlug( type: SlugOptions, slug: string ): BlogPost {
 }
 
 /**
- * Get all posts.
+ * Get all posts type type, reversed.
+ * @todo: combind with other to keep code DRY.
  */
 export function getContentByType( type: SlugOptions ): BlogPost[] {
   const slugs = getPostSlugs( type )
@@ -71,6 +75,19 @@ export function getContentByType( type: SlugOptions ): BlogPost[] {
     .map( ( slug ) => getPostBySlug( type, slug ) )
     // sort posts by date in descending order
     .sort( ( post1, post2 ) => ( post1.date > post2.date ? -1 : 1 ) )
+  return posts
+}
+
+/**
+ * Get all posts type type, reversed.
+ * @todo: combind with other to keep code DRY.
+ */
+export function getContentByTypeReversed( type: SlugOptions ): BlogPost[] {
+  const slugs = getPostSlugs( type )
+  const posts = slugs
+    .map( ( slug ) => getPostBySlug( type, slug ) )
+    // sort posts by date in descending order
+    .sort( ( post1, post2 ) => ( post1.date > post2.date ? 1 : -1 ) )
   return posts
 }
 
