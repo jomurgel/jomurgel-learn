@@ -37,7 +37,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ( { section } ) => {
       )
     case 'learn':
       const title = 'Learn Something New!'
-      const description = 'A compilation of small tutorials to help learn a new thing'
+      const description = 'A compilation of small tutorials to help learn a new thing.'
       return (
         <section data-type="top">
           <header>
