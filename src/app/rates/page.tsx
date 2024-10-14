@@ -36,11 +36,11 @@ const Rates: React.FC = () => {
         <hr />
 
         <RateSection title="Design" description="Largely graphics, marks, icons, identity, website UI design, app design, wireframes, etc." rate="$105/hr" />
-        <RateSection title="Frontend Development" description="Website development, style, structure, and interactions including things like <a href='https://wordpress.org' target='_blank' rel='noopener noreferrer'>WordPress</a> theme development." rate="$65/hr" />
-        <RateSection title="JavaScript & Block Development" description="Custom <a href='https://wordpress.org/documentation/article/wordpress-block-editor/' target='_blank' rel='noopener noreferrer'>Block Editor</a> features. Includes blocks, sidebar panels, customizations, etc. Headless apps, websites utilizing JavaScript frameworks (like <a href='https://nextjs.org' target='_blank' rel='noopener noreferrer'>Next.js</a>, <a href='https://gatsbyjs.com' target='_blank' rel='noopener noreferrer'>Gatsby</a>, etc.), and React.js or Vue.js features or applications." rate="$80/hr" />
-        <RateSection title="Backend Development" description="Backend features including things like data handling or migrations, server or staging site setup, WordPress plugin development." rate="$85/hr" />
-        <RateSection title="Support & Maintenance" description="General support. Plugin updates, core WordPress updates, etc. This also includes any hours spent on meetings, phone calls, emails, discovery, etc." rate="$35/hr" />
-        <RateSection title="Emergency Support" description="On-call or after-hours support." rate="$250/hr" />
+        <RateSection title="Frontend Development" description="Website development, style, structure, and interactions including things like <a href='https://wordpress.org' target='_blank' rel='noopener noreferrer'>WordPress</a> theme development." rate="$90/hr" />
+        <RateSection title="JavaScript & Block Development" description="Custom <a href='https://wordpress.org/documentation/article/wordpress-block-editor/' target='_blank' rel='noopener noreferrer'>Block Editor</a> features. Includes blocks, sidebar panels, customizations, etc. Headless apps, websites utilizing JavaScript frameworks (like <a href='https://nextjs.org' target='_blank' rel='noopener noreferrer'>Next.js</a>, <a href='https://gatsbyjs.com' target='_blank' rel='noopener noreferrer'>Gatsby</a>, etc.), and React.js or Vue.js features or applications." rate="$110/hr" />
+        <RateSection title="Backend Development" description="Backend features including things like data handling or migrations, server or staging site setup, WordPress plugin development." rate="$100/hr" />
+        <RateSection title="Support & Maintenance" description="General support. Plugin updates, core WordPress updates, etc. This also includes any hours spent on meetings, phone calls, emails, discovery, etc." rate="$45/hr" />
+        <RateSection title="Emergency Support" description="On-call or after-hours support." rate="$350/hr" />
 
         <h2>Retainers</h2>
         <p>Reach out for pricing on retainers. These are usually structured as a set number of hours per month; use them or lose them. They may include some amount of emergency support. Retainer hours can be used for any of the above types of work.</p>
