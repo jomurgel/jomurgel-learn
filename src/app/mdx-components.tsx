@@ -44,6 +44,7 @@ export function useMDXComponents( components: MDXComponents ): MDXComponents {
       if ( !children ) return
       return <h6 id={slufiyString( children as string )}>{children}</h6>
     },
+    Link,
     ...components,
   }
 }
