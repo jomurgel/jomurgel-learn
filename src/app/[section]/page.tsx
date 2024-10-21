@@ -84,14 +84,26 @@ export function generateMetadata( { params }: SectionPageParams ): Metadata {
   const title = `${params.section.charAt( 0 ).toUpperCase() + params.section.slice( 1 )} | jomurgel.com`
   const description = `The part of the website with ${params.section} content.`
 
-  return {
+  const meta = {
     title,
     description,
     openGraph: {
       title,
       description,
     },
+    robots: {},
   }
+
+  // @todo: hide from search for now.
+  if ( 'learn' === params.section ) {
+    meta.robots = {
+      follow: false,
+      index: false,
+      nocache: false,
+    }
+  }
+
+  return meta
 }
 
 export function generateStaticParams() {

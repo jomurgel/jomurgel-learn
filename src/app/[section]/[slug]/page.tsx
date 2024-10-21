@@ -42,15 +42,26 @@ export function generateMetadata( { params }: Props ): Metadata {
     images.push( post.coverImage )
   }
 
-  return {
+  const meta = {
     title,
     description,
     openGraph: {
       title,
       description,
-      images,
     },
+    robots: {},
   }
+
+  // @todo: hide from search for now.
+  if ( 'LEARN' === section ) {
+    meta.robots = {
+      follow: false,
+      index: false,
+      nocache: false,
+    }
+  }
+
+  return meta
 }
 
 export function generateStaticParams() {

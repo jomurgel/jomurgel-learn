@@ -17,7 +17,8 @@ export const links: { show: LinkItem[]; tell: LinkItem[] } = {
     // @todo: add setup, tbd.
     // Contribute back to https://github.com/wesbos/awesome-uses/?tab=readme-ov-file
     // { title: 'My Setup', path: '/uses' },
-    { title: 'Learning', path: '/learn' },
+    // @todo: re-add once more content exists. Taking longer than expected.
+    // { title: 'Learning', path: '/learn' },
     { title: 'Contact', path: '/contact' },
   ],
   tell: [
