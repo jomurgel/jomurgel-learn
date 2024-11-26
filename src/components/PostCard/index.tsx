@@ -119,8 +119,6 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
   switch ( type ) {
     case SlugOptions.PHOTO:
       return renderPhotoCard()
-    case SlugOptions.LEARN:
-      return renderLearnCard()
     case SlugOptions.WORK:
       return renderWorkCard()
     default:

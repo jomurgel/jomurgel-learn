@@ -52,15 +52,6 @@ export function generateMetadata( { params }: Props ): Metadata {
     robots: {},
   }
 
-  // @todo: hide from search for now.
-  if ( 'LEARN' === section ) {
-    meta.robots = {
-      follow: false,
-      index: false,
-      nocache: false,
-    }
-  }
-
   return meta
 }
 

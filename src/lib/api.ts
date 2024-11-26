@@ -7,7 +7,6 @@ import slugify from 'slugify'
 export enum SlugOptions {
   BLOG = 'blog',
   HIDDEN = 'hidden',
-  LEARN = 'learn',
   PHOTO = 'photo',
   WORK = 'work',
   WRITING = 'writing',
@@ -22,8 +21,6 @@ export function getDirectories() {
   return fs
     .readdirSync( contentDirectory, { withFileTypes: true } )
     .filter( ( dirent ) => dirent.isDirectory() )
-    // Exclude learn from the main feed.
-    .filter( ( dir ) => dir.name !== 'learn' )
     .map( ( dirent ) => dirent.name )
     .filter( ( name ) => name !== SlugOptions.HIDDEN )
 }
