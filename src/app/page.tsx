@@ -4,12 +4,6 @@ import { links } from '@/components/Links'
 import Link from 'next/link'
 
 const Home: React.FC = () => {
-  const quickLinks = [
-    { title: 'Photography', path: '/photo' },
-    { title: 'Blog', path: '/blog' },
-    ...links.show,
-  ]
-
   return (
     <main>
       <section data-type="top">
