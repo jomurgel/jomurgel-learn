@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import React from 'react'
 
 export const metadata: Metadata = {
-  title: 'Jo Murgel\'s Freelance Rates',
+  title: 'Freelance Rates',
   description: 'Rates for everything from design to server configurations.',
   openGraph: {
-    title: 'Jo Murgel\'s Freelance Rates',
+    title: 'Freelance Rates',
     description: 'Rates for everything from design to server configurations.',
   },
   robots: {

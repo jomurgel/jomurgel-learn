@@ -1,6 +1,5 @@
 'use client'
 
-import { links } from '@/components/Links'
 import Link from 'next/link'
 
 const Home: React.FC = () => {

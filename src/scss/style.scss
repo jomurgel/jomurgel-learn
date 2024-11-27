@@ -313,7 +313,7 @@ main {
             border-radius: var(--border-radius);
           }
         }
-    }
+      }
 
       + hr {
         text-align: center;
@@ -1209,7 +1209,7 @@ u {
 }
 
 hr {
-  margin: var(--pad-3) auto;
+  margin: var(--pad-3) 0;
   border: 0;
   padding-bottom: var(--pad);
   letter-spacing: 0;
