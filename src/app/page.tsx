@@ -16,21 +16,15 @@ const Home: React.FC = () => {
         <header>
           <h1>
             &#9786; I'm Jo Murgel,<br />
-            a Full-stack Engineer.
+            a Full-stack Web Developer.
           </h1>
-          <p>
-            I'm currently <Link href="/contact">available for hire</Link>, as a Front-end Engineer, UI Consultant, or General Maintenance contractor. Previously, I was a Principal Software Engineer at <a href="https://pmc.com" target="_blank" rel="noopener noreferrer">PMC</a>.
-          </p>
+          <h2>
+            This is my portfolio, landing page, and online notepad.
+          </h2>
 
-          <nav data-type="top-links">
-            <ul>
-              {quickLinks.map( ( item ) => (
-                <li key={item.title}>
-                  <Link href={item.path}>{item.title}</Link>
-                </li>
-              ) )}
-            </ul>
-          </nav>
+          <p>
+            I'm a full-stack web developer, <Link href="https://wordpress.org" target="_blank">WordPress</Link> expert, and design &amp; accessibility advocate. <Link href="/contact">Hire me</Link>.
+          </p>
         </header>
       </section>
     </main>
