@@ -700,7 +700,6 @@ section {
 
       @media screen and (min-width: map.get($breakpoints, "media-md")) {
         width: calc(var(--pad-2) * 8);
-        height: calc(var(--pad-2) * 6);
         margin: 0;
         order: 10;
       }

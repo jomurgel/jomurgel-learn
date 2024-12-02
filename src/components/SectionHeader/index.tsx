@@ -53,7 +53,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ( { section } ) => {
       return (
         <section data-type="top">
           <header>
-            <h1 aria-label="Work for Jo Murgel">Selected Works</h1>
+            <h1 aria-label="Work for Jo Murgel">Selected Work</h1>
             <p>Some public repos of past and current work.</p>
           </header>
         </section>

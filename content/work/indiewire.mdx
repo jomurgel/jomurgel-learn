@@ -3,8 +3,8 @@ title: "Indiewire"
 description: "IndieWire is an online publication covering film, TV, and digital news, reviews, and interviews for passionate fans and industry insiders."
 date: "2024-03-01"
 external: "https://www.indiewire.com/"
-# coverImage: "/brookings/cover.jpg"
-# coverAlt: "Brookings homepage screenshot circa 2019."
+coverImage: "/indiewire/cover.jpg"
+coverAlt: "Indiewire Homepage."
 languages: [
   "css",
   "wordpress",
@@ -14,8 +14,15 @@ languages: [
 tags: [
   "css",
   "wordpress",
-  "enterprise"
+  "enterprise",
+  "react"
 ]
 ---
 
-Test
+Indiewire was one of several PMC-owned and operated brands. I was in charge of the migration and re-architecture of the WordPress CMS updates to use the Block Editor. You can read more about them in that blog post: [PMC Gutenberg](/blog/pmc-gutenberg/).
+
+In addition to being responsible for frontend maintenance and legacy support when a new design system was implemented, and the Gutenberg Block Editor migration, I was part of the team that implemented a new design system (discussed briefly in the post above) which required not only new frontend design and architecture, but a full suite of custom backend functionality to pull it all together.
+
+The homepage was the biggest lift which is run by an automated curation system which provides the editor the ability to auto-hydrate every section on the homepage using a custom set of APIs and backend tools. It also allowed for custom configurations for defining where and when the blocks in the editor and the frontend should be hydrated or with what content allowing for pre-defined logic to be set. The editor could then change the queries that pulled in content on a per-section basis, manually edit, move, or remove any of the content as they see fit. This system allowed for auto-curation of most content with manually curated "featured" content as the brands needed.
+
+![Indiewire Homepage](/indiewire/homepage.jpg)
