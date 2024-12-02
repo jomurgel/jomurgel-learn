@@ -16,7 +16,8 @@ const Home: React.FC = () => {
           </h2>
 
           <p>
-            I'm a full-stack web developer, <Link href="https://wordpress.org" target="_blank">WordPress</Link> expert, and design &amp; accessibility advocate. <Link href="/contact">Hire me</Link>.
+            I'm a full-stack web developer, <Link href="https://wordpress.org" target="_blank">WordPress</Link> expert, and design &amp; accessibility advocate.<br />
+            <Link href="/contact">Hire me</Link> or check out my <Link href="/work">selected works</Link>.
           </p>
         </header>
       </section>
