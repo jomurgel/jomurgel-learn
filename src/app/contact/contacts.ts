@@ -52,11 +52,6 @@ const contacts = [
         href: 'https://www.reddit.com/user/jomurgable/',
         display: '@jomurgable',
       },
-      {
-        label: 'Discord Server',
-        href: 'https://discord.gg/wQWUnKntpn',
-        display: 'Creative Support',
-      },
     ],
   },
 ]
