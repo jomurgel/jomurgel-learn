@@ -54,6 +54,8 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
 
   const renderWorkCard = () => {
     const title = post.title.split( '/' )
+    const isInternalLink = post.url && ( post.url.startsWith( '/' ) )
+
     if ( !post.url ) return null
 
     return (
@@ -61,9 +63,15 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
         <div>
           <header>
             <h2>
+              {isInternalLink ? (
+                <Link href={post.url}>
+                {title[0]}/<strong>{title[1]}</strong>
+                </Link>
+              ) : (
               <Link href={post.url} target="_blank" rel="noopener noreferrer">
                 {title[0]}/<strong>{title[1]}</strong>
               </Link>
+              )}
             </h2>
           </header>
           {post.description && <p>{post.description}</p>}
@@ -73,26 +81,15 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
               Related Post &rarr;
             </Link>
           )}
+          {post.external && (
+            <Link data-type="related" href={post.external}>
+              Visit Site &rarr;
+            </Link>
+          )}
         </div>
       </>
     )
   }
-
-  const renderLearnCard = () => (
-    <div>
-      {post.coverImage ? <div className="image-background" style={{ backgroundImage: `url(${ post.coverImage })`}} /> : null}
-      <header>
-        <h2>
-          <Link href={`/learn/${post.slug}`}>{post.title}</Link>
-        </h2>
-      </header>
-      {post.description && <p>{post.description}</p>}
-      <footer>
-        <Link href={`/learn/${post.slug}`} data-type="start">Learn More</Link>
-        <Tags items={post.languages} linked />
-      </footer>
-    </div>
-  )
 
   const renderDefaultCard = () => (
     <>

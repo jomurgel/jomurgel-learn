@@ -16,8 +16,8 @@ interface SinglePostProps {
 const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
   const components = useMDXComponents( {} as MDXComponents )
   const isBlog = post.subfolder === 'blog'
-  const isLearn = post.subfolder === 'learn'
-  const isFeatured = post.coverImage && ( isBlog || isLearn )
+  const isWork = post.subfolder === 'work'
+  const isFeatured = post.coverImage && ( isBlog || isWork )
   const isPhoto = post.subfolder === 'photo'
 
   return (
@@ -28,7 +28,7 @@ const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
         data-layout={isFeatured ? 'featured' : undefined}
       >
         <header>
-          {!isPhoto && !isLearn ? <Date dateString={post.date} /> : null}
+          {!isPhoto && !isWork ? <Date dateString={post.date} /> : null}
           <h1>{post.title}</h1>
           {post.description && <p>{post.description}</p>}
           {isFeatured && post.coverImage && (
@@ -50,13 +50,13 @@ const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
 
       <hr />
 
-      <div data-layout={isBlog || isLearn ? 'has-sidebar' : undefined}>
-        {isBlog || isLearn && (
+      <div data-layout={isBlog ? 'has-sidebar' : undefined}>
+        {isBlog && (
           <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} />
         )}
 
-        <section data-layout={isBlog || isLearn ? 'main-content' : undefined}>
-          {!isBlog && !isLearn && (
+        <section data-layout={isBlog ? 'main-content' : undefined}>
+          {!isBlog && (
             <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} />
           )}
           <MDXRemote source={post.content} components={components} options={{ mdxOptions: options }} />

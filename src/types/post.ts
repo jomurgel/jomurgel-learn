@@ -13,6 +13,7 @@ export interface BlogPost {
   date: string;
   description?: string;
   related?: string;
+  external?: string;
   id: string;
   url?: string;
   languages?: Languages
