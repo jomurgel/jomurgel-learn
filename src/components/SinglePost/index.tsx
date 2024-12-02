@@ -50,13 +50,13 @@ const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
 
       <hr />
 
-      <div data-layout={isBlog ? 'has-sidebar' : undefined}>
-        {isBlog && (
+      <div data-layout={isBlog || isWork ? 'has-sidebar' : undefined}>
+        {isBlog || isWork && (
           <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} />
         )}
 
-        <section data-layout={isBlog ? 'main-content' : undefined}>
-          {!isBlog && (
+        <section data-layout={isBlog || isWork ? 'main-content' : undefined}>
+          {!isBlog && !isWork && (
             <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} />
           )}
           <MDXRemote source={post.content} components={components} options={{ mdxOptions: options }} />

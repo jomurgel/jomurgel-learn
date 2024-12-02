@@ -54,14 +54,12 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
 
   const renderWorkCard = () => {
     const title = post.title.split( '/' )
-    const isInternalLink = post.url && ( post.url.startsWith( '/' ) )
-
-    if ( !post.url ) return null
+    const isInternalLink = post.url && ( post.url.startsWith( '/' ) ) || !post.url && post.slug
 
     return (
       <>
         {post.coverImage && (
-          <Link href={`/photo/${post.slug}`}>
+          <Link href={`/work/${post.slug}`}>
             <CoverImage image={post.coverImage} alt={post.coverAlt || ''} />
           </Link>
         )}
@@ -69,14 +67,14 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
         <div>
           <header>
             <h2>
-              {isInternalLink ? (
-                <Link href={post.url}>
-                {title[0]}/<strong>{title[1]}</strong>
+              {!isInternalLink && post.url ? (
+                <Link href={post.url} target="_blank" rel="noopener noreferrer">
+                  {title[0]}/<strong>{title[1]}</strong>
                 </Link>
               ) : (
-              <Link href={post.url} target="_blank" rel="noopener noreferrer">
-                {title[0]}/<strong>{title[1]}</strong>
-              </Link>
+                <Link href={post.url || `/work/${post.slug}`}>
+                  <strong>{title[0]}</strong>
+                </Link>
               )}
             </h2>
           </header>
