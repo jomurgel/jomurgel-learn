@@ -676,12 +676,39 @@ section {
     border: 1px solid var(--light-gray);
     border-radius: var(--border-radius);
     padding: var(--pad);
-    align-items: center;
-    display: flex;
     margin-bottom: calc( var(--pad-2) * 2.5 );
+
+    @media screen and (min-width: map.get($breakpoints, "media-md")) {
+      align-items: center;
+      display: flex;
+    }
+
+    > a {
+      order: 0;
+
+      @media screen and (min-width: map.get($breakpoints, "media-md")) {
+        order: 10;
+      }
+    }
+
+    > a [data-type="thumbnail"] {
+      height: auto;
+      margin-bottom: var(--pad);
+      width: 100%;
+      aspect-ratio: 3/2;
+      order: 0;
+
+      @media screen and (min-width: map.get($breakpoints, "media-md")) {
+        width: calc(var(--pad-2) * 8);
+        height: calc(var(--pad-2) * 6);
+        margin: 0;
+        order: 10;
+      }
+    }
 
     header {
       margin: 0;
+      order: 0;
     }
 
     > div {

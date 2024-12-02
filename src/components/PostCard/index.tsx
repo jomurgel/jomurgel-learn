@@ -60,6 +60,12 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
 
     return (
       <>
+        {post.coverImage && (
+          <Link href={`/photo/${post.slug}`}>
+            <CoverImage image={post.coverImage} alt={post.coverAlt || ''} />
+          </Link>
+        )}
+
         <div>
           <header>
             <h2>
