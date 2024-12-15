@@ -38,6 +38,16 @@ const contacts = [
         display: '@jomurgel',
       },
       {
+        label: 'Cara',
+        href: 'https://cara.app/jomurgel',
+        display: '@jomurgel',
+      },
+      {
+        label: 'Bluesky',
+        href: 'https://bsky.app/profile/jomurgel.bsky.social',
+        display: '@jomurgel',
+      },
+      {
         label: 'Threads',
         href: 'https://www.threads.net/@jomurgel',
         display: '@jomurgel',
