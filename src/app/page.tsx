@@ -9,7 +9,7 @@ const Home: React.FC = () => {
         <header>
           <h1>
             &#9786; I'm Jo Murgel,<br />
-            a Full-stack Web Developer and Artist.
+            a Full-stack Web Dev and Artist.
           </h1>
           <h2>
             This is my portfolio, landing page, and online notepad.
