@@ -35,5 +35,8 @@ jobs:
       - name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
+      - name: Debug SSH connection
+        run: ssh -v ${{ secrets.USERNAME }}@${{ secrets.HOST }} "echo 'SSH connection works'"
+
       - name: Deploy with rsync
         run: rsync -avz --delete ./out/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIRECTORY }}
