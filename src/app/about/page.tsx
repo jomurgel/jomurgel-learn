@@ -6,12 +6,12 @@ import Content from './content.mdx'
 const About: React.FC = () => {
   return (
     <main>
-      <section data-type="top">
+      <section>
         <header>
           <h1 aria-label="About Jo Murgel">
-            Hello, I'm Jo Murgel.
+            About Me
           </h1>
-          <p>I'm a full-stack web developer and artist living in Boise, ID.</p>
+
           <Image
             src="/about.jpg"
             alt="A photo of tattooed legs draped over the edge of a cliff overlooking rocks and the Snake river."

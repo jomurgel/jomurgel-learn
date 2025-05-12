@@ -64,7 +64,7 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
           </Link>
         )}
 
-        <div>
+        <div data-layout={!isInternalLink ? 'left' : 'right'}>
           <header>
             <h2>
               {!isInternalLink && post.url ? (
@@ -95,7 +95,9 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
     )
   }
 
-  const renderDefaultCard = () => (
+  const renderDefaultCard = () => {
+    const isShorty = post?.tags.includes( 'shorty' )
+    return (
     <>
       {post.coverImage && (
         <Link href={`/blog/${post.slug}`}>
@@ -106,7 +108,11 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
         <header>
           <Date dateString={post.date} />
           <h2>
-            <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+            {isShorty ? (
+              <Link href={`/blog/${post.slug}`}> <em>Shorty:</em> {post.title}</Link>
+            ) : (
+              <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+            )}
           </h2>
         </header>
         {post.description && <p>{post.description}</p>}
@@ -116,6 +122,7 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
       </div>
     </>
   )
+}
 
   switch ( type ) {
     case SlugOptions.PHOTO:

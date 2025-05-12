@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { getContentByType, SlugOptions, getContentBySlug } from '@/lib/api'
 import { notFound } from 'next/navigation'
 import SinglePost from '@/components/SinglePost'
+import ShortyPost from '@/components/ShortyPost'
 import { SectionName } from '@/components/SectionHeader'
 
 type Props = {
@@ -21,7 +22,9 @@ const SinglePostPage = ( { params }: Props ) => {
     return notFound()
   }
 
-  return <SinglePost post={post} />
+  const isShorty = post?.tags.includes( 'shorty' )
+
+  return isShorty ? <ShortyPost post={post} /> : <SinglePost post={post} />
 }
 
 // Metadata generation

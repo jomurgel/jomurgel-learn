@@ -6,19 +6,18 @@ const Home: React.FC = () => {
   return (
     <main>
       <section data-type="top">
-        <header>
+        <header data-type="home">
           <h1>
-            &#9786; I'm Jo Murgel,<br />
-            a Full-stack Web Dev and Artist.
+            Welcome, I am Jo Murgel.
           </h1>
-          <h2>
-            This is my portfolio, landing page, and online notepad.
-          </h2>
-
-          <p>
-            I'm a full-stack web developer and <Link href="https://wordpress.org" target="_blank">WordPress</Link> expert.<br />
-            <Link href="/contact">Hire me</Link> or check out my <Link href="/work">selected works</Link>.
+          <p data-type="large">
+            A <strong>full-stack dev</strong>, <strong>process consultant</strong>, and <strong>efficiency expert</strong>.<br/>
+            I build the web with purpose and craft new processes for small business, non-profits, and enterprise clients.
           </p>
+          <div data-buttons>
+            <Link href="/work" data-button data-variant="primary">Portfolio</Link>
+            <Link href="/work" data-button data-variant="secondary">About me</Link>
+          </div>
         </header>
       </section>
     </main>

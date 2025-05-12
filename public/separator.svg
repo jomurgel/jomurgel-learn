@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 4"><path fill="none" stroke="#dfdede" d="M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3" style="animation:animate-left 1s linear infinite"/><style>@keyframes animate-left{0%{transform:translateX(0)}to{transform:translateX(-20px)}}@media (prefers-reduced-motion:reduce){.separator-svg{animation:none}}</style></svg>

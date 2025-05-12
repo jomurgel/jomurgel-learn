@@ -11,7 +11,7 @@ const Codex: React.FC  = () => {
           <h1 aria-label="The Jo Murgel Codex">
             I &hearts; this stuff...
           </h1>
-          <p>A compiled list of things I like in no particular order of importance.</p>
+          <p>All that other random stuff that informs who I am.</p>
         </header>
       </section>
 
