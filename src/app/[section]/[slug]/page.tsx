@@ -22,7 +22,7 @@ const SinglePostPage = ( { params }: Props ) => {
     return notFound()
   }
 
-  const isShorty = post?.tags.includes( 'shorty' )
+  const isShorty = post?.tags?.includes( 'shorty' )
 
   return isShorty ? <ShortyPost post={post} /> : <SinglePost post={post} />
 }

@@ -96,7 +96,7 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
   }
 
   const renderDefaultCard = () => {
-    const isShorty = post?.tags.includes( 'shorty' )
+    const isShorty = post?.tags?.includes( 'shorty' )
     return (
     <>
       {post.coverImage && (
