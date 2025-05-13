@@ -16,7 +16,7 @@ const Home: React.FC = () => {
           </p>
           <div data-buttons>
             <Link href="/work" data-button data-variant="primary">Portfolio</Link>
-            <Link href="/work" data-button data-variant="secondary">About me</Link>
+            <Link href="/about" data-button data-variant="secondary">About me</Link>
           </div>
         </header>
       </section>
