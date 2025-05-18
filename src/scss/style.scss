@@ -101,6 +101,25 @@
   font-smoothing: antialiased;
   max-width: 100%;
   text-rendering: geometricPrecision;
+
+  a,
+  a:visited {
+    color: var(--primary);
+
+    &:active,
+    &:hover {
+      color: var(--secondary);
+    }
+
+    &:focus {
+      color: var(--primary-light);
+    }
+  }
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--black);
 }
 
 @each $color, $value in $colors {
@@ -182,203 +201,6 @@ main {
   > section {
     margin-bottom: var(--pad-3);
   }
-
-  [data-type="top-links"] {
-
-    li {
-
-    $i: 0;
-
-      // @todo: let's tie these more directly to tag names.
-      @each $color, $value in $colors {
-        $i: $i + 1;
-
-        &:nth-child(#{$i}) a {
-          background-color: var(#{$value});
-          border: 1px solid var(#{$value});
-          color: var(--white);
-        }
-
-        &:nth-child(#{$i}) a:active,
-        &:nth-child(#{$i}) a:hover,
-        &:nth-child(#{$i}) a:focus {
-          color: var(#{$value});
-          background-color: var(--white);
-          border: 1px solid var(#{$value});
-        }
-      }
-
-      a {
-        background-color: var(--lightest-gray);
-        border-radius: 1.5625rem;
-        color: var(--gray);
-        line-height: 1;
-        padding: calc(var(--pad) / 3) var(--pad);
-        text-decoration: none;
-        transition: background-color, color, border, 0.3s ease-in-out;
-      }
-    }
-  }
-
-  [data-type="top"], {
-    position: relative;
-    z-index: 0;
-
-    /* Homepage */
-    > [data-type="home"] {
-        padding-bottom: 0;
-        padding-top: 0;
-        height: 45rem;
-        max-height: calc(100vh - (var(--pad-3) * 6));
-    }
-
-    &[data-layout="featured"] {
-
-      > header {
-        border-radius: var(--border-radius);
-        align-items: center;
-        text-align: center;
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-        // height: 100%;
-        aspect-ratio: 4/2.5;
-        // max-height: calc(100vh - var(--pad-2));
-        padding-left: var(--pad-2);
-        padding-right: var(--pad-2);
-        padding-bottom: calc(var(--pad-2) * 4);
-        padding-top: calc(var(--pad-2) * 4);
-
-        > p,
-        > time,
-        > h1,
-        > cite {
-          color: var(--white);
-          z-index: 2;
-        }
-
-        > p {
-          font-size: 80%;
-          line-height: 1.5;
-          margin-bottom: 0;
-
-          @media screen and (min-width: map.get($breakpoints, "media-md")) {
-            font-size: var(--font-size);
-          }
-        }
-
-        > cite {
-          position: absolute;
-          bottom: var(--pad);
-          right: var(--pad);
-        }
-      }
-
-      [data-type^="image-container"] {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        border-radius: var(--border-radius);
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-        z-index: -1;
-
-        @media screen and (min-width: map.get($breakpoints, "media-md")) {
-          border-radius: 0;
-        }
-
-        @media screen and (min-width: map.get($breakpoints, "media-lg")) {
-          border-radius: var(--border-radius);
-        }
-
-        [post-image] {
-          border-radius: var(--border-radius);
-          position: relative;
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-          object-position: center;
-          z-index: 0;
-          bottom: 0;
-        }
-
-        &::before {
-          position: absolute;
-          content: '';
-          background-color: var(--primary);
-          border-radius: var(--border-radius);
-          opacity: 0.8;
-          height: 100%;
-          width: 100%;
-          top: 0;
-          left: 0;
-          z-index: 1;
-
-          @media screen and (min-width: map.get($breakpoints, "media-md")) {
-            border-radius: 0;
-          }
-
-          @media screen and (min-width: map.get($breakpoints, "media-lg")) {
-            border-radius: var(--border-radius);
-          }
-        }
-      }
-
-      + hr {
-        text-align: center;
-
-        &::after {
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-    }
-
-    > header {
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      // height: 45rem;
-      // max-height: calc(100vh - (var(--pad-3) * 4));
-
-      > h1 {
-        margin-bottom: var(--pad-2);
-
-        > small,
-        > small em {
-          color: var(--primary-lighter);
-          font-size: 70%;
-          font-weight: normal;
-        }
-
-        > span {
-          font-weight: normal;
-        }
-      }
-
-      > p {
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-
-      [post-image] {
-        border-radius: var(--border-radius);
-        position: relative;
-        bottom: calc(-1 * var(--pad-2) * 4.5);
-        right: 0;
-        z-index: -1;
-
-        @media screen and (min-width: map.get($breakpoints, "media-sm")) {
-          position: absolute;
-        }
-      }
-    }
-  }
 }
 
 nav[data-type="tags"] {
@@ -414,516 +236,6 @@ nav[data-type="tags"] {
       padding: calc(var(--pad) / 3) var(--pad);
       text-decoration: none;
       transition: background-color, color, border, 0.3s ease-in-out;
-    }
-  }
-}
-
-footer {
-  display: flex;
-  font-size: 80%;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
-
-  @media screen and (min-width: map.get($breakpoints, "media-md")) {
-    max-width: 75%;
-  }
-
-  > p {
-    margin-bottom: 0;
-  }
-}
-
-[data-layout="has-sidebar"] {
-
-  @media screen and (min-width: map.get($breakpoints, "media-md")) {
-    display: flex;
-  }
-
-  aside {
-    align-items: flex-end;
-    text-align: right;
-
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      flex: 0 0 calc(22% - var(--pad));
-      margin-left: auto;
-      order: 99;
-    }
-
-    li {
-      text-align: right;
-      padding-bottom: var(--pad);
-
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        flex: 0 0 100%;
-      }
-
-      $i: 0;
-
-      // @todo: let's tie these more directly to tag names.
-      @each $color, $value in $colors {
-        $i: $i + 1;
-
-        &:nth-child(#{$i}) a {
-          background-color: var(#{$value});
-          border: 1px solid var(#{$value});
-          color: var(--white);
-        }
-
-        &:nth-child(#{$i}) a:active,
-        &:nth-child(#{$i}) a:hover,
-        &:nth-child(#{$i}) a:focus {
-          color: var(#{$value});
-          background-color: var(--white);
-          border: 1px solid var(#{$value});
-        }
-      }
-
-      a {
-        background-color: var(--lightest-gray);
-        border-radius: 1.5625rem;
-        color: var(--gray);
-        line-height: 1;
-        padding: calc(var(--pad) / 3) var(--pad);
-        text-decoration: none;
-        transition: background-color, color, border, 0.3s ease-in-out;
-      }
-    }
-  }
-
-  [data-layout="main-content"] {
-    flex: 0 0 75%;
-  }
-}
-
-[data-layout="no-sidebar"] {
-
-  @media screen and (min-width: map.get($breakpoints, "media-md")) {
-    display: flex;
-    justify-content: center;
-  }
-
-  [data-layout="main-content"] {
-    flex: 0 0 75%;
-  }
-
-  + footer {
-    margin: 0 auto;
-  }
-}
-
-[data-layout="learn"] {
-  display: grid;
-  gap: var(--pad-2) 0;
-  grid-template-columns: 1fr;
-  flex-flow: row wrap;
-  justify-content: space-between;
-
-  @media screen and (min-width: map.get($breakpoints, "media-md")) {
-    gap: var(--pad-2) var(--pad-2);
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  > section[data-type="learn"] {
-    border: 1px solid var(--light-gray);
-    border-radius: var(--border-radius);
-    padding: var(--pad);
-    align-items: center;
-    display: flex;
-    margin: 0;
-    overflow: hidden;
-    transition: border 0.3s ease-in-out;
-    position: relative;
-
-    .image-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      z-index: -1;
-
-      &::after {
-        position: absolute;
-        content: '';
-        background-color: var(--light);
-        opacity: 0.8;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 0;
-      }
-    }
-
-    &:hover {
-      border: 1px solid var(--primary);
-    }
-
-    > div {
-      width: 100%;
-    }
-
-    h2 {
-      margin-bottom: var(--pad);
-      a {
-        text-decoration: none;
-      }
-    }
-  }
-}
-
-section {
-  margin-bottom: var(--pad-2);
-
-  // Section sections.
-  &:last-child,
-  section:last-child {
-    margin-bottom: 0;
-  }
-
-  > header {
-    margin-bottom: var(--pad-2);
-  }
-
-  &[data-type="codex"] {
-
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-
-      ul {
-        column-count: 2;
-      }
-    }
-  }
-
-  &[data-type="blog"] {
-    border-radius: var(--border-radius);
-    align-items: center;
-    margin-bottom: calc( var(--pad-2) * 2.5 );
-    gap: var(--pad);
-
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      display: flex;
-    }
-
-    header {
-      margin: 0;
-    }
-
-    > a {
-      display: inline-block;
-    }
-
-    > a [data-type="thumbnail"] {
-      height: auto;
-      margin-bottom: var(--pad);
-      width: 100%;
-      aspect-ratio: 3/2;
-
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        width: calc(var(--pad-2) * 4);
-        height: calc(var(--pad-2) * 3);
-      }
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    > div:not([data-type="thumbnail"]) {
-
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        padding: var(--pad);
-      }
-    }
-
-    h2 {
-      margin-bottom: var(--pad);
-
-      a,
-      a:visited {
-        color: currentColor;
-        text-decoration: none;
-
-        &:active,
-        &:hover {
-          color: var(--primary);
-        }
-
-        &:focus {
-          color: var(--primary-light);
-        }
-
-        &.current {
-          color: var(--dark-gray);
-          font-style: italic;
-        }
-      }
-    }
-
-    nav {
-      margin: 0;
-
-      ul li {
-
-        $i: 0;
-
-        @each $color, $value in $colors {
-          $i: $i + 1;
-
-          &:nth-child(#{$i}) a:active,
-          &:nth-child(#{$i}) a:hover {
-            color: var(--white);
-            background-color: var(#{$value});
-          }
-
-          &:nth-child(#{$i}) a:focus {
-            color: var(#{$value});
-            background-color: var(--white);
-            border: 1px solid var(#{$value});
-          }
-        }
-
-        a {
-          background-color: var(--light-gray);
-          border-radius: 1.5625rem;
-          border: 1px solid var(--light-gray);
-          color: var(--gray);
-          line-height: 1;
-          padding: calc(var(--pad) / 3) var(--pad);
-          text-decoration: none;
-          transition: background-color, color, border, 0.3s ease-in-out;
-        }
-      }
-    }
-
-    time {
-      color: var(--gray);
-      display: inline-block;
-      font-size: 90%;
-      margin-bottom: var(--pad);
-    }
-  }
-
-  &[data-type="work"] {
-    border: 1px solid var(--light-gray);
-    border-radius: var(--border-radius);
-    margin-bottom: calc( var(--pad-2) * 2.5 );
-
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      align-items: center;
-      display: flex;
-    }
-
-    > a {
-      order: 0;
-
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        order: 10;
-      }
-    }
-
-    > a [data-type="thumbnail"] {
-      border-width: 0 0 1px 0;
-      height: 100%;
-      margin: 0;
-      width: 100%;
-      aspect-ratio: 3/2;
-      order: 0;
-      object-fit: cover;
-
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      aspect-ratio: 1;
-        border-width: 0 0 0 1px;
-        width: calc(var(--pad-2) * 8);
-        order: 10;
-      }
-    }
-
-    header {
-      margin: 0;
-      order: 0;
-    }
-
-    > div {
-      width: 100%;
-      padding: var(--pad);
-    }
-
-    > div[data-layout="right"] {
-      text-align: center;
-
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        text-align: right;;
-      }
-
-      ul {
-        justify-content: center;
-
-        @media screen and (min-width: map.get($breakpoints, "media-md")) {
-          justify-content: flex-end;
-        }
-      }
-    }
-
-    nav {
-      font-size: 80%;
-      margin: var(--pad) 0;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      $i: 0;
-
-      @each $color, $value in $colors {
-        $i: $i + 1;
-        ul li:nth-child(#{$i}) span::before {
-          background-color: var(#{$value});
-        }
-      }
-
-      ul li span {
-        display: inline-block;
-        padding-left: calc(var(--pad) * 1.5);
-        color: var(--gray);
-        vertical-align: top;
-        position: relative;
-
-        &::before {
-          border-radius: 100%;
-          content: '';
-          height: 0.75rem;
-          width: 0.75rem;
-          background-color: var(--lightest-gray);
-          position: absolute;
-          transform: translateY(-50%);
-          top: calc(50% + 1px);
-          left: 0;
-        }
-      }
-    }
-
-    p {
-      margin-bottom: 0;
-    }
-
-    [data-type="related"] {
-      background-color: var(--light-gray);
-      border-radius: 1.5625rem;
-      border: 1px solid var(--light-gray);
-      color: var(--gray);
-      line-height: 1;
-      padding: calc(var(--pad) / 3) var(--pad);
-      text-decoration: none;
-      font-size: 90%;
-      display: inline-block;
-      transition: background-color, color, border, 0.3s ease-in-out;
-
-      &:active,
-      &:hover {
-        color: var(--white);
-        background-color: var(--primary);
-      }
-
-      &:focus {
-        color: var(--gray);
-        background-color: var(--light-gray);
-        border: 1px solid var(--primary);
-      }
-    }
-
-    h2 {
-      margin-bottom: var(--pad);
-      font-weight: normal;
-
-      a,
-      a:visited {
-        color: currentColor;
-        text-decoration: none;
-
-        &:active,
-        &:hover {
-          color: var(--primary);
-        }
-
-        &:focus {
-          color: var(--primary-light);
-        }
-      }
-    }
-  }
-
-  &[data-type="photo"] {
-    border-radius: var(--border-radius);
-    align-items: center;
-    margin-bottom: calc( var(--pad-2) * 2.5 );
-    gap: var(--pad);
-
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      display: flex;
-    }
-
-    header {
-      margin: 0;
-    }
-
-    > a {
-      display: inline-block;
-    }
-
-    > a [data-type="thumbnail"] {
-      height: auto;
-      width: 100%;
-      margin-bottom: var(--pad);
-      aspect-ratio: 1/1;
-
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        height: calc(var(--pad-3) * 3);
-        width: calc(var(--pad-3) * 3);
-      }
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    > div:not([data-type="thumbnail"]) {
-
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        padding: var(--pad);
-        flex: 1 0 50%;
-      }
-    }
-
-    p {
-      margin-bottom: 0;
-    }
-
-    h2 {
-      margin-bottom: var(--pad);
-
-      a,
-      a:visited {
-        color: currentColor;
-        text-decoration: none;
-
-        &:active,
-        &:hover {
-          color: var(--primary);
-        }
-
-        &:focus {
-          color: var(--primary-light);
-        }
-      }
     }
   }
 }
@@ -1047,10 +359,13 @@ blockquote {
   }
 
   &[data-type="pullquote"] {
-    border-top: 2px solid var(--primary);
-    border-left: 0;
-    padding: var(--pad-2) 0 0 0;
+    border-left: 2px solid var(--primary);
+    padding: 0 0 0 var(--pad-2);
     margin: var(--pad-3) auto;
+
+    &::before {
+      content: ''
+    }
 
     @media screen and (min-width: map.get($breakpoints, "media-md")) {
       max-width: 70%;
@@ -1183,10 +498,6 @@ pre {
   padding: var(--pad);
   tab-size: var(--tab-size);
   white-space: pre-wrap;
-
-  // &::after {
-  //   content: " ";
-  // }
 }
 
 *:not(pre) > code {
@@ -1486,6 +797,13 @@ img {
     width: 100vw;
 
   }
+}
+
+[data-align="content"] {
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
 
 [data-align="center"] {
@@ -1918,6 +1236,10 @@ button {
   text-decoration: none;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
 
   &[data-destructive] {
     background-color: var(--accent);
