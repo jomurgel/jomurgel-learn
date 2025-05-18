@@ -51,6 +51,10 @@ main {
         padding-top: 0;
         height: 45rem;
         max-height: calc(100vh - (var(--pad-3) * 6));
+
+        p {
+          hyphens: none;
+        }
     }
 
     &[data-layout="featured"] {

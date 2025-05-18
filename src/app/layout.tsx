@@ -11,10 +11,10 @@ import '../scss/style.scss'
 export const metadata: Metadata = {
   metadataBase: new URL( 'https://jomurgel.com' ),
   title: 'Jo Murgel',
-  description: 'Freelance Web Developer',
+  description: 'A front-end dev, user-experience designer, and process efficiency expert. I build bespoke purpose and data-driven websites and craft new processes for small business, non-profits, and enterprise clients.',
   openGraph: {
     title: 'Jo Murgel',
-    description: 'Freelance Web Developer',
+    description: 'A front-end dev, user-experience designer, and process efficiency expert. I build bespoke purpose and data-driven websites and craft new processes for small business, non-profits, and enterprise clients.',
     images: [
       '/cover.jpg',
     ],
