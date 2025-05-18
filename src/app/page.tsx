@@ -8,11 +8,14 @@ const Home: React.FC = () => {
       <section data-type="top">
         <header data-type="home">
           <h1>
-            Welcome, I am Jo Murgel.
+            Hi, I'm Jo Murgel.
           </h1>
           <p data-type="large">
-            A <strong>full-stack dev</strong>, <strong>process consultant</strong>, and <strong>efficiency expert</strong>.<br/>
-            I build the web with purpose and craft new processes for small business, non-profits, and enterprise clients.
+            A <strong>full-stack dev</strong>, <strong>UX designer</strong>, and <strong>process efficiency expert</strong><sup>[1]</sup>.<br/>
+            I build purpose and data-driven websites and craft new processes for small business, non-profits, and enterprise clients.
+          </p>
+          <p>
+            <small>1. Among other things&hellip;</small>
           </p>
           <div data-buttons>
             <Link href="/work" data-button data-variant="primary">Portfolio</Link>

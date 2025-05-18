@@ -40,7 +40,7 @@ const Header: React.FC = () => {
           <Link className="home" href="/">@jomurgel</Link>
         </div>
         <div>
-          <Link href="/contact" data-effect="glow">For Hire</Link>
+          {/* <Link href="/contact" data-effect="glow">For Hire</Link> */}
           <Nav />
         </div>
       </header>

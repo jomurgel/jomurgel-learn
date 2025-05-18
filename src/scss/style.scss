@@ -358,11 +358,6 @@ main {
 
       > p {
 
-        &[data-type="large"] {
-          font-size: clamp(1.25rem, 1.0577rem + 0.7692vw, 1.75rem);
-          line-height: 1.25;
-        }
-
         &:last-child {
           margin-bottom: 0;
         }
@@ -1147,6 +1142,11 @@ h6 {
 
 p {
   hyphens: auto;
+
+  &[data-type="large"] {
+    font-size: clamp(1.25rem, 1.0577rem + 0.7692vw, 1.75rem);
+    line-height: 1.25;
+  }
 }
 
 pre {
@@ -1282,7 +1282,7 @@ u {
 hr {
   margin: var(--pad-3) 0;
   border: 0;
-  padding-bottom: var(--pad);
+  height: 5px;
   letter-spacing: 0;
   line-height: 1;
   overflow: hidden;
@@ -1291,7 +1291,7 @@ hr {
     color: transparent;
     // content: 'se-ra-tor';
     content: '';
-    height: 20px;
+    height: 5px;
     display: block;
     width: 100px;
     font-size: 1.5rem;

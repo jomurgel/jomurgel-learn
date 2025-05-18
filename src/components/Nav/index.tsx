@@ -28,7 +28,7 @@ const Nav: React.FC = () => {
         className="site-nav-toggle"
         onClick={() => setIsOpen( ( prev ) => !prev )}
       >
-        Start
+        Start Here
       </button>
       <nav data-style="plain" className={`site-nav ${isOpen ? 'open' : ''}`}>
         <Links handleClick={setIsOpen} />
