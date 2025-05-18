@@ -31,9 +31,11 @@ const About: React.FC = () => {
 
       <hr />
 
-      <section>
-        <Content />
-      </section>
+      <div data-layout="no-sidebar">
+        <section data-layout="main-content">
+          <Content />
+        </section>
+      </div>
     </main>
   )
 }
