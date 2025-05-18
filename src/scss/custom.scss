@@ -162,8 +162,7 @@ main {
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      // height: 45rem;
-      // max-height: calc(100vh - (var(--pad-3) * 4));
+      padding: var(--pad-3) 0;
 
       > h1 {
         margin-bottom: var(--pad-2);

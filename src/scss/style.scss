@@ -481,9 +481,13 @@ h6 {
 p {
   hyphens: auto;
 
-  &[data-type="large"] {
+  &[data-size="large"] {
     font-size: clamp(1.25rem, 1.0577rem + 0.7692vw, 1.75rem);
     line-height: 1.25;
+  }
+
+  &[data-layout="footnotes"] {
+    line-height: 1;
   }
 }
 
