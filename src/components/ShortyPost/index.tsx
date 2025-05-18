@@ -31,13 +31,14 @@ const ShortyPost: React.FC<ShortyPostProps> = ( { post } ) => {
 
       <hr />
 
-      <div data-layout={isBlog || isWork ? 'has-sidebar' : undefined}>
-        {isBlog || isWork && (
+      <div data-layout={( isBlog && !isFeatured ) || isWork? 'has-sidebar' : 'no-sidebar'}>
+        {!isFeatured && !isPhoto && (
           <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} />
         )}
 
-        <section data-layout={isBlog || isWork ? 'main-content' : undefined}>
-          {!isBlog && !isWork && (
+        <section data-layout={!isPhoto ? 'main-content' : undefined}>
+
+          {( isFeatured || isPhoto ) && (
             <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} />
           )}
           <MDXRemote source={post.content} components={components} options={{ mdxOptions: options }} />
