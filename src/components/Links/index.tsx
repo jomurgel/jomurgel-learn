@@ -13,7 +13,7 @@ interface LinkItem {
 export const links: { show: LinkItem[]; tell: LinkItem[] } = {
   show: [
     { title: 'About Me', path: '/about' },
-    { title: 'Services', path: '/services' },
+    // { title: 'Services', path: '/services' },
     { title: 'Work', path: '/work' },
     { title: 'The Codex', path: '/codex' },
     { title: 'Contact Me', path: '/contact' },
