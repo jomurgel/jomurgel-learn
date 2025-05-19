@@ -341,6 +341,13 @@ section {
       margin: var(--pad) 0;
     }
 
+
+
+    > div {
+      width: 100%;
+      padding: 0;
+    }
+
     > a {
       display: inline-block;
     }
@@ -460,7 +467,10 @@ section {
     }
 
     > a {
-      max-width: 20%;
+
+      @media screen and (min-width: map.get($breakpoints, "media-md")) {
+        max-width: 20%;
+      }
     }
 
     header {
