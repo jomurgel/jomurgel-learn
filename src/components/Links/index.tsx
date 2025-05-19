@@ -13,21 +13,15 @@ interface LinkItem {
 export const links: { show: LinkItem[]; tell: LinkItem[] } = {
   show: [
     { title: 'About Me', path: '/about' },
-    { title: 'Codex', path: '/codex' },
-    // @todo: add setup, tbd.
-    // Contribute back to https://github.com/wesbos/awesome-uses/?tab=readme-ov-file
-    // { title: 'My Setup', path: '/uses' },
-    // @todo: re-add once more content exists. Taking longer than expected.
-    // { title: 'Learning', path: '/learn' },
-    { title: 'Contact', path: '/contact' },
+    { title: 'Services', path: '/services' },
+    { title: 'Work', path: '/work' },
+    { title: 'The Codex', path: '/codex' },
+    { title: 'Contact Me', path: '/contact' },
   ],
   tell: [
     { title: 'All Content', path: '/blog' },
     { title: 'Writing', path: '/writing' },
-    { title: 'Selected Work', path: '/work' },
     { title: 'Photography', path: '/photo' },
-    // @todo: phase2
-    // { title: 'Notes & Bookmarks', path: '/notes' },
   ],
 }
 

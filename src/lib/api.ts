@@ -22,7 +22,7 @@ export function getDirectories() {
     .readdirSync( contentDirectory, { withFileTypes: true } )
     .filter( ( dirent ) => dirent.isDirectory() )
     .map( ( dirent ) => dirent.name )
-    .filter( ( name ) => name !== SlugOptions.HIDDEN )
+    .filter( ( name ) => name !== SlugOptions.HIDDEN && name !== SlugOptions.WORK )
 }
 
 /**

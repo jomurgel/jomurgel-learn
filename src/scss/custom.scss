@@ -299,70 +299,6 @@ footer {
   }
 }
 
-[data-layout="learn"] {
-  display: grid;
-  gap: var(--pad-2) 0;
-  grid-template-columns: 1fr;
-  flex-flow: row wrap;
-  justify-content: space-between;
-
-  @media screen and (min-width: map.get($breakpoints, "media-md")) {
-    gap: var(--pad-2) var(--pad-2);
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  > section[data-type="learn"] {
-    border: 1px solid var(--light-gray);
-    border-radius: var(--border-radius);
-    padding: var(--pad);
-    align-items: center;
-    display: flex;
-    margin: 0;
-    overflow: hidden;
-    transition: border 0.3s ease-in-out;
-    position: relative;
-
-    .image-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      z-index: -1;
-
-      &::after {
-        position: absolute;
-        content: '';
-        background-color: var(--light);
-        opacity: 0.8;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 0;
-      }
-    }
-
-    &:hover {
-      border: 1px solid var(--primary);
-    }
-
-    > div {
-      width: 100%;
-    }
-
-    h2 {
-      margin-bottom: var(--pad);
-      a {
-        text-decoration: none;
-      }
-    }
-  }
-}
-
 section {
   margin-bottom: var(--pad-2);
 
@@ -386,7 +322,8 @@ section {
     }
   }
 
-  &[data-type="blog"] {
+  &[data-type="blog"],
+  &[data-type="work"][data-layout="internal"] {
     border-radius: var(--border-radius);
     align-items: center;
     margin-bottom: calc( var(--pad-2) * 2.5 );
@@ -398,6 +335,10 @@ section {
 
     header {
       margin: 0;
+    }
+
+    nav[data-type="tags"] {
+      margin: var(--pad) 0;
     }
 
     > a {
@@ -501,6 +442,17 @@ section {
     border: 1px solid var(--light-gray);
     border-radius: var(--border-radius);
     margin-bottom: calc( var(--pad-2) * 2.5 );
+    align-items: center;
+
+    &[data-layout="internal"] {
+      border: 0;
+
+      > a [data-type="thumbnail"] {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+    }
 
     @media screen and (min-width: map.get($breakpoints, "media-md")) {
       align-items: center;
@@ -508,28 +460,7 @@ section {
     }
 
     > a {
-      order: 0;
-
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-        order: 10;
-      }
-    }
-
-    > a [data-type="thumbnail"] {
-      border-width: 0 0 1px 0;
-      height: 100%;
-      margin: 0;
-      width: 100%;
-      aspect-ratio: 3/2;
-      order: 0;
-      object-fit: cover;
-
-      @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      aspect-ratio: 1;
-        border-width: 0 0 0 1px;
-        width: calc(var(--pad-2) * 8);
-        order: 10;
-      }
+      max-width: 20%;
     }
 
     header {
@@ -539,7 +470,7 @@ section {
 
     > div {
       width: 100%;
-      padding: var(--pad);
+      padding: var(--pad-2);
     }
 
     > div[data-layout="right"] {
@@ -929,5 +860,46 @@ aside[data-type="social-share"],
   &:focus {
     color: var(--light);
     box-shadow: 0 0 var(--pad-3) var(--primary);
+  }
+}
+
+
+//-----------------------------------------
+// Tags
+//-----------------------------------------
+nav[data-type="tags"] {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  ul li {
+
+    $i: 0;
+
+    @each $color, $value in $colors {
+      $i: $i + 1;
+
+      &:nth-child(#{$i}) a:active,
+      &:nth-child(#{$i}) a:hover {
+        color: var(--white);
+        background-color: var(#{$value});
+      }
+
+      &:nth-child(#{$i}) a:focus {
+        color: var(#{$value});
+        background-color: var(--white);
+        border: 1px solid var(#{$value});
+      }
+    }
+
+    a {
+      background-color: var(--light-gray);
+      border-radius: 1.5625rem;
+      border: 1px solid var(--light-gray);
+      color: var(--gray);
+      line-height: 1;
+      padding: calc(var(--pad) / 3) var(--pad);
+      text-decoration: none;
+      transition: background-color, color, border, 0.3s ease-in-out;
+    }
   }
 }

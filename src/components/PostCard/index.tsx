@@ -14,7 +14,7 @@ const CoverImage: React.FC<CoverImageProps> = ( { image, alt } ) => {
   if ( !image ) return null
 
   return (
-    <div data-image data-type="thumbnail">
+    <div data-image>
       <Image
         alt={alt || ''}
         data-type="thumbnail"
@@ -64,7 +64,7 @@ const CardRender: React.FC<CardRenderProps> = ( { type, post } ) => {
           </Link>
         )}
 
-        <div data-layout={!isInternalLink ? 'left' : 'right'}>
+        <div>
           <header>
             <h2>
               {!isInternalLink && post.url ? (
@@ -140,8 +140,13 @@ interface PostCardProps {
 }
 
 const PostCard: React.FC<PostCardProps> = ( { type, post } ) => {
+  const isInternalLink = post.url && ( post.url.startsWith( '/' ) ) || !post.url && post.slug
   return (
-    <section data-type={type} key={`${post.subfolder}-${post.slug}`}>
+    <section
+      data-type={type}
+      data-layout={!isInternalLink ? 'external' : 'internal'}
+      key={`${post.subfolder}-${post.slug}`}
+    >
       <CardRender type={type} post={post} />
     </section>
   )

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
 
-export type SectionName = 'blog' | 'work' | 'learn' | 'photo' | 'writing' | 'hidden';
+export type SectionName = 'blog' | 'work' | 'photo' | 'writing' | 'hidden';
 
 interface SectionHeaderProps {
   section: SectionName;
@@ -35,26 +35,12 @@ const SectionHeader: React.FC<SectionHeaderProps> = ( { section } ) => {
           </header>
         </section>
       )
-    case 'learn':
-      const title = 'Learn Something New!'
-      const description = 'A compilation of small tutorials to help learn a new thing.'
-      return (
-        <section data-type="top">
-          <header>
-            <h1>{title}</h1>
-            <p>
-              {description}<br/><br/>
-              <Link href="/learn/start-here" data-type="start">Start Here</Link>
-            </p>
-          </header>
-        </section>
-      )
     case 'work':
       return (
         <section data-type="top">
           <header>
-            <h1 aria-label="Work for Jo Murgel">Selected Work</h1>
-            <p>Some public repos of past and current work.</p>
+            <h1 aria-label="Work for Jo Murgel">Portfolio</h1>
+            <p>Work and case studiees I've been a part of.</p>
           </header>
         </section>
       )

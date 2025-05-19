@@ -20,9 +20,6 @@ const SectionPage = async ( { params }: SectionPageParams ) => {
 
   if ( section === 'blog' ) {
     allPosts = await getAllContent()
-  } else if ( section === 'learn' ) {
-    const targetSection = section !== 'learn' ? section : 'learn'
-    allPosts = await getContentByTypeReversed( targetSection as SlugOptions )
   } else {
     const targetSection = section !== 'writing' ? section : 'blog'
     allPosts = await getContentByType( targetSection as SlugOptions )
@@ -92,15 +89,6 @@ export function generateMetadata( { params }: SectionPageParams ): Metadata {
       description,
     },
     robots: {},
-  }
-
-  // @todo: hide from search for now.
-  if ( 'learn' === params.section ) {
-    meta.robots = {
-      follow: false,
-      index: false,
-      nocache: false,
-    }
   }
 
   return meta
