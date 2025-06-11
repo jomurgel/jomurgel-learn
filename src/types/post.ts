@@ -15,6 +15,7 @@ export interface BlogPost {
   related?: string;
   external?: string;
   id: string;
+  isFeatured?: boolean;
   url?: string;
   languages?: Languages
   slug: string;

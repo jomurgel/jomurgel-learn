@@ -799,7 +799,7 @@ aside[data-type="social-share"],
     list-style-type: none;
     margin: 0;
     padding: 0;
-    gap: var(--pad);
+    gap: calc(var(--pad) / 2);
 
     li {
 
@@ -831,7 +831,7 @@ aside[data-type="social-share"],
       button {
         border-radius: 1.5625rem;
         border: 1px solid var(--light-gray);
-        font-size: inherit;
+        font-size: .85rem;
         font-weight: inherit;
         line-height: 1;
         margin: 0;

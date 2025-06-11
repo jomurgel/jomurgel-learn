@@ -17,8 +17,10 @@ interface SinglePostProps {
 const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
   const components = useMDXComponents( {} as MDXComponents )
   const isBlog = post.subfolder === 'blog'
+  const isHidden = post.subfolder === 'hidden'
   const isWork = post.subfolder === 'work'
-  const isFeatured = post.coverImage && ( isBlog || isWork )
+  const isManualFeatured = post.isFeatured
+  const isFeatured = ( post.coverImage ) && ( isBlog || isWork || isHidden )
   const isPhoto = post.subfolder === 'photo'
 
   return (
@@ -51,14 +53,13 @@ const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
 
       <hr />
 
-      <div data-layout={( isBlog && !isFeatured ) || isWork? 'has-sidebar' : 'no-sidebar'}>
-        {!isFeatured && !isPhoto && (
+      <div data-layout={ ( ( isHidden && !isManualFeatured ) || ( isBlog && !isFeatured ) || isWork )? 'has-sidebar' : 'no-sidebar'}>
+        {( ( isHidden && !isManualFeatured ) || ( isBlog && !isFeatured ) || isWork ) && (
           <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} />
         )}
 
         <section data-layout={!isPhoto ? 'main-content' : undefined}>
-
-          {( isFeatured || isPhoto ) && (
+          {( !isHidden && ( !isBlog || isFeatured ) && !isWork ) && (
             <ShareButton url={`https://jomurgel.com/blog/${post.slug}`} title={post.title} />
           )}
           <MDXRemote source={post.content} components={components} options={{ mdxOptions: options }} />
