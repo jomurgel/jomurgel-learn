@@ -14,6 +14,10 @@ export enum SlugOptions {
 
 const contentDirectory = join( process.cwd(), 'content' )
 
+// Cache for content to avoid repeated file system reads
+let allContentCache: BlogPost[] | null = null
+let contentByTypeCache: Map<SlugOptions, BlogPost[]> = new Map()
+
 /**
  * Get all directories in content.
  */
@@ -29,6 +33,10 @@ export function getDirectories() {
  * Get all content from all subfolders.
  */
 export const getAllContent = () => {
+  if ( allContentCache ) {
+    return allContentCache
+  }
+
   const subfolders = getDirectories()
   let allContent = [] as BlogPost[]
 
@@ -39,6 +47,7 @@ export const getAllContent = () => {
 
   allContent.sort( ( a, b ) => new Date( b.date ).getTime() - new Date( a.date ).getTime() )
 
+  allContentCache = allContent
   return allContent
 }
 
@@ -67,11 +76,17 @@ export function getPostBySlug( type: SlugOptions, slug: string ): BlogPost {
  * @todo: combind with other to keep code DRY.
  */
 export function getContentByType( type: SlugOptions ): BlogPost[] {
+  if ( contentByTypeCache.has( type ) ) {
+    return contentByTypeCache.get( type )!
+  }
+
   const slugs = getPostSlugs( type )
   const posts = slugs
     .map( ( slug ) => getPostBySlug( type, slug ) )
     // sort posts by date in descending order
     .sort( ( post1, post2 ) => ( post1.date > post2.date ? -1 : 1 ) )
+
+  contentByTypeCache.set( type, posts )
   return posts
 }
 
@@ -110,17 +125,13 @@ export function getPostSlugs( type: SlugOptions ): Array<string> {
 export function getPostTags( type: SlugOptions ): Array<string> {
   const posts = getAllContent()
 
-  const uniqueTags: Array<string> = []
+  const uniqueTags = new Set<string>()
 
-  // @todo: could make this a new set?
   posts.flatMap( post => post.tags || [] )
-    .filter( tags => tags.length ).forEach( ( tag ) => {
+    .filter( tags => tags.length )
+    .forEach( ( tag ) => {
+      uniqueTags.add( slugify( tag ) )
+    } )
 
-  const nextTag = slugify( tag )
-    if ( !uniqueTags.includes( nextTag ) ) {
-      uniqueTags.push( nextTag )
-    }
-  } )
-
-  return uniqueTags.sort()
+  return Array.from( uniqueTags ).sort()
 }

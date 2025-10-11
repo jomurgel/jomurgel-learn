@@ -1,3 +1,4 @@
+import React from 'react'
 import Date from '@/components/Date'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -20,7 +21,7 @@ const CoverImage: React.FC<CoverImageProps> = ( { image, alt } ) => {
         data-type="thumbnail"
         width={600}
         height={400}
-        priority
+        loading="lazy"
         src={image}
         style={{ width: '100%' }}
       />
@@ -139,7 +140,7 @@ interface PostCardProps {
   post: BlogPost;
 }
 
-const PostCard: React.FC<PostCardProps> = ( { type, post } ) => {
+const PostCard: React.FC<PostCardProps> = React.memo( ( { type, post } ) => {
   const isInternalLink = post.url && ( post.url.startsWith( '/' ) ) || !post.url && post.slug
   return (
     <section
@@ -150,6 +151,8 @@ const PostCard: React.FC<PostCardProps> = ( { type, post } ) => {
       <CardRender type={type} post={post} />
     </section>
   )
-}
+} )
+
+PostCard.displayName = 'PostCard'
 
 export default PostCard

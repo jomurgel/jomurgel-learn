@@ -13,14 +13,16 @@ const ThemeContext = createContext<ThemeContextType | undefined>( undefined )
  * ThemeProvider component that manages the application's theme state.
  */
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ( { children } ) => {
-  const [ theme, setTheme ] = useState<string>( '' )
+  const [ theme, setTheme ] = useState<string>( () => {
+    // Initialize from document attribute to prevent flash
+    if ( typeof window !== 'undefined' ) {
+      return document.documentElement.getAttribute( 'data-theme' ) || 'light'
+    }
+    return 'light'
+  } )
 
   useEffect( () => {
-    document.documentElement.setAttribute( 'data-theme', theme || '' )
-
-    return () => {
-      document.documentElement.removeAttribute( 'data-theme' )
-    }
+    document.documentElement.setAttribute( 'data-theme', theme )
   }, [theme] )
 
   return (

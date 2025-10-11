@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import SinglePost from '@/components/SinglePost'
 import ShortyPost from '@/components/ShortyPost'
 import { SectionName } from '@/components/SectionHeader'
+import { cache } from 'react'
 
 type Props = {
   params: {
@@ -12,11 +13,16 @@ type Props = {
   };
 };
 
+// Cache the post data to avoid duplicate reads
+const getCachedPost = cache( ( section: SlugOptions, slug: string ) => {
+  return getContentBySlug( section, slug )
+} )
+
 // Main component
 const SinglePostPage = ( { params }: Props ) => {
   const { section, slug } = params
 
-  const post = getContentBySlug( section as SlugOptions, slug )
+  const post = getCachedPost( section as SlugOptions, slug )
 
   if ( !post ) {
     return notFound()
@@ -31,7 +37,7 @@ const SinglePostPage = ( { params }: Props ) => {
 export function generateMetadata( { params }: Props ): Metadata {
   const { section, slug } = params
 
-  const post = getContentBySlug( section as SlugOptions, slug )
+  const post = getCachedPost( section as SlugOptions, slug )
 
   if ( !post ) {
     return notFound()

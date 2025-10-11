@@ -1,3 +1,4 @@
+import React from 'react'
 import Date from '@/components/Date'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,13 +9,13 @@ import { mdxOptions as options } from '../../../next.config.mjs'
 import { useMDXComponents } from '@/app/mdx-components'
 import ShareButton from '../SocialShare'
 import Tags from '../Tags'
-import { test } from 'gray-matter'
+import { capitalize } from '@/lib/utils'
 
 interface SinglePostProps {
   post: BlogPost;
 }
 
-const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
+const SinglePost: React.FC<SinglePostProps> = React.memo( ( { post } ) => {
   const components = useMDXComponents( {} as MDXComponents )
   const isBlog = post.subfolder === 'blog'
   const isHidden = post.subfolder === 'hidden'
@@ -68,10 +69,12 @@ const SinglePost: React.FC<SinglePostProps> = ( { post } ) => {
 
       <footer>
         <Tags items={post.tags} linked />
-        <p><Link href={`/${post.subfolder}`}>Back to {post.subfolder.charAt( 0 ).toUpperCase() + post.subfolder.slice( 1 )}</Link></p>
+        <p><Link href={`/${post.subfolder}`}>Back to {capitalize( post.subfolder )}</Link></p>
       </footer>
     </main>
   )
-}
+} )
+
+SinglePost.displayName = 'SinglePost'
 
 export default SinglePost
